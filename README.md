@@ -13,3 +13,8 @@ Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirti
 - `XCPR` (*exchange words in P and R*)
 
 Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
+### Aritmetinės ir loginės
+Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos (išskyrus `COMP`) operuoja su žodžiais registruose **A** ir **B**. Visos aritmetinės ir loginės komandos formuoja požymių registro reikšmę.
+- `ADD` (Add **A** to **B**)
+
+Suma. Požymiai: `ZF = 1`, jei suma lygi 0; `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas; `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0, `OF = 1`.
