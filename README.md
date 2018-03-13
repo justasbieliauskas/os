@@ -87,3 +87,32 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
   - `CF` lygus paskutiniam dešiniausiam išstumtam bitui;
   - Jei **C** lygus 1, `OF` lygus kairiausiam bitui prieš bitų postumį.
+
+### Valdymo perdavimo
+- `JUMP`
+
+  Besąlygiškai perduoda valdymą.
+  
+- `JE` *Jump if Equal*
+
+  Perduoda valdymą, jei `ZF = 1`.
+
+- `JNE` *Jump if Not Equal*
+
+  Perduoda valdymą, jei `ZF = 0`.
+
+- `JG` *Jump if Greater*
+
+  Perduoda valdymą, jei `ZF = 0` ir `CF = 0`.
+
+- `JGE` *Jump if Greater or Equal*
+
+  Perduoda valdymą, jei `CF = 0`.
+
+- `JL` *Jump if Lower*
+
+  Perduoda valdymą, jei `CF = 1`.
+
+- `JLE` *Jump if Lower or Equal*
+
+  Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
