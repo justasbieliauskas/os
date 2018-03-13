@@ -61,3 +61,29 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
   - `ZF = 1`, jei rezultatas 0, kitu atveju `ZF = 0`;
   - `CF = 0`;
   - `OF = 0`.
+
+- `OR` ***A** OR **B***
+
+  Disjunkcija. Požymiai tie patys.
+  
+- `XOR` ***A** XOR **B***
+
+  XOR. Požymiai tie patys.
+
+- `NOT` ***A** NOT **B***
+
+  Inversija.
+
+- `LSHF` *Left Shift **A** by **C***
+
+  Bitu postūmis į kairę. Postūmio skaičius nurodomas registre C. Nulinis postūmis nekeičia požymių registro. Požymiai:
+  - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
+  - `CF` lygus paskutiniam išstumtam bitui;
+  - `OF = 1`, jei **C** lygus 1 ir išstumtas bitas nelygus kairiausiam bitui po operacijos.
+
+- `RSHF` *Right Shift **A** by **C***
+
+  Bitu postūmis į dešinę. Postūmio skaičius nurodomas registre C. Nulinis postūmis nekeičia požymių registro. Požymiai:
+  - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
+  - `CF` lygus paskutiniam dešiniausiam išstumtam bitui;
+  - Jei **C** lygus 1, `OF` lygus kairiausiam bitui prieš bitų postumį.
