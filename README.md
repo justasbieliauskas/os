@@ -18,15 +18,15 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
 - `ADD` Add **A** to **B**
 
   Suma. Požymiai:
-  - `ZF = 1`, jei suma lygi 0;
-  - `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas;
-  - `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0.
+  - `ZF = 1`, jei suma lygi 0, kitu atveju `ZF = 0`;
+  - `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`;
+  - `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0. Kitu atveju `OF = 0`
 
 - `SUB` *Subtract **B** from **A***
 
   Atimtis. Požymiai: 
-  - `ZF = 1`, jei skirtumas lygus 0;
-  - `CF = 1`, jei atimama didesnį skaičių iš mažesnio.
+  - `ZF = 1`, jei skirtumas lygus 0, kitu atveju `ZF = 0`;
+  - `CF = 1`, jei atimama didesnį skaičių iš mažesnio, kitu arveju `CF = 0`.
 
 - `COMP` *Compare **A** and **B***
 
@@ -44,8 +44,8 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
 
   Daugyba. Požymiai:
   
-  - `ZF = 1`, jei dauginama iš 0;
-  - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas;
+  - `ZF = 1`, jei dauginama iš 0, kitu atveju `ZF = 0`;
+  - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`.
 
 - `DIV` *Divide **A** and **B***
 
@@ -54,3 +54,10 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
 - `MOD` *Modulo **A** and **B***
 
   Dalybos liekana. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
+  
+- `AND` ***A** AND **B***
+
+  Konjunkcija. Požymiai:
+  - `ZF = 1`, jei rezultatas 0, kitu atveju `ZF = 0`;
+  - `CF = 0`;
+  - `OF = 0`.
