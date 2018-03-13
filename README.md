@@ -7,12 +7,15 @@
 - `LRxy` *Load to R word at address xy*
 
   Nukopijuoja atmintyje esantį žodį virtualiu adresu *xy* į **R**. Čia **R** - vienas iš registrų **A**, **B**, **C**, **D**. Adresas yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Naudojantis puslapiavimo mechanizmu, *xy* paverčiamas į realų adresą, kuriame esantis žodis nukopijuojamas į registrą **R**.
+- `SRxy` *Save word in **R** to memory at address xy*
+
+  Išsaugo žodį registre **R** į atmintį adresu *xy*. Čia **R** - vienas iš registrų **A**, **B**, **C**, **D**. Adresas yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Naudojantis puslapiavimo mechanizmu, *xy* paverčiamas į realų adresą, į kurį nukopijuojamas registre **R** esantis žodis.
 - `PTOR` *copy word in P To R*
 
-  Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
+  Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jei **P** lygus **R**, fiksuojama klaida, kurios kodas 2.
 - `XCPR` *exchange words in P and R*
 
-  Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
+  Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jei **P** lygus **R**, fiksuojama klaida, kurios kodas 2.
 ### Aritmetinės ir loginės
 Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NEG` formuoja požymių registro reikšmę.
 - `ADD` Add **A** to **B**
