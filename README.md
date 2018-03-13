@@ -89,7 +89,7 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
   - Jei **C** lygus 1, `OF` lygus kairiausiam bitui prieš bitų postumį.
 
 ### Valdymo perdavimo
-Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* registre **C** priskiria registrui **IC**. Adresas *xy* yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Adresas yra reliatyvus kodo segmentui. Jei *x* užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* registre **C** priskiria registrui **IC**. Adresas yra žodžio kokiame nors bloke numeris reliatyvus kodo segmentui. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
 - `JUMP`
 
   Besąlygiškai perduoda valdymą.
@@ -118,6 +118,11 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
 
   Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
 ### Darbui su simbolių eilutėmis
+Darbui su simboliais, adresai turi būti smulkesni. Adresas yra baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+
+Po komandos vykdymo jeigu:
+  1. `DF = 0`, vykdoma komanda `INC` ir adresai padidinami vienetu;
+  2. `DF = 1`, vykdoma komanda `DEC` ir adresai sumažinami vienetu.
 - `LODS` *Load String*
 
   Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**.
