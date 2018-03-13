@@ -27,3 +27,30 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
   Atimtis. Požymiai: 
   - `ZF = 1`, jei skirtumas lygus 0;
   - `CF = 1`, jei atimama didesnį skaičių iš mažesnio.
+
+- `COMP` *Compare **A** and **B***
+
+  Palygina du skaičius. Vykdo `SUB`, bet rezultato neišsaugo, tik keičia požymių registrą.
+
+- `INC` *Increment **A***
+
+  Padidina vienetu. Vykdo `ADD`, kur **B** lygus 1.
+
+- `DEC` *Decrement **B***
+
+  Sumažina vienetu. Vykdo `SUB`, kur **B** lygus 1.
+
+- `MUL` *Multiply **A** and **B***
+
+  Daugyba. Požymiai:
+  
+  - `ZF = 1`, jei dauginama iš 0;
+  - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas;
+
+- `DIV` *Divide **A** and **B***
+
+  Dalyba. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
+
+- `MOD` *Modulo **A** and **B***
+
+  Dalybos liekana. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
