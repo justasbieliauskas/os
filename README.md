@@ -118,22 +118,22 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
 
   Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
 ### Darbui su simbolių eilutėmis
-Darbui su simboliais, adresai turi būti smulkesni. Adresas yra baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+Darbui su simboliais, adresai turi būti smulkesni. Adresas yra virtualus baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1. Puslapiavimo mechanizmo pagalba virtualus baito adresas yra paverčiamas į realų.
 
 Po komandos vykdymo:
   1. Jeigu `DF = 0`, vykdoma komanda `INC` ir adresai padidinami vienetu;
   2. Jeigu `DF = 1`, vykdoma komanda `DEC` ir adresai sumažinami vienetu.
 - `LODS` *Load String*
 
-  Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**.
+  Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**. Šiuo atveju nukopijuotas baitas bus jauniausias registre **A**.
 
 - `STOS` *Store String*
 
-  Nukopijuoja baitą registre **A** į atmintį, kurios adresas registre **D**.
+  Nukopijuoja jauniausiąjį baitą registre **A** į atmintį, kurios adresas registre **D**.
 
 - `CMPS` *Compare Strings*
 
-  Palygina du baitus, kurių adresai registruose **A** ir **B**, ir keičia požymių registrą.
+  Palygina du baitus (vykdoma `COMP` komanda), kurių adresai registruose **A** ir **B**, ir keičia požymių registrą.
   
 - `MOVS` *Move String*
 
@@ -143,6 +143,10 @@ Po komandos vykdymo:
 - `LOOP`
 
   Besąlygiškai perduoda valdymą komandai, kurios adresas registre **D**, t.y. vykdomas `JUMP`. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
-- `REP`
+- `REP` *Repeat string command*
 
   Komanda, po kurios iš karto rašoma kita komanda `STOS`, `CMPS` arba `MOVS`, kuri yra kartojama.
+### Darbui su failais
+- `OPEN`
+
+  Atidaro failą, kurio pavadinimo adresas yra registre A ir išsaugo jo deskriptorių registre A. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio.
