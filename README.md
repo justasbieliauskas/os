@@ -89,6 +89,7 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
   - Jei **C** lygus 1, `OF` lygus kairiausiam bitui prieš bitų postumį.
 
 ### Valdymo perdavimo
+Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* registre **C** priskiria registrui **IC**. Adresas *xy* yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Adresas yra reliatyvus kodo segmentui. Jei *x* užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
 - `JUMP`
 
   Besąlygiškai perduoda valdymą.
