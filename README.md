@@ -147,3 +147,6 @@ Po komandos vykdymo:
 - `READ`
 
   Skaito iš failo. Failo deskriptorius turi būti registre **A**, adresas į baito vietą atmintyje, į kurią bus rašoma, turi būti registre **B**, maksimalus skaitomų simbolių skaičius turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+- `WRTE`
+
+  Rašo į failą. Failo deskriptorius turi būti registre **A**, adresas į simbolių eilutę, kuri bus rašoma, turi būti registre **B**, skaičius, kiek simbolių rašyti, turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
