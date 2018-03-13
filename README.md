@@ -14,7 +14,7 @@
 
   Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
 ### Aritmetinės ir loginės
-Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Visos aritmetinės ir loginės komandos formuoja požymių registro reikšmę.
+Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NEG` formuoja požymių registro reikšmę.
 - `ADD` Add **A** to **B**
 
   Suma. Požymiai:
@@ -54,21 +54,12 @@ Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rez
 - `MOD` *Modulo **A** and **B***
 
   Dalybos liekana. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
-  
-- `AND` ***A** AND **B***
+- `AND`, `OR`, `XOR`
 
-  Konjunkcija. Požymiai:
+  Konjunkcija, disjunkcija, XOR. Požymiai:
   - `ZF = 1`, jei rezultatas 0, kitu atveju `ZF = 0`;
   - `CF = 0`;
   - `OF = 0`.
-
-- `OR` ***A** OR **B***
-
-  Disjunkcija. Požymiai tie patys.
-  
-- `XOR` ***A** XOR **B***
-
-  XOR. Požymiai tie patys.
 
 - `NOT` ***A** NOT **B***
 
