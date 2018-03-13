@@ -120,9 +120,9 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
 ### Darbui su simbolių eilutėmis
 Darbui su simboliais, adresai turi būti smulkesni. Adresas yra baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
 
-Po komandos vykdymo jeigu:
-  1. `DF = 0`, vykdoma komanda `INC` ir adresai padidinami vienetu;
-  2. `DF = 1`, vykdoma komanda `DEC` ir adresai sumažinami vienetu.
+Po komandos vykdymo:
+  1. Jeigu `DF = 0`, vykdoma komanda `INC` ir adresai padidinami vienetu;
+  2. Jeigu `DF = 1`, vykdoma komanda `DEC` ir adresai sumažinami vienetu.
 - `LODS` *Load String*
 
   Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**.
@@ -138,3 +138,11 @@ Po komandos vykdymo jeigu:
 - `MOVS` *Move String*
 
   Nukopijuoja vieną baitą, kurio adresas registre **A**, į kito baito, kurio adresas registre **B**, vietą.
+### Ciklams
+Šios komandos vykdo ciklą: tikriną žodį registre **C**; jei jis 0, sustoja, kitu atveju atlieka operaciją ir vėl tikrina.
+- `LOOP`
+
+  Besąlygiškai perduoda valdymą komandai, kurios adresas registre **D**, t.y. vykdomas `JUMP`. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+- `REP`
+
+  Komanda, po kurios iš karto rašoma kita komanda `STOS`, `CMPS` arba `MOVS`, kuri yra kartojama.
