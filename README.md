@@ -117,3 +117,19 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
 - `JLE` *Jump if Lower or Equal*
 
   Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
+### Darbui su simbolių eilutėmis
+- `LODS` *Load String*
+
+  Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**.
+
+- `STOS` *Store String*
+
+  Nukopijuoja baitą registre **A** į atmintį, kurios adresas registre **D**.
+
+- `CMPS` *Compare Strings*
+
+  Palygina du baitus, kurių adresai registruose **A** ir **B**, ir keičia požymių registrą.
+  
+- `MOVS` *Move String*
+
+  Nukopijuoja vieną baitą, kurio adresas registre **A**, į kito baito, kurio adresas registre **B**, vietą.
