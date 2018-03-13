@@ -143,10 +143,16 @@ Po komandos vykdymo:
 ### Darbui su failais
 - `OPEN`
 
-  Atidaro failą, kurio pavadinimo adresas yra registre A ir išsaugo jo deskriptorių registre A. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
+  Atidaro failą, kurio pavadinimo adresas yra registre **A** ir išsaugo jo deskriptorių registre **A**. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
 - `READ`
 
   Skaito iš failo. Failo deskriptorius turi būti registre **A**, adresas į baito vietą atmintyje, į kurią bus rašoma, turi būti registre **B**, maksimalus skaitomų simbolių skaičius turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
 - `WRTE`
 
   Rašo į failą. Failo deskriptorius turi būti registre **A**, adresas į simbolių eilutę, kuri bus rašoma, turi būti registre **B**, skaičius, kiek simbolių rašyti, turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+- `CLOS`
+
+  Uždaro failą. Failo deskriptorius turi būti registre **A**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+- `DSTR`
+
+  Sunaikina failą, kurio pavadinimo adresas yra registre **A**. Jei toks failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
