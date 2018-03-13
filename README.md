@@ -18,7 +18,7 @@
   Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jei **P** lygus **R**, fiksuojama klaida, kurios kodas 2.
 ### Aritmetinės ir loginės
 Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NEG` formuoja požymių registro reikšmę.
-- `ADD` Add **A** to **B**
+- `ADD` *Add **A** to **B***
 
   Suma. Požymiai:
   - `ZF = 1`, jei suma lygi 0, kitu atveju `ZF = 0`;
@@ -113,10 +113,6 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
   Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
 ### Darbui su simbolių eilutėmis
 Darbui su simboliais, adresai turi būti smulkesni. Adresas yra virtualus baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1. Puslapiavimo mechanizmo pagalba virtualus baito adresas yra paverčiamas į realų.
-
-Po komandos vykdymo:
-  1. Jeigu `DF = 0`, vykdoma komanda `INC` ir adresai padidinami vienetu;
-  2. Jeigu `DF = 1`, vykdoma komanda `DEC` ir adresai sumažinami vienetu.
 - `LODS` *Load String*
 
   Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**. Šiuo atveju nukopijuotas baitas bus jauniausias registre **A**.
@@ -132,6 +128,10 @@ Po komandos vykdymo:
 - `MOVS` *Move String*
 
   Nukopijuoja vieną baitą, kurio adresas registre **A**, į kito baito, kurio adresas registre **B**, vietą.
+  
+Po komandos vykdymo:
+1. Jeigu `DF = 0`, adresai padidinami vienetu;
+2. Jeigu `DF = 1`, adresai sumažinami vienetu.
 ### Ciklams
 Šios komandos vykdo ciklą: tikriną žodį registre **C**; jei jis 0, sustoja, kitu atveju atlieka operaciją ir vėl tikrina.
 - `LOOP`
