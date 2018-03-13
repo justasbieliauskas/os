@@ -6,18 +6,24 @@
 ### Bendros
 - `LRxy` *Load to R word at address xy*
 
-Nukopijuoja atmintyje esantį žodį virtualiu adresu *xy* į **R**. Čia **R** - vienas iš registrų **A**, **B**, **C**, **D**. Adresas yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Naudojantis puslapiavimo mechanizmu, *xy* paverčiamas į realų adresą, kuriame esantis žodis nukopijuojamas į registrą **R**.
+  Nukopijuoja atmintyje esantį žodį virtualiu adresu *xy* į **R**. Čia **R** - vienas iš registrų **A**, **B**, **C**, **D**. Adresas yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Naudojantis puslapiavimo mechanizmu, *xy* paverčiamas į realų adresą, kuriame esantis žodis nukopijuojamas į registrą **R**.
 - `PTOR` *copy word in P To R*
 
-Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
+  Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
 - `XCPR` *exchange words in P and R*
 
-Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
+  Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**.
 ### Aritmetinės ir loginės
 Visos aritmetinės komandos (išskyrus `COMP`) ir loginės komandos išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Visos aritmetinės ir loginės komandos formuoja požymių registro reikšmę.
 - `ADD` Add **A** to **B**
 
-  Suma. Požymiai: `ZF = 1`, jei suma lygi 0; `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas; `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0, `OF = 1`.
+  Suma. Požymiai:
+  - `ZF = 1`, jei suma lygi 0;
+  - `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas;
+  - `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0.
+
 - `SUB` *Subtract **B** from **A***
 
-  Atimtis. Požymiai: `ZF = 1`, jei skirtumas lygus 0. `CF = 1`, jei atimama didesnį skaičių iš mažesnio.
+  Atimtis. Požymiai: 
+  - `ZF = 1`, jei skirtumas lygus 0;
+  - `CF = 1`, jei atimama didesnį skaičių iš mažesnio.
