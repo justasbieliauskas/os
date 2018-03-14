@@ -12,10 +12,10 @@
   Išsaugo žodį registre **R** į atmintį adresu *xy*. Čia **R** - vienas iš registrų **A**, **B**, **C**, **D**. Adresas yra šešioliktainis skaičius iš dviejų skaitmenų, *x* nurodo virtualios atminties puslapio numerį, *y* nurodo ląstelės tame puslapyje numerį. Naudojantis puslapiavimo mechanizmu, *xy* paverčiamas į realų adresą, į kurį nukopijuojamas registre **R** esantis žodis.
 - `PTOR` *copy word in P To R*
 
-  Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jei **P** lygus **R**, fiksuojama klaida, kurios kodas 2.
+  Nukopijuoja žodį registre **P** į registrą **R**. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jie negali būti tokie patys, neleidžiama nukopijuoti to paties registro reikšmę į tą patį registrą.
 - `XCPR` *exchange words in P and R*
 
-  Sukeičia registrų **P** ir **R** žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jei **P** lygus **R**, fiksuojama klaida, kurios kodas 2.
+  Sukeičia registruose **P** ir **R** esančius žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jie negali būti tokie patys, neleidžiama sukeisti to paties registro reikšmės vietomis.
 ### Aritmetinės ir loginės
 Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NEG` formuoja požymių registro reikšmę.
 - `ADD` *Add **A** to **B***
