@@ -156,3 +156,24 @@ Po komandos vykdymo:
 - `DSTR`
 
   Sunaikina failą, kurio pavadinimo adresas yra registre **A**. Jei toks failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
+### Kitos
+- `WTOS`
+
+  Konvertuoja skaičių į simbolių eilutę.
+  
+  Reikalavimai:
+  - **A** skaičius konvertavimui;
+  - **D** simbolių eilutės adresas, į kurią bus rašoma.
+  
+  Rezultatai:
+  - **C** simbolių eilutės ilgis.
+- `STOW`
+
+  Konvertuoja simbolių eilutę į skaičių.
+  
+  Reikalavimai:
+  - **A** simbolių eilutės adresas;
+  - **C** simbolių eilutės ilgis.
+  
+  Rezultatai:
+  - **A** konvertuotas skaičius
