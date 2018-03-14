@@ -166,26 +166,51 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
   Besąlygiškai perduoda valdymą komandai.
 
   Reikalavimai:
-  - **D** komandos adresas, kuriai bus perduotas valdymas. Adreso požymiai tokie patys kaip `JUMP` komandų adresams.
+  - **D** komandos adresas, kuriai bus perduotas valdymas. Adreso požymiai tokie patys kaip `JUMP` komandų adresams.
 - `REP` *Repeat string command*
 
   Kartoja komandą darbui su simbolio eilutėmis. Po šios komandos iš karto rašoma arba `STOS`, arba `CMPS`, arba `MOVS`.
 ### Darbui su failais
 - `OPEN`
 
-  Atidaro failą, kurio pavadinimo adresas yra registre **A** ir išsaugo jo deskriptorių registre **A**. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
+  Atidaro failą. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6 (*no such file*).
+  
+  Reikalavimai:
+  - **A** failo pavadinimo (simbolių eilutės) adresas atmintyje.
+  
+  Rezultatai:
+  - **D** atidaryto failo deskriptorius.
 - `READ`
 
-  Skaito iš failo. Failo deskriptorius turi būti registre **A**, adresas į baito vietą atmintyje, į kurią bus rašoma, turi būti registre **B**, maksimalus skaitomų simbolių skaičius turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+  Skaito iš failo. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
+  
+  Reikalavimai:
+  - **D** failo deskriptorius;
+  - **A** simbolių eilutės, į kurią bus rašoma, adresas atmintyje;
+  - **C** simbolių eilutės, į kurią bus rašoma, ilgis.
+  
+  Rezultatai:
+  - **C** perskaitytų simbolių skaičius.
 - `WRTE`
 
-  Rašo į failą. Failo deskriptorius turi būti registre **A**, adresas į simbolių eilutę, kuri bus rašoma, turi būti registre **B**, skaičius, kiek simbolių rašyti, turi būti registre **C**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+  Rašo į failą. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
+  
+  Reikalavimai:
+  - **D** failo deskriptorius;
+  - **A** simbolių eilutės, kuri bus rašoma, adresas atmintyje;
+  - **C** simbolių eilutės, kuri bus rašoma, ilgis.
 - `CLOS`
 
-  Uždaro failą. Failo deskriptorius turi būti registre **A**. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7.
+  Uždaro failą. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
+  
+  Reikalavimai:
+  - **D** failo deskriptorius.
 - `DSTR`
 
-  Sunaikina failą, kurio pavadinimo adresas yra registre **A**. Jei toks failas neegzistuoja, fiksuojama klaida, kurios kodas 6.
+  Sunaikina failą. Jei toks failas neegzistuoja, fiksuojama klaida, kurios kodas 6 (*no such file*).
+  
+  Reikalavimai:
+  - **A** failo pavadinimo (simbolių eilutės) adresas atmintyje.
 ### Kitos
 - `WTOS`
 
