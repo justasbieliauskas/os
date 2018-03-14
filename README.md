@@ -177,3 +177,13 @@ Po komandos vykdymo:
   
   Rezultatai:
   - **A** konvertuotas skaičius
+- `DRAW`
+
+  Nupiešia tašką ekrane.
+  
+  Registras **SI** įgauna reikšmę 5 ir iš vartotojo režimo pereinama į supervizorinį. Supervizoriniame režime piešiamas taškas. Ši operacija užima 2 *tickus*.
+  
+  Reikalavimai:
+  - **A** *x* koordinatė - stulpelio numeris terminale;
+  - **B** *y* koordinatė - eilutės numeris terminale;
+  - **D** *RGB* reikšmė. *R*, *G* ir *B* komponentės užima po vieną baitą, t.y. tai skaičiai nuo 0 iki 255 (imtinai). Jauniausias registro **D** baitas yra komponentė *B*, antras pagal jaunumą yra *G*, trečias - *R*. Vyriausias baitas nenaudojamas.
