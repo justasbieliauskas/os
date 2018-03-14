@@ -17,70 +17,74 @@
 
   Sukeičia registruose **P** ir **R** esančius žodžius vietomis. Čia **P** ir **R** skirtingi registrai iš **A**, **B**, **C**, **D**. Jie negali būti tokie patys, neleidžiama sukeisti to paties registro reikšmės vietomis.
 ### Aritmetinės ir loginės
-Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NEG` formuoja požymių registro reikšmę.
-- `ADD` *Add **A** to **B***
+Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą registre **A**. Unarinės komandos operuoja su žodžiais registre **A**,  binarinės komandos operuoja su žodžiais registruose **A** ir **B**. Taip pat visos aritmetinės ir loginės komandos, išskyrus `DIV`, `MOD` ir `NOT` formuoja požymių registro reikšmę.
+- `ADD` ***A** = **A** + **B***
 
-  Suma. Požymiai:
+  Požymiai:
   - `ZF = 1`, jei suma lygi 0, kitu atveju `ZF = 0`;
   - `CF = 1`, jei suma peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`;
   - `OF = 1`, jei dvieju žodžių, kurių vyriausias bitas yra 0, sumos vyriausias bitas tampa 1 arba jei dviejų žodžių, kurių vyriausias bitas yra 1, sumos vyriausias bitas yra 0. Kitu atveju `OF = 0`
 
-- `SUB` *Subtract **B** from **A***
+- `SUB` ***A** = **A** - **B***
 
-  Atimtis. Požymiai: 
+  Požymiai: 
   - `ZF = 1`, jei skirtumas lygus 0, kitu atveju `ZF = 0`;
   - `CF = 1`, jei atimama didesnį skaičių iš mažesnio, kitu arveju `CF = 0`.
 
 - `COMP` *Compare **A** and **B***
 
-  Palygina du skaičius. Vykdo `SUB`, bet rezultato neišsaugo, tik keičia požymių registrą.
+  Palygina du skaičius registruose **A** ir **B**: vykdo `SUB`, bet rezultato neišsaugo, tik keičia požymių registrą.
 
-- `INC` *Increment **A***
+- `INC` ***A** = **A** + 1*
 
-  Padidina vienetu. Vykdo `ADD`, kur **B** lygus 1.
+  Vykdo `ADD`, kur **B** lygus 1.
 
-- `DEC` *Decrement **B***
+- `DEC` ***A** = **A** - 1*
 
-  Sumažina vienetu. Vykdo `SUB`, kur **B** lygus 1.
+  Vykdo `SUB`, kur **B** lygus 1.
 
-- `MUL` *Multiply **A** and **B***
+- `MUL` ***A** = **A** * **B***
 
-  Daugyba. Požymiai:
+  Požymiai:
   
-  - `ZF = 1`, jei dauginama iš 0, kitu atveju `ZF = 0`;
+  - `ZF = 1`, jei **B** lygus 0, kitu atveju `ZF = 0`;
   - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`.
 
-- `DIV` *Divide **A** and **B***
+- `DIV` ***A** = **A** / **B***
 
-  Dalyba. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
+  Rezultatas - sveikoji skaičiaus dalis. Požymių registras nekeičiamas. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 2.
 
-- `MOD` *Modulo **A** and **B***
+- `MOD` ***A** = **A** % **B***
 
-  Dalybos liekana. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 4.
+  Požymių registras nekeičiamas. Jei bandoma dalinti iš 0, fiksuojama klaida, kurios kodas 2.
 - `AND`, `OR`, `XOR`
 
-  Konjunkcija, disjunkcija, XOR. Požymiai:
+  ***A** = **A** AND **B***
+  ***A** = **A** | **B***
+  ***A** = **A** ^ **B***
+
+  Požymiai:
   - `ZF = 1`, jei rezultatas 0, kitu atveju `ZF = 0`;
   - `CF = 0`;
   - `OF = 0`.
 
-- `NOT` ***A** NOT **B***
+- `NOT` ***A** = ~ **A**
 
-  Inversija.
+  Požymių registro nekeičia.
 
-- `LSHF` *Left Shift **A** by **C***
+- `LSHF` ***A** = **A** << **C***
 
-  Bitu postūmis į kairę. Postūmio skaičius nurodomas registre C. Nulinis postūmis nekeičia požymių registro. Požymiai:
+  Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
   - `CF` lygus paskutiniam išstumtam bitui;
   - `OF = 1`, jei **C** lygus 1 ir išstumtas bitas nelygus kairiausiam bitui po operacijos.
 
-- `RSHF` *Right Shift **A** by **C***
+- `RSHF` ***A** = **A** >> **C***
 
-  Bitu postūmis į dešinę. Postūmio skaičius nurodomas registre C. Nulinis postūmis nekeičia požymių registro. Požymiai:
+  Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
   - `CF` lygus paskutiniam dešiniausiam išstumtam bitui;
-  - Jei **C** lygus 1, `OF` lygus kairiausiam bitui prieš bitų postumį.
+  - `OF` lygus kairiausiam bitui prieš bitų postumį, jei **C** lygus 1.
 
 ### Valdymo perdavimo
 Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* registre **C** priskiria registrui **IC**. Adresas yra žodžio kokiame nors bloke numeris reliatyvus kodo segmentui. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
