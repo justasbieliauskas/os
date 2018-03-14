@@ -116,26 +116,45 @@ Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* regist
 
   Perduoda valdymą, jei `ZF = 1` ir `CF = 1`.
 ### Darbui su simbolių eilutėmis
-Darbui su simboliais, adresai turi būti smulkesni. Adresas yra virtualus baito numeris kokiame nors žodyje, kokiame nors bloke. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1. Puslapiavimo mechanizmo pagalba virtualus baito adresas yra paverčiamas į realų.
-- `LODS` *Load String*
+Darbui su simbolių eilutėmis, adresai turi būti smulkesni. Adresai naudojami simbolių eilutėms yra skaičiai, nurodantys baito indeksą kokiame nors žodyje, kokiame nors bloke, duomenų segmente. Kadangi žodis yra 4 baitai, simbolių eilučių adresai yra 4 kartotiniai.
 
-  Nukopijuoja baitą, kurio adresas registre **D**, į registrą **A**. Šiuo atveju nukopijuotas baitas bus jauniausias registre **A**.
-
-- `STOS` *Store String*
-
-  Nukopijuoja jauniausiąjį baitą registre **A** į atmintį, kurios adresas registre **D**.
-
-- `CMPS` *Compare Strings*
-
-  Palygina du baitus (vykdoma `COMP` komanda), kurių adresai registruose **A** ir **B**, ir keičia požymių registrą.
-  
-- `MOVS` *Move String*
-
-  Nukopijuoja vieną baitą, kurio adresas registre **A**, į kito baito, kurio adresas registre **B**, vietą.
-  
 Po komandos vykdymo:
 1. Jeigu `DF = 0`, adresai padidinami vienetu;
 2. Jeigu `DF = 1`, adresai sumažinami vienetu.
+
+Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios kodas 1 (*bad address*).
+- `LODS` *Load String*
+
+  Nukopijuoja simbolių eilutės simbolį atmintyje į registrą.
+  
+  Reikalavimai:
+  - **D** adresas į simbolį duomenų segmente.
+  
+  Rezultatai:
+  - **A** simbolis. Išsaugotas kaip registro jauniausias baitas.
+- `STOS` *Store String*
+
+  Išsaugo simbolį registre į simbolio vietą atmintyje. Simbolis yra laikomas jauniausias baitas registre.
+  
+  Reikalavimai:
+  - **A** simbolio reikšmė;
+  - **D** adresas į simbolį duomenų segmente.
+
+- `CMPS` *Compare Strings*
+
+  Palygina du simbolius atmintyje ir keičia požymių registrą. Požymiai tokie patys kaip `COMP` komandos.
+  
+  Reikalavimai:
+  - **A** pirmojo simbolio duomenų segmente adresas;
+  - **B** antrojo simbolio duomenų segmente adresas.
+  
+- `MOVS` *Move String*
+
+  Nukopijuoja vieną simbolį atmintyje į kito baito atmintyje vietą.
+  
+  Reikalavimai:
+  - **A** pirmojo simbolio duomenų segmente adresas;
+  - **B** antrojo simbolio duomenų segmente adresas.
 ### Ciklams
 Šios komandos vykdo ciklą: tikriną žodį registre **C**; jei jis 0, sustoja, kitu atveju atlieka operaciją ir vėl tikrina.
 - `LOOP`
