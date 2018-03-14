@@ -87,7 +87,7 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
   - `OF` lygus kairiausiam bitui prieš bitų postumį, jei **C** lygus 1.
 
 ### Valdymo perdavimo
-Valdymo perdavimo komandos perduoda valdymą, t.y. virtualų adresą *xy* registre **C** priskiria registrui **IC**. Adresas yra žodžio kokiame nors bloke numeris reliatyvus kodo segmentui. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+Valdymo perdavimo komandos perduoda valdymą, t.y. adresą *xy* registre **C** priskiria registrui **IC**. Adresas virtualus yra komandos (žodžio) indeksas reliatyvus kodo segmentui. *x* nurodo puslapio indeksą, *y* nurodo ląstelės tame puslapyje indeksą. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1 (*bad address*).
 - `JUMP`
 
   Besąlygiškai perduoda valdymą.
@@ -156,13 +156,20 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
   - **A** pirmojo simbolio duomenų segmente adresas;
   - **B** antrojo simbolio duomenų segmente adresas.
 ### Ciklams
-Šios komandos vykdo ciklą: tikriną žodį registre **C**; jei jis 0, sustoja, kitu atveju atlieka operaciją ir vėl tikrina.
+Šios komandos kartoja tam tikrą operaciją *n* kartų. Skaičius *n* turi būti nurodytas registre **C**. Kiekvieną taktą atliekami šie veiksmai:
+1. Tikrinamas žodis registre **C**. Jei **C** reikšmė lygi 0, sustojama, t.y. vykdoma kita komanda;
+2. Kitu atveju vykdoma operacija;
+3. Registro **C** reikšmė sumažinama vienetu ir vėl vykdomas 1 žingsnis.
+
 - `LOOP`
 
-  Besąlygiškai perduoda valdymą komandai, kurios adresas registre **D**, t.y. vykdomas `JUMP`. Jei adresas užeina už virtualios atminties ribų, fiksuojama klaida, kurios kodas 1.
+  Besąlygiškai perduoda valdymą komandai.
+
+  Reikalavimai:
+  - **D** komandos adresas, kuriai bus perduotas valdymas. Adreso požymiai tokie patys kaip `JUMP` komandų adresams.
 - `REP` *Repeat string command*
 
-  Komanda, po kurios iš karto rašoma kita komanda `STOS`, `CMPS` arba `MOVS`, kuri yra kartojama.
+  Kartoja komandą darbui su simbolio eilutėmis. Po šios komandos iš karto rašoma arba `STOS`, arba `CMPS`, arba `MOVS`.
 ### Darbui su failais
 - `OPEN`
 
