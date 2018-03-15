@@ -3,6 +3,7 @@
 
 **Virtuali mašina** yra realios mašinos analogas. Virtualioje Mašinoje sudedami reikalingiausi komponentai, tokie kaip atmintis, procesorius, įvedimo/išvedimo įrenginiai, bei supaprastinama naudotojo sąsaja. Sudėtingos ir nepatogios sąsajos virtualioje mašinoje yra aprašomos supaprastintai, taip yra palengvinamas pats programavimo procesas. Taip pat Virtuali Mašina realizuoja realios mašinos komandas paprastesniu, lengviau suprantamu būdu interpretuojant virtualios mašinos komandas kaip realios mašinos komandas ar jų rinkiniu. Be to Virtuali Mašina pateikia supaprastintą atminties adresavimą. Visa tai leidžia pasiekti realią mašiną ir virtualios mašinos mašininiu kodu parašytą programą sėkmingai įvykdyti realioje mašinoje.
 # Komandos
+Visos komandos, nedirbančios su išoriniais įrenginiais, užima 1 taktą.
 ### Bendros
 - `LRxy` *Load to R word at address xy*
 
@@ -171,6 +172,7 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
 
   Kartoja komandą darbui su simbolio eilutėmis. Po šios komandos iš karto rašoma arba `STOS`, arba `CMPS`, arba `MOVS`.
 ### Darbui su failais
+Komandos darbui su failais užima 3 taktus.
 - `OPEN`
 
   Atidaro failą. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6 (*no such file*).
@@ -236,7 +238,7 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
 
   Nupiešia tašką ekrane.
   
-  Registras **SI** įgauna reikšmę 5 ir iš vartotojo režimo pereinama į supervizorinį. Supervizoriniame režime piešiamas taškas. Ši operacija užima 2 *tickus*.
+  Registras **SI** įgauna reikšmę 5 ir iš vartotojo režimo pereinama į supervizorinį. Supervizoriniame režime piešiamas taškas. Ši operacija užima 2 taktus.
   
   Reikalavimai:
   - **A** *x* koordinatė - stulpelio numeris terminale;
