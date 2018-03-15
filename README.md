@@ -182,7 +182,7 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
   Kartoja komandą darbui su simbolio eilutėmis. Po šios komandos iš karto rašoma arba `STOS`, arba `CMPS`, arba `MOVS`.
 ### Darbui su failais
 Komandos darbui su failais užima 3 taktus.
-- `OPEN`
+- `OPEN` *Open file*
 
   Atidaro failą. Laikoma, kad atidarius failą, galima jį ir skaityti, ir rašyti, nereikia nurodyti papildomo požymio. Jei failas neegzistuoja, fiksuojama klaida, kurios kodas 6 (*no such file*).
   
@@ -191,7 +191,7 @@ Komandos darbui su failais užima 3 taktus.
   
   Rezultatai:
   - **D** atidaryto failo deskriptorius.
-- `READ`
+- `READ` *Read file*
 
   Skaito iš failo. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
   
@@ -202,7 +202,7 @@ Komandos darbui su failais užima 3 taktus.
   
   Rezultatai:
   - **C** perskaitytų simbolių skaičius.
-- `WRTE`
+- `WRTE` *Write file*
 
   Rašo į failą. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
   
@@ -210,20 +210,20 @@ Komandos darbui su failais užima 3 taktus.
   - **D** failo deskriptorius;
   - **A** simbolių eilutės, kuri bus rašoma, adresas atmintyje;
   - **C** simbolių eilutės, kuri bus rašoma, ilgis.
-- `CLOS`
+- `CLOS` *Close file*
 
   Uždaro failą. Jei failas nebuvo atidarytas, fiksuojama klaida, kurios kodas 7 (*file not open*).
   
   Reikalavimai:
   - **D** failo deskriptorius.
-- `DSTR`
+- `DSTR` *Destroy file*
 
   Sunaikina failą. Jei toks failas neegzistuoja, fiksuojama klaida, kurios kodas 6 (*no such file*).
   
   Reikalavimai:
   - **A** failo pavadinimo (simbolių eilutės) adresas atmintyje.
 ### Kitos
-- `WTOS`
+- `WTOS` *Word To String*
 
   Konvertuoja skaičių į simbolių eilutę.
   
@@ -233,7 +233,7 @@ Komandos darbui su failais užima 3 taktus.
   
   Rezultatai:
   - **C** simbolių eilutės ilgis.
-- `STOW`
+- `STOW` *String To Word*
 
   Konvertuoja simbolių eilutę į skaičių.
   
