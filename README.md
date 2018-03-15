@@ -2,6 +2,15 @@
 **Reali mašina** - tai fizinė skaičiavimo mašina, turinti techninės įrangos komponentus, tokius kaip: procesorių, operatyviąją atmintį, kietajį diską, duomenų perdavimo magistrales bei įvedimo/išvedimo įrenginius. Tai objektas, skirtas palaikyti virtualias mašinas, bei atlikti jų užduotus skaičiavimus. Realias mašinas lengva modifikuoti bei pritaikyti pagal norus, ir kad palaikytų reikiamas virtualias mašinas. 
 
 **Virtuali mašina** yra realios mašinos analogas. Virtualioje Mašinoje sudedami reikalingiausi komponentai, tokie kaip atmintis, procesorius, įvedimo/išvedimo įrenginiai, bei supaprastinama naudotojo sąsaja. Sudėtingos ir nepatogios sąsajos virtualioje mašinoje yra aprašomos supaprastintai, taip yra palengvinamas pats programavimo procesas. Taip pat Virtuali Mašina realizuoja realios mašinos komandas paprastesniu, lengviau suprantamu būdu interpretuojant virtualios mašinos komandas kaip realios mašinos komandas ar jų rinkiniu. Be to Virtuali Mašina pateikia supaprastintą atminties adresavimą. Visa tai leidžia pasiekti realią mašiną ir virtualios mašinos mašininiu kodu parašytą programą sėkmingai įvykdyti realioje mašinoje.
+# Atmintis
+### Atminties modelis
+Atmintis yra suskirstyta i blokus (puslapius, takelius). Kiekvieną bloką sudaro 16 žodžių, kiekvieną žodį - 4 baitai.
+
+Realios mašinos atmintis (RAM) padalinta į vartotojo ir supervizorinę atmintį. Vartotojo atmintyje saugomos vykdomos programos, ja dalijasi virtualios mašinos, o supervizorinėje atmintyje saugomi sisteminiai kintamieji. Visa RM atmintis yra 66 puslapiai - 64 puslapiai vartotojo atminčiai, 2 puslapiai supervizorinei atminčiai.
+
+Virtualią atmintį sudaro 16 blokų, taigi vienu metu realia atmintimi gali dalintis bent 4 virtualios mašinos.
+
+Išorinė atmintis yra realizuojama failu.
 # Komandos
 Visos komandos, nedirbančios su išoriniais įrenginiais, užima 1 taktą.
 ### Bendros
