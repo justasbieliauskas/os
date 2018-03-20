@@ -1,4 +1,7 @@
-package com.github.justasbieliauskas.rmvm;
+package com.github.justasbieliauskas.rmvm.command;
+
+import com.github.justasbieliauskas.rmvm.Word;
+import com.github.justasbieliauskas.rmvm.WordStorage;
 
 /**
  * Transfer of a word to word holder.

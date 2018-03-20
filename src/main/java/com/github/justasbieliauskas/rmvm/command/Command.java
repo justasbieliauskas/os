@@ -1,4 +1,4 @@
-package com.github.justasbieliauskas.rmvm;
+package com.github.justasbieliauskas.rmvm.command;
 
 /**
  * Program command from the instruction set.

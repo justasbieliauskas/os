@@ -1,4 +1,7 @@
-package com.github.justasbieliauskas.rmvm;
+package com.github.justasbieliauskas.rmvm.command;
+
+import com.github.justasbieliauskas.rmvm.Byte;
+import com.github.justasbieliauskas.rmvm.ByteStorage;
 
 /**
  * Transfer of a byte to byte holder.

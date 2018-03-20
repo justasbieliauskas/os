@@ -1,5 +1,6 @@
 package com.github.justasbieliauskas.rmvm;
 
+import com.github.justasbieliauskas.rmvm.command.ByteAssignment;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
