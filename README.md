@@ -177,7 +177,7 @@ Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios koda
 
   Reikalavimai:
   - **D** komandos adresas, kuriai bus perduotas valdymas. Adreso požymiai tokie patys kaip `JUMP` komandų adresams.
-- `REP` *Repeat string command*
+- `REP` *Repeat string not*
 
   Kartoja komandą darbui su simbolio eilutėmis. Po šios komandos iš karto rašoma arba `STOS`, arba `CMPS`, arba `MOVS`.
 ### Darbui su failais
