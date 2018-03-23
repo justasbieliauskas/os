@@ -3,7 +3,7 @@ package com.github.justasbieliauskas.rmvm.command;
 import com.github.justasbieliauskas.rmvm.Register;
 
 /**
- * NOT not.
+ * NOT command.
  *
  * @author Justas Bieliauskas
  */
