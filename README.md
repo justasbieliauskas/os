@@ -70,7 +70,9 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
 - `AND`, `OR`, `XOR`
 
   ***A** = **A** AND **B***
+  
   ***A** = **A** | **B***
+  
   ***A** = **A** ^ **B***
 
   Požymiai:
