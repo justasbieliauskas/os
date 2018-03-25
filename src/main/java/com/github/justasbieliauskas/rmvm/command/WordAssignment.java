@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.Word;
-import com.github.justasbieliauskas.rmvm.WordStorage;
+import com.github.justasbieliauskas.rmvm.RWord;
+import com.github.justasbieliauskas.rmvm.LWord;
 
 /**
  * Transfer of a word to word holder.
@@ -11,11 +11,11 @@ import com.github.justasbieliauskas.rmvm.WordStorage;
  */
 public class WordAssignment implements Command
 {
-    private final WordStorage assigned;
+    private final LWord assigned;
 
-    private final Word assignee;
+    private final RWord assignee;
 
-    public WordAssignment(WordStorage assigned, Word assignee) {
+    public WordAssignment(LWord assigned, RWord assignee) {
         this.assigned = assigned;
         this.assignee = assignee;
     }

@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.Byte;
-import com.github.justasbieliauskas.rmvm.ByteStorage;
+import com.github.justasbieliauskas.rmvm.RByte;
+import com.github.justasbieliauskas.rmvm.LByte;
 
 /**
  * Transfer of a byte to byte holder.
@@ -11,11 +11,11 @@ import com.github.justasbieliauskas.rmvm.ByteStorage;
  */
 public class ByteAssignment implements Command
 {
-    private final ByteStorage assigned;
+    private final LByte assigned;
 
-    private final Byte assignee;
+    private final RByte assignee;
 
-    public ByteAssignment(ByteStorage assigned, Byte assignee) {
+    public ByteAssignment(LByte assigned, RByte assignee) {
         this.assigned = assigned;
         this.assignee = assignee;
     }

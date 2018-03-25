@@ -1,17 +1,16 @@
 package com.github.justasbieliauskas.rmvm;
 
 /**
- * Entity able to be evaluated to word value.
+ * Entity able to be evaluated to word.
  * E.g. address, multiplication of 2 words, etc.
+ *
+ * Appears on the right side of word assignment.
  *
  * @author Justas Bieliauskas
  */
-public interface Word
+public interface RWord
 {
     /**
-     * Word is 4 bytes and so is an integer.
-     * Word treated as an integer.
-     *
      * @return integer representation
      */
     int value();

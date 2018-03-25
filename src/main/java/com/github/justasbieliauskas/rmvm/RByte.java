@@ -1,12 +1,14 @@
 package com.github.justasbieliauskas.rmvm;
 
 /**
- * Entity able to be evaluated to byte value.
+ * Entity able to be evaluated to byte.
  * E.g. least significant byte in register, a sum of 2 bytes, etc.
+ *
+ * Appears on the right side of byte assignment.
  *
  * @author Justas Bieliauskas
  */
-public interface Byte
+public interface RByte
 {
     /**
      * @return byte representation

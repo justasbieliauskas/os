@@ -10,12 +10,9 @@ import static org.junit.Assert.*;
  *
  * @author Justas Bieliauskas
  */
-public class WordAssignmentTest
+public class RWordAssignmentTest
 {
     @Test
     public void execute() throws Exception {
-        FakeWord word = new FakeWord();
-        new WordAssignment(word, new FakeWord(78689)).execute();
-        assertEquals(word.value(), 78689);
     }
 }
