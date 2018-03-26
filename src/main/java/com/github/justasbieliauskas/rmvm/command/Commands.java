@@ -1,15 +1,15 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 /**
- * Many commands as one.
+ * Multiple commands as one.
  *
  * @author Justas Bieliauskas
  */
-public class Composite implements Command
+public class Commands implements Command
 {
     private final Command[] commands;
 
-    public Composite(Command... commands) {
+    public Commands(Command... commands) {
         this.commands = commands;
     }
 
