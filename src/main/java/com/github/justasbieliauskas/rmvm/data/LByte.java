@@ -1,4 +1,4 @@
-package com.github.justasbieliauskas.rmvm;
+package com.github.justasbieliauskas.rmvm.data;
 
 /**
  * Entity able to hold a byte value and be evaluated to one.

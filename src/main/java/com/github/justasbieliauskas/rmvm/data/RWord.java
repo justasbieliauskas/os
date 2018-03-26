@@ -1,4 +1,4 @@
-package com.github.justasbieliauskas.rmvm;
+package com.github.justasbieliauskas.rmvm.data;
 
 /**
  * Entity able to be evaluated to word.
