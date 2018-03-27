@@ -12,25 +12,6 @@ import static org.junit.Assert.assertEquals;
 public class LWordByteTest
 {
     @Test
-    public void extractsLeastSignificantByte() throws Exception {
-        assertEquals(
-            new LWordByte(new FakeWord(241), 0).value(),
-            (byte) -15
-        );
-    }
-
-    @Test
-    public void extractsMostSignificantByte() throws Exception {
-        assertEquals(
-            new LWordByte(
-                new FakeWord(Integer.MAX_VALUE),
-                Integer.BYTES - 1
-            ).value(),
-            (byte) 127
-        );
-    }
-
-    @Test
     public void changesLeastSignificantByte() throws Exception {
         FakeWord word = new FakeWord(-1);
         new LWordByte(word, 0).assign((byte) 50);

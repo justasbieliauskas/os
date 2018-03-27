@@ -11,20 +11,23 @@ public class LWordByte implements LByte
 {
     private final LWord word;
 
-    private final int which;
+    private final int index;
 
-    /**
-     * @param word word
-     * @param index index of byte in word
-     */
+    private final RWordByte rByte;
+
     public LWordByte(LWord word, int index) {
+        this(word, index, new RWordByte(word, index));
+    }
+
+    public LWordByte(LWord word, int index, RWordByte rByte) {
         this.word = word;
-        this.which = index;
+        this.index = index;
+        this.rByte = rByte;
     }
 
     @Override
     public byte value() {
-        return (byte) (this.word.value() >>> (8 * this.which));
+        return this.rByte.value();
     }
 
     @Override
@@ -33,7 +36,7 @@ public class LWordByte implements LByte
             .allocate(Integer.BYTES)
             .putInt(this.word.value())
             .array();
-        bytes[Integer.BYTES - this.which - 1] = value;
+        bytes[Integer.BYTES - this.index - 1] = value;
         this.word.assign(ByteBuffer.wrap(bytes).getInt());
     }
 }
