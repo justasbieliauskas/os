@@ -18,12 +18,12 @@ public class FakeWord implements LWord
     }
 
     @Override
-    public int value() {
+    public Integer value() {
         return this.word;
     }
 
     @Override
-    public void assign(int value) {
+    public void assign(Integer value) {
         this.word = value;
     }
 }

@@ -23,12 +23,12 @@ public class LWordByte implements LByte
     }
 
     @Override
-    public byte value() {
+    public Byte value() {
         return (byte) (this.word.value() >>> (8 * this.which));
     }
 
     @Override
-    public void assign(byte value) {
+    public void assign(Byte value) {
         byte[] bytes = ByteBuffer
             .allocate(Integer.BYTES)
             .putInt(this.word.value())

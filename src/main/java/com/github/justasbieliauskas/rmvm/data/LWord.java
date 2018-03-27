@@ -1,19 +1,11 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Entity able to hold a word value and be evaluated to one.
- * E.g. register, 4 bytes in memory, etc.
- *
- * Can appear on both left and right sides of word assignment.
+ * Integer alias for {@link LValue}.
  *
  * @author Justas Bieliauskas
  */
-public interface LWord extends RWord
+public interface LWord extends LValue<Integer>
 {
-    /**
-     * Save integer value.
-     *
-     * @param value integer value
-     */
-    void assign(int value);
+
 }

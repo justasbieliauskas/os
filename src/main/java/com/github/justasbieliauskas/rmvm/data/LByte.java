@@ -1,19 +1,11 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Entity able to hold a byte value and be evaluated to one.
- * E.g. byte in memory, least significant byte in register, etc.
- *
- * Can appear on both left and right sides of byte assignment.
+ * Byte alias for {@link LValue}.
  *
  * @author Justas Bieliauskas
  */
-public interface LByte extends RByte
+public interface LByte extends LValue<Byte>
 {
-    /**
-     * Save byte value.
-     *
-     * @param value byte value
-     */
-    void assign(byte value);
+
 }

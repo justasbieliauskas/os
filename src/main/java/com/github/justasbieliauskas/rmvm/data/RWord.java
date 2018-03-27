@@ -1,17 +1,11 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Entity able to be evaluated to word.
- * E.g. address, multiplication of 2 words, etc.
- *
- * Appears on the right side of word assignment.
+ * Integer alias for {@link RValue}.
  *
  * @author Justas Bieliauskas
  */
-public interface RWord
+public interface RWord extends RValue<Integer>
 {
-    /**
-     * @return integer representation
-     */
-    int value();
+
 }
