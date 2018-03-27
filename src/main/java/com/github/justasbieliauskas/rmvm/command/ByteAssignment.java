@@ -25,6 +25,6 @@ public class ByteAssignment implements Command
 
     @Override
     public void execute() {
-        this.lByte.assign(this.rByte.value());
+        this.lByte.assign(this.rByte.toByte());
     }
 }

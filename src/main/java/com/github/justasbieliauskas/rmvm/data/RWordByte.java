@@ -21,7 +21,7 @@ public class RWordByte implements RByte
     }
 
     @Override
-    public byte value() {
-        return (byte) (this.word.value() >>> (8 * this.index));
+    public byte toByte() {
+        return (byte) (this.word.toInt() >>> (8 * this.index));
     }
 }

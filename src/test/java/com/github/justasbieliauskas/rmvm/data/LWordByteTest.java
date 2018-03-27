@@ -15,13 +15,13 @@ public class LWordByteTest
     public void changesLeastSignificantByte() throws Exception {
         FakeWord word = new FakeWord(-1);
         new LWordByte(word, 0).assign((byte) 50);
-        assertEquals(word.value(), -206);
+        assertEquals(word.toInt(), -206);
     }
 
     @Test
     public void changesMostSignificantByte() throws Exception {
         FakeWord word = new FakeWord(-1);
         new LWordByte(word, Integer.BYTES - 1).assign((byte) 50);
-        assertEquals(word.value(), 855638015);
+        assertEquals(word.toInt(), 855638015);
     }
 }

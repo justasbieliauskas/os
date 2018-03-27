@@ -16,6 +16,6 @@ public class WordAssignmentTest
     public void assignsWord() throws Exception {
         FakeWord word = new FakeWord();
         new WordAssignment(word, new FakeWord(1200)).execute();
-        assertEquals(word.value(), 1200);
+        assertEquals(word.toInt(), 1200);
     }
 }

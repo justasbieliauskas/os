@@ -14,7 +14,7 @@ public class RWordByteTest
     @Test
     public void extractsLeastSignificantByte() throws Exception {
         assertEquals(
-            new RWordByte(new FakeWord(241), 0).value(),
+            new RWordByte(new FakeWord(241), 0).toByte(),
             (byte) -15
         );
     }
@@ -25,7 +25,7 @@ public class RWordByteTest
             new RWordByte(
                 new FakeWord(Integer.MAX_VALUE),
                 Integer.BYTES - 1
-            ).value(),
+            ).toByte(),
             (byte) 127
         );
     }

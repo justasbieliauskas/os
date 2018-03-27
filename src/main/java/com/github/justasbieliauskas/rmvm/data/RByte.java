@@ -13,5 +13,5 @@ public interface RByte
     /**
      * @return byte representation
      */
-    byte value();
+    byte toByte();
 }

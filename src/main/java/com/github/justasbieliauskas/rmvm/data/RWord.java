@@ -13,5 +13,5 @@ public interface RWord
     /**
      * @return integer representation
      */
-    int value();
+    int toInt();
 }

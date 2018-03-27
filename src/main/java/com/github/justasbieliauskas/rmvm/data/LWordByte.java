@@ -26,15 +26,15 @@ public class LWordByte implements LByte
     }
 
     @Override
-    public byte value() {
-        return this.rByte.value();
+    public byte toByte() {
+        return this.rByte.toByte();
     }
 
     @Override
     public void assign(byte value) {
         byte[] bytes = ByteBuffer
             .allocate(Integer.BYTES)
-            .putInt(this.word.value())
+            .putInt(this.word.toInt())
             .array();
         bytes[Integer.BYTES - this.index - 1] = value;
         this.word.assign(ByteBuffer.wrap(bytes).getInt());
