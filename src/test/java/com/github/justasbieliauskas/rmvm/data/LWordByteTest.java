@@ -15,7 +15,7 @@ public class LWordByteTest
     public void extractsLeastSignificantByte() throws Exception {
         assertEquals(
             new LWordByte(new FakeWord(241), 0).value(),
-            new Byte((byte) -15)
+            (byte) -15
         );
     }
 
@@ -26,7 +26,7 @@ public class LWordByteTest
                 new FakeWord(Integer.MAX_VALUE),
                 Integer.BYTES - 1
             ).value(),
-            new Byte((byte) 127)
+            (byte) 127
         );
     }
 
@@ -34,13 +34,13 @@ public class LWordByteTest
     public void changesLeastSignificantByte() throws Exception {
         FakeWord word = new FakeWord(-1);
         new LWordByte(word, 0).assign((byte) 50);
-        assertEquals(word.value(), new Integer(-206));
+        assertEquals(word.value(), -206);
     }
 
     @Test
     public void changesMostSignificantByte() throws Exception {
         FakeWord word = new FakeWord(-1);
         new LWordByte(word, Integer.BYTES - 1).assign((byte) 50);
-        assertEquals(word.value(), new Integer(855638015));
+        assertEquals(word.value(), 855638015);
     }
 }
