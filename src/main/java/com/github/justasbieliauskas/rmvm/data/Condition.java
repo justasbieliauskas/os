@@ -7,5 +7,8 @@ package com.github.justasbieliauskas.rmvm.data;
  */
 public interface Condition
 {
+    /**
+     * @return true/false value
+     */
     boolean isTrue();
 }
