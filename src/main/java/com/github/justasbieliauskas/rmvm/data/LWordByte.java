@@ -3,7 +3,8 @@ package com.github.justasbieliauskas.rmvm.data;
 import java.nio.ByteBuffer;
 
 /**
- * Specific byte in a word.
+ * Nth byte in a word.
+ * Can be assigned a byte value and modify original word.
  *
  * @author Justas Bieliauskas
  */
