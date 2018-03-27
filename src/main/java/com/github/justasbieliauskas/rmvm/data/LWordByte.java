@@ -15,14 +15,14 @@ public class LWordByte implements LByte
 
     private final RWordByte rByte;
 
+    /**
+     * @param word word
+     * @param index nth byte inside word
+     */
     public LWordByte(LWord word, int index) {
-        this(word, index, new RWordByte(word, index));
-    }
-
-    public LWordByte(LWord word, int index, RWordByte rByte) {
         this.word = word;
         this.index = index;
-        this.rByte = rByte;
+        this.rByte = new RWordByte(word, index);
     }
 
     @Override
