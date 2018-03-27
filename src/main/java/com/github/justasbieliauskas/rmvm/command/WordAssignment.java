@@ -8,6 +8,8 @@ import com.github.justasbieliauskas.rmvm.data.RWordByte;
 /**
  * Assigning one word to another.
  *
+ * FIXME: consider simply assigning word to word.
+ *
  * @author Justas Bieliauskas
  */
 public class WordAssignment implements Command

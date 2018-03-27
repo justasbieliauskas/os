@@ -3,6 +3,8 @@ package com.github.justasbieliauskas.rmvm.data;
 /**
  * Nth byte in {@link RWord}.
  *
+ * FIXME: does this class will ever come up? Because it's making {@link LWordByte} ugly.
+ *
  * @author Justas Bieliauskas
  */
 public class RWordByte implements RByte

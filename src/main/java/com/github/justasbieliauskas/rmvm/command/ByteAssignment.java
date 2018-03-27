@@ -4,6 +4,7 @@ import com.github.justasbieliauskas.rmvm.data.LByte;
 import com.github.justasbieliauskas.rmvm.data.RByte;
 
 /**
+ * FIXME: check the wording.
  * Assigning one byte to another.
  *
  * @author Justas Bieliauskas

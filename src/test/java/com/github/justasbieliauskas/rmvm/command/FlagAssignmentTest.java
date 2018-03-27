@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 /**
  * Test for {@link FlagAssignment}
+ *
+ * @author Justas Bieliauskas
  */
 public class FlagAssignmentTest
 {

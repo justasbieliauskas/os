@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
  * Nth byte in a word.
  * Can be assigned a byte value and modify original word.
  *
+ * TODO: if we don't need {@link RWordByte}, clean this up.
+ *
  * @author Justas Bieliauskas
  */
 public class LWordByte implements LByte

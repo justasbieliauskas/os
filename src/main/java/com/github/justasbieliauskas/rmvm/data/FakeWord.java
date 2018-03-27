@@ -3,6 +3,9 @@ package com.github.justasbieliauskas.rmvm.data;
 /**
  * Mock Word used for unit testing.
  *
+ * FIXME: do we need this, if we can use lambdas?
+ * FIXME: do we need this, if we have {@link Register} that does the same?
+ *
  * @author Justas Bieliauskas
  */
 public class FakeWord implements LWord

@@ -7,6 +7,10 @@ import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * Changing a flag in status register.
+ * Envelope to simply using {@link ByteAssignment} to assign
+ * least significant byte of status register to {@link ByteWithModifiedBit}.
+ *
+ * FIXME: should this class infer that flags reside in ls byte?
  *
  * @author Justas Bieliauskas
  */
