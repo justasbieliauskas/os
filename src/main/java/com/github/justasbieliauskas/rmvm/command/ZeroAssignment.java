@@ -16,7 +16,7 @@ public class ZeroAssignment implements Command
     public ZeroAssignment(LWord lWord, RWord rWord, Register status) {
         this.assignment = new Commands(
             new WordAssignment(lWord, rWord),
-            new FlagAssignment(status, 0, () -> rWord.toInt() == 0)
+            new FlagAssignment(status, 0, 0, () -> rWord.toInt() == 0)
         );
     }
 

@@ -20,7 +20,7 @@ public class CarryAssignment implements Command
      * @param to1 should flag be changed to 1 (true) or 0 (false)
      */
     public CarryAssignment(Register status, Condition to1) {
-        this.assignCarry = new FlagAssignment(status, 1, to1);
+        this.assignCarry = new FlagAssignment(status, 0, 1, to1);
     }
 
     @Override

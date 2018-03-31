@@ -16,7 +16,7 @@ public class FlagAssignmentTest
     @Test
     public void changesThirdFlagTo0() throws Exception {
         Register status = new Register(7);
-        new FlagAssignment(status, 2, () -> false).execute();
+        new FlagAssignment(status, 0, 2, () -> false).execute();
         assertEquals(status.toInt(), 3);
     }
 }

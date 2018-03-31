@@ -20,7 +20,7 @@ public class OverflowAssignment implements Command
      * @param to1 should flag be changed to 1 (true) or 0 (false)
      */
     public OverflowAssignment(Register status, Condition to1) {
-        this.assignOverflow = new FlagAssignment(status, 2, to1);
+        this.assignOverflow = new FlagAssignment(status, 0, 2, to1);
     }
 
     @Override
