@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.Condition;
-import com.github.justasbieliauskas.rmvm.data.LWordByte;
+import com.github.justasbieliauskas.rmvm.data.WordByte;
 import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
@@ -20,10 +20,10 @@ public class FlagAssignment implements Command
      * @param to1 should bit be changed to 1 (true) or 0 (false)
      */
     public FlagAssignment(Register status, int byteIndex, int flagIndex, Condition to1) {
-        this(new LWordByte(status, byteIndex), flagIndex, to1);
+        this(new WordByte(status, byteIndex), flagIndex, to1);
     }
 
-    private FlagAssignment(LWordByte firstByte, int index, Condition to1) {
+    private FlagAssignment(WordByte firstByte, int index, Condition to1) {
         this.assignFlag = new ByteAssignment(
             firstByte,
             () -> {
