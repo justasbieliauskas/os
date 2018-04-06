@@ -1,6 +1,5 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.FakeWord;
 import com.github.justasbieliauskas.rmvm.data.Register;
 import org.junit.Test;
 

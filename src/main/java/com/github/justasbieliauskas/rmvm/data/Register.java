@@ -4,7 +4,6 @@ package com.github.justasbieliauskas.rmvm.data;
  * Register.
  *
  * TODO: add terminal access.
- * FIXME: should this class use {@link FakeWord}?
  *
  * @author Justas Bieliauskas
  */
