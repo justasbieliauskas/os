@@ -1,43 +1,30 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.Condition;
-import com.github.justasbieliauskas.rmvm.data.WordByte;
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.Flag;
 
 /**
- * Changing a flag in status register.
+ * Changing of flag's value.
  *
  * @author Justas Bieliauskas
  */
 public class FlagAssignment implements Command
 {
-    private final ByteAssignment assignFlag;
+    private final Flag flag;
+
+    private final Condition condition;
 
     /**
-     * @param status status register
-     * @param byteIndex index in status register
-     * @param flagIndex bit index in least significant byte of status register
-     * @param to1 should bit be changed to 1 (true) or 0 (false)
+     * @param flag flag - ZF, CF, OF, DF.
+     * @param to1 should flag be changed to 1 (true) or 0 (false)
      */
-    public FlagAssignment(Register status, int byteIndex, int flagIndex, Condition to1) {
-        this(new WordByte(status, byteIndex), flagIndex, to1);
-    }
-
-    private FlagAssignment(WordByte firstByte, int index, Condition to1) {
-        this.assignFlag = new ByteAssignment(
-            firstByte,
-            () -> {
-                byte bit = (byte) (1 << index);
-                if(to1.isTrue()) {
-                    return (byte) (firstByte.toByte() | bit);
-                }
-                return (byte) (firstByte.toByte() & ~bit);
-            }
-        );
+    public FlagAssignment(Flag flag, Condition to1) {
+        this.flag = flag;
+        this.condition = to1;
     }
 
     @Override
     public void execute() {
-        this.assignFlag.execute();
+        this.flag.assign(this.condition.isTrue());
     }
 }

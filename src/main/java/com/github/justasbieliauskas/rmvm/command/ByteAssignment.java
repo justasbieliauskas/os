@@ -11,21 +11,21 @@ import com.github.justasbieliauskas.rmvm.data.RByte;
  */
 public class ByteAssignment implements Command
 {
-    private final LByte lByte;
+    private final LByte assigned;
 
-    private final RByte rByte;
+    private final RByte assignee;
 
     /**
-     * @param lByte assigned
-     * @param rByte assignee
+     * @param assigned assigned
+     * @param assignee assignee
      */
-    public ByteAssignment(LByte lByte, RByte rByte) {
-        this.lByte = lByte;
-        this.rByte = rByte;
+    public ByteAssignment(LByte assigned, RByte assignee) {
+        this.assigned = assigned;
+        this.assignee = assignee;
     }
 
     @Override
     public void execute() {
-        this.lByte.assign(this.rByte.toByte());
+        this.assigned.assign(this.assignee.toByte());
     }
 }
