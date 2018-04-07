@@ -4,6 +4,8 @@ package com.github.justasbieliauskas.rmvm.data;
  * Generalized version of flag.
  * Represents any flag - direction, carry, etc.
  *
+ * TODO: make one class for flags.
+ *
  * @author Justas Bieliauskas
  */
 public class StatusFlag implements Flag

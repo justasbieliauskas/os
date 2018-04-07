@@ -4,6 +4,8 @@ package com.github.justasbieliauskas.rmvm.data;
  * Register.
  *
  * TODO: add terminal access.
+ * TODO: make Register, RegisterInCPU, GeneralPurposeRegister...
+ * TODO: pass entire cpu to commands
  *
  * @author Justas Bieliauskas
  */

@@ -2,6 +2,7 @@ package com.github.justasbieliauskas.rmvm.data;
 
 /**
  * Instruction address from code segment and relative offset.
+ * TODO: remove
  *
  * @author Justas Bieliauskas
  */
