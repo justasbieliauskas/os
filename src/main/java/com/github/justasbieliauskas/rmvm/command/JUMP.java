@@ -1,11 +1,10 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.RWord;
+import com.github.justasbieliauskas.rmvm.data.InstructionAddress;
 import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * JUMP command.
- * TODO: detail description of command.
  *
  * @author Justas Bieliauskas
  */
@@ -20,14 +19,10 @@ public class JUMP implements Command
      * @param error program interrupt (PI) register
      */
     public JUMP(Register counter, Register c, Register code, Register error) {
-        this(
-            counter,
-            () -> c.toInt() * Integer.BYTES + code.toInt(),
-            error
-        );
+        this(counter, new InstructionAddress(code, c), error);
     }
 
-    private JUMP(Register counter, RWord address, Register error) {
+    private JUMP(Register counter, InstructionAddress address, Register error) {
         this.command = new ConditionalCommand(
             new WordAssignment(counter, address),
             new WordAssignment(error, () -> 1),
