@@ -3,6 +3,8 @@ package com.github.justasbieliauskas.rmvm.data;
 /**
  * Flag (aka bit) in least significant byte of status register.
  *
+ * TODO: consider FlagIndex as anonymous.
+ *
  * @author Justas Bieliauskas
  */
 public class StatusFlag implements Flag

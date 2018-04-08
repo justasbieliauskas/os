@@ -6,11 +6,26 @@ import com.github.justasbieliauskas.rmvm.data.Register;
 /**
  * DIV command.
  *
+ * Divides A by B and stores result back to A.
+ * Doesn't change status register.
+ * If B = 0, sets PI register to 2.
+ *
  * @author Justas Bieliauskas
  */
 public class DIV implements Command
 {
     private final ConditionalCommand command;
+
+    /**
+     * @param processor all registers
+     */
+    public DIV(Register[] processor) {
+        this(
+            new ProcessorRegister(processor, "A"),
+            new ProcessorRegister(processor, "B"),
+            new ProcessorRegister(processor, "PI")
+        );
+    }
 
     /**
      * @param a A register
