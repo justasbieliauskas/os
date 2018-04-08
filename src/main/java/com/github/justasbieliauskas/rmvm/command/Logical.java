@@ -20,8 +20,8 @@ public class Logical implements Command
         this.commands = new Commands(
             new WordAssignment(a, expression),
             new ZeroCheck(status, expression),
-            new FlagAssignment(new Carry(status), () -> false),
-            new FlagAssignment(new Overflow(status), () -> false)
+            new FlagAssignment(new StatusFlag(status, 'C'), () -> false),
+            new FlagAssignment(new StatusFlag(status, 'O'), () -> false)
         );
     }
 

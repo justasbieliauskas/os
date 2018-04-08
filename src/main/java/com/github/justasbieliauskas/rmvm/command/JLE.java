@@ -1,9 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Carry;
-import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
-import com.github.justasbieliauskas.rmvm.data.Register;
-import com.github.justasbieliauskas.rmvm.data.Zero;
+import com.github.justasbieliauskas.rmvm.data.*;
 
 /**
  * JLE command.
@@ -28,7 +25,14 @@ public class JLE implements Command
         Register error,
         Register status
     ) {
-        this(counter, register, code, error, new Zero(status), new Carry(status));
+        this(
+            counter,
+            register,
+            code,
+            error,
+            new StatusFlag(status, 'Z'),
+            new StatusFlag(status, 'C')
+        );
     }
 
     private JLE(
@@ -36,8 +40,8 @@ public class JLE implements Command
         Register c,
         Register code,
         Register error,
-        Zero zero,
-        Carry carry
+        StatusFlag zero,
+        StatusFlag carry
     ) {
         this.jump = new ConditionalJump(
             counter,

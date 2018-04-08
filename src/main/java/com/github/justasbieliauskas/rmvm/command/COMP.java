@@ -1,8 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Carry;
-import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
 import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.StatusFlag;
 
 /**
  * COMP command.
@@ -20,8 +19,8 @@ public class COMP implements Command
      */
     public COMP(Register a, Register b, Register status) {
         this.commands = new Commands(
-            new ZeroCheck(status, () -> a.toInt() - b.toInt()),
-            new FlagAssignment(new Carry(status), () -> a.toInt() < b.toInt())
+            new FlagAssignment(new StatusFlag(status, 'Z'), () -> a.toInt() == b.toInt()),
+            new FlagAssignment(new StatusFlag(status, 'C'), () -> a.toInt() < b.toInt())
         );
     }
 
