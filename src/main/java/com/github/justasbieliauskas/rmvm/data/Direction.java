@@ -13,7 +13,7 @@ public class Direction implements Flag
      * @param status status register
      */
     public Direction(Register status) {
-        this.flag = new StatusFlag(status, 0, 3);
+        this.flag = new StatusFlag(status, 3);
     }
 
     @Override

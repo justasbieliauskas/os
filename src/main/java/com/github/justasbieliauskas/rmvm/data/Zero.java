@@ -13,7 +13,7 @@ public class Zero implements Flag
      * @param status status register
      */
     public Zero(Register status) {
-        this.flag = new StatusFlag(status, 0, 0);
+        this.flag = new StatusFlag(status, 0);
     }
 
     @Override

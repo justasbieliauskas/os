@@ -13,14 +13,14 @@ public class StatusFlagTest
 {
     @Test
     public void extractsFlag() throws Exception {
-        assertTrue(new StatusFlag(new DefaultRegister(8192), 1, 5).isTrue());
+        assertTrue(new StatusFlag(new DefaultRegister(8224), 5).isTrue());
     }
 
     @Test
     public void changesFlag() throws Exception {
         DefaultRegister status = new DefaultRegister(4100);
-        StatusFlag flag = new StatusFlag(status, 1, 4);
+        StatusFlag flag = new StatusFlag(status, 2);
         flag.assign(false);
-        assertEquals(status.toInt(), 4);
+        assertEquals(status.toInt(), 4096);
     }
 }

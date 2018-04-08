@@ -1,43 +1,51 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Generalized version of flag.
- * Represents any flag - direction, carry, etc.
- *
- * TODO: make one class for flags.
+ * Flag (aka bit) in least significant byte of status register.
  *
  * @author Justas Bieliauskas
  */
 public class StatusFlag implements Flag
 {
-    private final WordByte statusByte;
+    private final WordByte lsByte;
 
-    private final int index;
+    private final RWord index;
 
     /**
      * @param status status register
-     * @param byteIndex index of byte in status register
-     * @param bitIndex index of bit in given byte
+     * @param id flag identifier
      */
-    public StatusFlag(Register status, int byteIndex, int bitIndex) {
-        this.statusByte = new WordByte(status, byteIndex);
-        this.index = bitIndex;
+    public StatusFlag(Register status, char id) {
+        this(status, new FlagIndex(id));
+    }
+
+    /**
+     * @param status status register
+     * @param index bit index in given least significant byte of status register as int
+     */
+    public StatusFlag(Register status, int index) {
+        this(status, () -> index);
+    }
+
+    private StatusFlag(Register status, RWord index) {
+        this.lsByte = new WordByte(status, 0);
+        this.index = index;
     }
 
     @Override
     public void assign(boolean to1) {
-        byte bit = (byte) (1 << this.index);
+        byte bit = (byte) (1 << this.index.toInt());
         byte result;
         if(to1) {
-            result = (byte) (this.statusByte.toByte() | bit);
+            result = (byte) (this.lsByte.toByte() | bit);
         } else {
-            result = (byte) (this.statusByte.toByte() & ~bit);
+            result = (byte) (this.lsByte.toByte() & ~bit);
         }
-        this.statusByte.assign(result);
+        this.lsByte.assign(result);
     }
 
     @Override
     public boolean isTrue() {
-        return ((this.statusByte.toByte() >> this.index) & 1) == 1;
+        return ((this.lsByte.toByte() >> this.index.toInt()) & 1) == 1;
     }
 }
