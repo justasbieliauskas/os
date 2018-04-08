@@ -1,26 +1,29 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Index for register in processor that can't be identified by one symbol.
- * Index is determined by name, which is one of
- * "ST", "IC", "SI", "PI", "TI", "CS" or "PTR".
+ * Index for register in processor by identifier.
+ * Identifier is one of
+ * "A", "B", "C", "D", "ST", "IC", "SI", "PI", "TI", "CS" or "PTR".
  *
  * @author Justas Bieliauskas
  */
-public class OtherRegisterIndex implements RWord
+public class RegisterIndex implements RWord
 {
     private final String id;
 
     /**
      * @param id register identifier
      */
-    public OtherRegisterIndex(String id) {
+    public RegisterIndex(String id) {
         this.id = id;
     }
 
     @Override
     public int toInt() {
         char first = this.id.charAt(0);
+        if(this.id.length() == 1) {
+            return first - 65;
+        }
         if(first == 'I') {
             return 5;
         }

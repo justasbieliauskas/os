@@ -13,18 +13,10 @@ public class ProcessorRegister implements RegisterInterface
 
     /**
      * @param registers all registers
-     * @param id general purpose register identifier as symbol
-     */
-    public ProcessorRegister(RegisterInterface[] registers, char id) {
-        this(registers, (byte) id);
-    }
-
-    /**
-     * @param registers all registers
      * @param id general purpose register identifier as byte value
      */
     public ProcessorRegister(RegisterInterface[] registers, byte id) {
-        this(registers, new GeneralPurposeIndex(id));
+        this(registers, "" + (char)id);
     }
 
     /**
@@ -32,7 +24,7 @@ public class ProcessorRegister implements RegisterInterface
      * @param id other register identifier
      */
     public ProcessorRegister(RegisterInterface[] registers, String id) {
-        this(registers, new OtherRegisterIndex(id));
+        this(registers, new RegisterIndex(id));
     }
 
     /**
