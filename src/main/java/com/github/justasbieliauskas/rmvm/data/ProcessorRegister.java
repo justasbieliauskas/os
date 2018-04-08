@@ -5,9 +5,9 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public class ProcessorRegister implements RegisterInterface
+public class ProcessorRegister implements Register
 {
-    private final RegisterInterface[] registers;
+    private final Register[] registers;
 
     private final RWord index;
 
@@ -15,7 +15,7 @@ public class ProcessorRegister implements RegisterInterface
      * @param registers all registers
      * @param id general purpose register identifier as byte value
      */
-    public ProcessorRegister(RegisterInterface[] registers, byte id) {
+    public ProcessorRegister(Register[] registers, byte id) {
         this(registers, "" + (char)id);
     }
 
@@ -23,7 +23,7 @@ public class ProcessorRegister implements RegisterInterface
      * @param registers all register
      * @param id other register identifier
      */
-    public ProcessorRegister(RegisterInterface[] registers, String id) {
+    public ProcessorRegister(Register[] registers, String id) {
         this(registers, new RegisterIndex(id));
     }
 
@@ -31,7 +31,7 @@ public class ProcessorRegister implements RegisterInterface
      * @param registers all registers
      * @param index register index
      */
-    public ProcessorRegister(RegisterInterface[] registers, RWord index) {
+    public ProcessorRegister(Register[] registers, RWord index) {
         this.registers = registers;
         this.index = index;
     }

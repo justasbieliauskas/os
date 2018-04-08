@@ -5,7 +5,7 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public class DefaultRegister implements RegisterInterface
+public class DefaultRegister implements Register
 {
     private int word;
 

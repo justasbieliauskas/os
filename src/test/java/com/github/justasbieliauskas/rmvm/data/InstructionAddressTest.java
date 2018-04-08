@@ -14,7 +14,7 @@ public class InstructionAddressTest
     @Test
     public void calculatesAddress() {
         assertEquals(
-            new InstructionAddress(new Register(112), () -> 28).toInt(),
+            new InstructionAddress(new DefaultRegister(112), () -> 28).toInt(),
             224
         );
     }

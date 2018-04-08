@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,9 +14,9 @@ public class ANDTest
 {
     @Test
     public void changesZeroTo1() {
-        Register a = new Register(42);
-        Register b = new Register(20);
-        Register status = new Register(6);
+        DefaultRegister a = new DefaultRegister(42);
+        DefaultRegister b = new DefaultRegister(20);
+        DefaultRegister status = new DefaultRegister(6);
         new AND(a, b, status).execute();
         assertEquals(a.toInt(), 0);
         assertEquals(status.toInt(), 1);
@@ -24,9 +24,9 @@ public class ANDTest
 
     @Test
     public void changesZeroTo0() {
-        Register a = new Register(85);
-        Register b = new Register(65);
-        Register status = new Register(7);
+        DefaultRegister a = new DefaultRegister(85);
+        DefaultRegister b = new DefaultRegister(65);
+        DefaultRegister status = new DefaultRegister(7);
         new AND(a, b, status).execute();
         assertEquals(a.toInt(), 65);
         assertEquals(status.toInt(), 0);

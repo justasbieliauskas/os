@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,39 +14,39 @@ public class JLETest
 {
     @Test
     public void jumpsOnZeroAndCarry() {
-        Register counter = new Register(96);
+        DefaultRegister counter = new DefaultRegister(96);
         new JLE(
             counter,
-            new Register(6),
-            new Register(84),
-            new Register(0),
-            new Register(3)
+            new DefaultRegister(6),
+            new DefaultRegister(84),
+            new DefaultRegister(0),
+            new DefaultRegister(3)
         ).execute();
         assertNotEquals(counter.toInt(), 96);
     }
 
     @Test
     public void doesNotJumpOnZero0() {
-        Register counter = new Register(96);
+        DefaultRegister counter = new DefaultRegister(96);
         new JLE(
             counter,
-            new Register(6),
-            new Register(84),
-            new Register(0),
-            new Register(2)
+            new DefaultRegister(6),
+            new DefaultRegister(84),
+            new DefaultRegister(0),
+            new DefaultRegister(2)
         ).execute();
         assertEquals(counter.toInt(), 100);
     }
 
     @Test
     public void doesNotJumpOnCarry0() {
-        Register counter = new Register(96);
+        DefaultRegister counter = new DefaultRegister(96);
         new JLE(
             counter,
-            new Register(6),
-            new Register(84),
-            new Register(0),
-            new Register(1)
+            new DefaultRegister(6),
+            new DefaultRegister(84),
+            new DefaultRegister(0),
+            new DefaultRegister(1)
         ).execute();
         assertEquals(counter.toInt(), 100);
     }

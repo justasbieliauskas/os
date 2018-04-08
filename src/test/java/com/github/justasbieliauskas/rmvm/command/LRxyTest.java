@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,7 +14,7 @@ public class LRxyTest
 {
     @Test
     public void loadsWordToA() {
-        Register a = new Register(5);
+        DefaultRegister a = new DefaultRegister(5);
         byte[] memory = new byte[] {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 76, 0, 0, 51, 0, 0, 0, 0

@@ -1,8 +1,8 @@
 package com.github.justasbieliauskas.rmvm.command;
 
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import com.github.justasbieliauskas.rmvm.data.HexAddress;
 import com.github.justasbieliauskas.rmvm.data.MemoryWord;
-import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * LRxy command.
@@ -19,7 +19,7 @@ public class LRxy implements Command
      * @param page memory page index
      * @param cell cell index in that page
      */
-    public LRxy(Register register, byte[] memory, char page, char cell) {
+    public LRxy(DefaultRegister register, byte[] memory, char page, char cell) {
         this.assignment = new WordAssignment(
             register,
             new MemoryWord(memory, new HexAddress(page, cell))

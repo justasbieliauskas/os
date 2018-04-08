@@ -13,7 +13,7 @@ public class ProcessorRegisterTest
 {
     @Test
     public void extractsFromNthRegister() {
-        RegisterInterface[] registers = new RegisterInterface[]{
+        Register[] registers = new Register[]{
             new DefaultRegister(0),
             new DefaultRegister(45),
             new DefaultRegister(0)
@@ -23,7 +23,7 @@ public class ProcessorRegisterTest
 
     @Test
     public void assignsToNthRegister() {
-        RegisterInterface[] registers = new RegisterInterface[]{
+        Register[] registers = new Register[]{
             new DefaultRegister(0),
             new DefaultRegister(0),
             new DefaultRegister(64),

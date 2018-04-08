@@ -12,7 +12,7 @@ public class Direction implements Flag
     /**
      * @param status status register
      */
-    public Direction(Register status) {
+    public Direction(DefaultRegister status) {
         this.flag = new StatusFlag(status, 0, 3);
     }
 

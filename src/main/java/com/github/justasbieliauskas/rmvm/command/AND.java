@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 
 /**
  * AND command.
@@ -16,7 +16,7 @@ public class AND implements Command
      * @param b B register
      * @param status status register
      */
-    public AND(Register a, Register b, Register status) {
+    public AND(DefaultRegister a, DefaultRegister b, DefaultRegister status) {
         this.conjunction = new Logical(a, () -> a.toInt() & b.toInt(), status);
     }
 

@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,18 +14,18 @@ public class JUMPTest
 {
     @Test
     public void setsGoodAddress() {
-        Register counter = new Register(96);
-        Register error = new Register(0);
-        new JUMP(counter, new Register(234), new Register(84), error).execute();
+        DefaultRegister counter = new DefaultRegister(96);
+        DefaultRegister error = new DefaultRegister(0);
+        new JUMP(counter, new DefaultRegister(234), new DefaultRegister(84), error).execute();
         assertEquals(counter.toInt(), 1020);
         assertEquals(error.toInt(), 0);
     }
 
     @Test
     public void setsBadAddress() {
-        Register counter = new Register(96);
-        Register error = new Register(0);
-        new JUMP(counter, new Register(235), new Register(84), error).execute();
+        DefaultRegister counter = new DefaultRegister(96);
+        DefaultRegister error = new DefaultRegister(0);
+        new JUMP(counter, new DefaultRegister(235), new DefaultRegister(84), error).execute();
         assertEquals(counter.toInt(), 96);
         assertEquals(error.toInt(), 1);
     }

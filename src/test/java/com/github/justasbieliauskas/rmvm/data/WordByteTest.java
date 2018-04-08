@@ -14,7 +14,7 @@ public class WordByteTest
     @Test
     public void extractsLeastSignificantByte() throws Exception {
         assertEquals(
-            new WordByte(new Register(241), 0).toByte(),
+            new WordByte(new DefaultRegister(241), 0).toByte(),
             (byte) -15
         );
     }
@@ -23,7 +23,7 @@ public class WordByteTest
     public void extractsMostSignificantByte() throws Exception {
         assertEquals(
             new WordByte(
-                new Register(Integer.MAX_VALUE),
+                new DefaultRegister(Integer.MAX_VALUE),
                 Integer.BYTES - 1
             ).toByte(),
             (byte) 127
@@ -32,14 +32,14 @@ public class WordByteTest
     
     @Test
     public void changesLeastSignificantByte() throws Exception {
-        Register word = new Register(-1);
+        DefaultRegister word = new DefaultRegister(-1);
         new WordByte(word, 0).assign((byte) 50);
         assertEquals(word.toInt(), -206);
     }
 
     @Test
     public void changesMostSignificantByte() throws Exception {
-        Register word = new Register(-1);
+        DefaultRegister word = new DefaultRegister(-1);
         new WordByte(word, Integer.BYTES - 1).assign((byte) 50);
         assertEquals(word.toInt(), 855638015);
     }

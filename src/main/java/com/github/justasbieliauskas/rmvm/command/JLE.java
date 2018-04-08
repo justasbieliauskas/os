@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.Carry;
-import com.github.justasbieliauskas.rmvm.data.Register;
+import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import com.github.justasbieliauskas.rmvm.data.Zero;
 
 /**
@@ -21,20 +21,20 @@ public class JLE implements Command
      * @param status status (ST) register
      */
     public JLE(
-        Register counter,
-        Register c,
-        Register code,
-        Register error,
-        Register status
+        DefaultRegister counter,
+        DefaultRegister c,
+        DefaultRegister code,
+        DefaultRegister error,
+        DefaultRegister status
     ) {
         this(counter, c, code, error, new Zero(status), new Carry(status));
     }
 
     private JLE(
-        Register counter,
-        Register c,
-        Register code,
-        Register error,
+        DefaultRegister counter,
+        DefaultRegister c,
+        DefaultRegister code,
+        DefaultRegister error,
         Zero zero,
         Carry carry
     ) {
