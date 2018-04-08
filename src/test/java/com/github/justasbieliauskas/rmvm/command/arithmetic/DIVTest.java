@@ -1,5 +1,6 @@
-package com.github.justasbieliauskas.rmvm.command;
+package com.github.justasbieliauskas.rmvm.command.arithmetic;
 
+import com.github.justasbieliauskas.rmvm.command.arithmetic.DIV;
 import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
 import org.junit.Test;
 

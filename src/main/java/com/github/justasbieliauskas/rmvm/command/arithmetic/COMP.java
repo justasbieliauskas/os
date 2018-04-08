@@ -1,5 +1,8 @@
-package com.github.justasbieliauskas.rmvm.command;
+package com.github.justasbieliauskas.rmvm.command.arithmetic;
 
+import com.github.justasbieliauskas.rmvm.command.Command;
+import com.github.justasbieliauskas.rmvm.command.Commands;
+import com.github.justasbieliauskas.rmvm.command.FlagAssignment;
 import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
 import com.github.justasbieliauskas.rmvm.data.RWord;
 import com.github.justasbieliauskas.rmvm.data.Register;
