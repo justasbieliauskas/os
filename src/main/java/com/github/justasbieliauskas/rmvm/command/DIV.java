@@ -1,6 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
+import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * DIV command.
@@ -14,12 +15,12 @@ public class DIV implements Command
     /**
      * @param a A register
      * @param b B register
-     * @param programInterrupt program interrupts register
+     * @param error program interrupt (PI) register
      */
-    public DIV(DefaultRegister a, DefaultRegister b, DefaultRegister programInterrupt) {
+    public DIV(Register a, Register b, Register error) {
         this.command = new ConditionalCommand(
             new WordAssignment(a, () -> a.toInt() / b.toInt()),
-            new WordAssignment(programInterrupt, () -> 2),
+            new WordAssignment(error, () -> 2),
             () -> b.toInt() != 0
         );
     }

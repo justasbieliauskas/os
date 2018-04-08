@@ -1,9 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command;
 
-import com.github.justasbieliauskas.rmvm.data.Carry;
-import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
-import com.github.justasbieliauskas.rmvm.data.Overflow;
-import com.github.justasbieliauskas.rmvm.data.RWord;
+import com.github.justasbieliauskas.rmvm.data.*;
 
 /**
  * Wrapper for AND, OR, XOR commands.
@@ -19,7 +16,7 @@ public class Logical implements Command
      * @param expression word expression
      * @param status status register
      */
-    public Logical(DefaultRegister a, RWord expression, DefaultRegister status) {
+    public Logical(Register a, RWord expression, Register status) {
         this.commands = new Commands(
             new WordAssignment(a, expression),
             new ZeroCheck(status, expression),

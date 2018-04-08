@@ -12,7 +12,7 @@ public class Overflow implements Flag
     /**
      * @param status status register
      */
-    public Overflow(DefaultRegister status) {
+    public Overflow(Register status) {
         this.flag = new StatusFlag(status, 0, 2);
     }
 

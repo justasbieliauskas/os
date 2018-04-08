@@ -12,7 +12,7 @@ public class Zero implements Flag
     /**
      * @param status status register
      */
-    public Zero(DefaultRegister status) {
+    public Zero(Register status) {
         this.flag = new StatusFlag(status, 0, 0);
     }
 

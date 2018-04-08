@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.Condition;
-import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * Wrapper for conditional jump commands.
@@ -17,20 +17,20 @@ public class ConditionalJump implements Command
 
     /**
      * @param counter instruction counter (IC) register
-     * @param c C register
+     * @param register register holding offset value
      * @param code code segment (CS) register
      * @param error programming interrupt (PI) register
      * @param condition condition
      */
     public ConditionalJump(
-        DefaultRegister counter,
-        DefaultRegister c,
-        DefaultRegister code,
-        DefaultRegister error,
+        Register counter,
+        Register register,
+        Register code,
+        Register error,
         Condition condition
     ) {
         this.command = new ConditionalCommand(
-            new JUMP(counter, c, code, error),
+            new JUMP(counter, register, code, error),
             new WordAssignment(counter, () -> counter.toInt() + Integer.BYTES),
             condition
         );

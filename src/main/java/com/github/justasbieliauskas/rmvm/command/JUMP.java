@@ -1,7 +1,8 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.InstructionAddress;
-import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
+import com.github.justasbieliauskas.rmvm.data.Register;
 
 /**
  * JUMP command.
@@ -14,15 +15,15 @@ public class JUMP implements Command
 
     /**
      * @param counter instruction counter (IC) register
-     * @param c C register
+     * @param register register holding offset value
      * @param code code segment (CS) register
      * @param error program interrupt (PI) register
      */
-    public JUMP(DefaultRegister counter, DefaultRegister c, DefaultRegister code, DefaultRegister error) {
-        this(counter, new InstructionAddress(code, c), error);
+    public JUMP(Register counter, Register register, Register code, Register error) {
+        this(counter, new InstructionAddress(code, register), error);
     }
 
-    private JUMP(DefaultRegister counter, InstructionAddress address, DefaultRegister error) {
+    private JUMP(Register counter, InstructionAddress address, Register error) {
         this.command = new ConditionalCommand(
             new WordAssignment(counter, address),
             new WordAssignment(error, () -> 1),

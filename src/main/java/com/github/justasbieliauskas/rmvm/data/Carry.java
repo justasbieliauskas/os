@@ -12,7 +12,7 @@ public class Carry implements Flag
     /**
      * @param status status register
      */
-    public Carry(DefaultRegister status) {
+    public Carry(Register status) {
         this.flag = new StatusFlag(status, 0, 1);
     }
 

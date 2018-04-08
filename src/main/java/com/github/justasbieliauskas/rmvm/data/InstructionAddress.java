@@ -8,7 +8,7 @@ package com.github.justasbieliauskas.rmvm.data;
  */
 public class InstructionAddress implements RWord
 {
-    private final DefaultRegister code;
+    private final Register code;
 
     private final RWord offset;
 
@@ -16,7 +16,7 @@ public class InstructionAddress implements RWord
      * @param code code segment (CS) register
      * @param offset relative offset to instruction
      */
-    public InstructionAddress(DefaultRegister code, RWord offset) {
+    public InstructionAddress(Register code, RWord offset) {
         this.code = code;
         this.offset = offset;
     }

@@ -19,7 +19,7 @@ public class StatusFlag implements Flag
      * @param byteIndex index of byte in status register
      * @param bitIndex index of bit in given byte
      */
-    public StatusFlag(DefaultRegister status, int byteIndex, int bitIndex) {
+    public StatusFlag(Register status, int byteIndex, int bitIndex) {
         this.statusByte = new WordByte(status, byteIndex);
         this.index = bitIndex;
     }

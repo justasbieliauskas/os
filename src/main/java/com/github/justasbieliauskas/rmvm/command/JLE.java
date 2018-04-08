@@ -1,7 +1,8 @@
 package com.github.justasbieliauskas.rmvm.command;
 
 import com.github.justasbieliauskas.rmvm.data.Carry;
-import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.data.ProcessorRegister;
+import com.github.justasbieliauskas.rmvm.data.Register;
 import com.github.justasbieliauskas.rmvm.data.Zero;
 
 /**
@@ -15,26 +16,26 @@ public class JLE implements Command
 
     /**
      * @param counter instruction counter (IC) register
-     * @param c C register
+     * @param register register holding new counter value
      * @param code code segment (CS) register
      * @param error program interrupt (PI) register
      * @param status status (ST) register
      */
     public JLE(
-        DefaultRegister counter,
-        DefaultRegister c,
-        DefaultRegister code,
-        DefaultRegister error,
-        DefaultRegister status
+        Register counter,
+        Register register,
+        Register code,
+        Register error,
+        Register status
     ) {
-        this(counter, c, code, error, new Zero(status), new Carry(status));
+        this(counter, register, code, error, new Zero(status), new Carry(status));
     }
 
     private JLE(
-        DefaultRegister counter,
-        DefaultRegister c,
-        DefaultRegister code,
-        DefaultRegister error,
+        Register counter,
+        Register c,
+        Register code,
+        Register error,
         Zero zero,
         Carry carry
     ) {
