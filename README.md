@@ -135,6 +135,13 @@ Po komandos vykdymo:
 2. Jeigu `DF = 1`, adresai sumažinami vienetu.
 
 Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios kodas 1 (*bad address*).
+- `FWD` *Forward direction*
+
+  Priskiria `DF` požymiui reikšmę 0.
+
+- `BKWD` *Backwards direction*
+
+  Priskiria `DF` požymiui reikšmę 1.
 - `LODS` *Load String*
 
   Nukopijuoja simbolių eilutės simbolį atmintyje į registrą.
