@@ -57,7 +57,7 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
 
   Požymiai:
   
-  - `ZF = 1`, jei **B** lygus 0, kitu atveju `ZF = 0`;
+  - `ZF = 1`, jei **B** arba **A** lygūs 0, kitu atveju `ZF = 0`;
   - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`.
 
 - `DIV` ***A** = **A** / **B***
@@ -84,14 +84,14 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
 
   Požymių registro nekeičia.
 
-- `LSHF` ***A** = **A** << **C***
+- `LSHF` ***A** = **A** << **B***
 
   Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
   - `CF` lygus paskutiniam išstumtam bitui;
   - `OF = 1`, jei **C** lygus 1 ir išstumtas bitas nelygus kairiausiam bitui po operacijos.
 
-- `RSHF` ***A** = **A** >> **C***
+- `RSHF` ***A** = **A** >> **B***
 
   Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
@@ -135,6 +135,13 @@ Po komandos vykdymo:
 2. Jeigu `DF = 1`, adresai sumažinami vienetu.
 
 Jei adresas užeina už duomenų segmentų ribų, fiksuojama klaida, kurios kodas 1 (*bad address*).
+- `FWD` *Forward direction*
+
+  Priskiria `DF` požymiui reikšmę 0.
+
+- `BKWD` *Backwards direction*
+
+  Priskiria `DF` požymiui reikšmę 1.
 - `LODS` *Load String*
 
   Nukopijuoja simbolių eilutės simbolį atmintyje į registrą.
