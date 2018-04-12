@@ -57,7 +57,7 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
 
   Požymiai:
   
-  - `ZF = 1`, jei **B** lygus 0, kitu atveju `ZF = 0`;
+  - `ZF = 1`, jei **B** arba **A** lygūs 0, kitu atveju `ZF = 0`;
   - `CF = 1`, jei sandauga peržengia žodžio (4 baitų) ribas, kitu atveju `CF = 0`.
 
 - `DIV` ***A** = **A** / **B***
