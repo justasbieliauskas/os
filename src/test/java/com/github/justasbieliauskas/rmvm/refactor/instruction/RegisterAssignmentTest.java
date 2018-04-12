@@ -16,7 +16,7 @@ public class RegisterAssignmentTest
     @Test
     public void assignsToRegister() {
         DefaultRegister[] processor = new DefaultRegister[] { new DefaultRegister(5) };
-        new RegisterAssignment(0, 50).change(processor, new NoMemory());
+        new RegisterAssignment(() -> 0, () -> 50).change(processor, new NoMemory());
         assertEquals(processor[0].toInt(), 50);
     }
 }
