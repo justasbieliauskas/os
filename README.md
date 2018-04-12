@@ -84,14 +84,14 @@ Visos aritmetinės ir loginės komandos, išskyrus `COMP`, išsaugo rezultatą r
 
   Požymių registro nekeičia.
 
-- `LSHF` ***A** = **A** << **C***
+- `LSHF` ***A** = **A** << **B***
 
   Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
   - `CF` lygus paskutiniam išstumtam bitui;
   - `OF = 1`, jei **C** lygus 1 ir išstumtas bitas nelygus kairiausiam bitui po operacijos.
 
-- `RSHF` ***A** = **A** >> **C***
+- `RSHF` ***A** = **A** >> **B***
 
   Nulinis postūmis nekeičia požymių registro. Kitu atveju:
   - `ZF = 1`, jei rezultatas lygus 0, kitu atveju `ZF = 0`;
