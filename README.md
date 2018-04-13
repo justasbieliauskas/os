@@ -1,3 +1,4 @@
+![status](https://travis-ci.org/justasbieliauskas/rm-vm.svg?branch=master)
 # Virtualios ir Realios Mašinos (VM ir RM) konceptas
 **Reali mašina** - tai fizinė skaičiavimo mašina, turinti techninės įrangos komponentus, tokius kaip: procesorių, operatyviąją atmintį, kietajį diską, duomenų perdavimo magistrales bei įvedimo/išvedimo įrenginius. Tai objektas, skirtas palaikyti virtualias mašinas, bei atlikti jų užduotus skaičiavimus. Realias mašinas lengva modifikuoti bei pritaikyti pagal norus, ir kad palaikytų reikiamas virtualias mašinas. 
 
