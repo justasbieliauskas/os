@@ -1,7 +1,6 @@
 package com.github.justasbieliauskas.rmvm.command.arithmetic;
 
 import com.github.justasbieliauskas.rmvm.data.DefaultRegister;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
