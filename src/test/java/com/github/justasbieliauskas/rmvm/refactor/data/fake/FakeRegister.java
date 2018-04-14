@@ -7,21 +7,21 @@ import com.github.justasbieliauskas.rmvm.refactor.data.Register;
  *
  * @author Justas Bieliauskas
  */
-public class DefaultRegister implements Register
+public class FakeRegister implements Register
 {
     private int word;
 
     /**
      * Sets default value as 0.
      */
-    public DefaultRegister() {
+    public FakeRegister() {
         this(0);
     }
 
     /**
      * @param value default register value
      */
-    public DefaultRegister(int value) {
+    public FakeRegister(int value) {
         this.word = value;
     }
 

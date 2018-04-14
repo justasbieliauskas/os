@@ -2,7 +2,7 @@ package com.github.justasbieliauskas.rmvm.refactor.instruction.arithmetic;
 
 import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
 import com.github.justasbieliauskas.rmvm.refactor.data.fake.ChangedRegister;
-import com.github.justasbieliauskas.rmvm.refactor.data.fake.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.FakeRegister;
 import org.junit.Test;
 
 /**
@@ -16,7 +16,7 @@ public class NOTTest
     public void negatesWord() {
         new WordEquality(
             new ChangedRegister(
-                new DefaultRegister(),
+                new FakeRegister(),
                 new NOT(0)
             ),
             -1
