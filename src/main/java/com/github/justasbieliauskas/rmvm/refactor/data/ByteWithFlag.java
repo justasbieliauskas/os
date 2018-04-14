@@ -6,7 +6,7 @@ package com.github.justasbieliauskas.rmvm.refactor.data;
  *
  * @author Justas Bieliauskas
  */
-public class ModifiedByte implements Byte
+public class ByteWithFlag implements Byte
 {
     private final Byte original;
 
@@ -19,7 +19,7 @@ public class ModifiedByte implements Byte
      * @param index flag index
      * @param to1 should flag be changed to 1 (true) or 0 (false)
      */
-    public ModifiedByte(Byte original, Index index, Condition to1) {
+    public ByteWithFlag(Byte original, Index index, Condition to1) {
         this.original = original;
         this.index = index;
         this.to1 = to1;

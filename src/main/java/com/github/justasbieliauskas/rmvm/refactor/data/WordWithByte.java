@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
  *
  * @author Justas Bieliauskas
  */
-public class ModifiedWord implements Word
+public class WordWithByte implements Word
 {
     private final Word original;
 
@@ -20,7 +20,7 @@ public class ModifiedWord implements Word
      * @param index word byte index as integer
      * @param newByte new byte
      */
-    public ModifiedWord(Word original, int index, Byte newByte) {
+    public WordWithByte(Word original, int index, Byte newByte) {
         this.original = original;
         this.index = index;
         this.newByte = newByte;

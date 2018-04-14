@@ -4,16 +4,16 @@ import com.github.justasbieliauskas.rmvm.refactor.ByteEquality;
 import org.junit.Test;
 
 /**
- * Test for {@link ModifiedByte}.
+ * Test for {@link ByteWithFlag}.
  *
  * @author Justas Bieliauskas
  */
-public class ModifiedByteTest
+public class ByteWithFlagTest
 {
     @Test
     public void modifiesByte() {
         new ByteEquality(
-            new ModifiedByte(() -> (byte) 50, () -> 3, () -> true),
+            new ByteWithFlag(() -> (byte) 50, () -> 3, () -> true),
             (byte) 58
         ).test();
     }

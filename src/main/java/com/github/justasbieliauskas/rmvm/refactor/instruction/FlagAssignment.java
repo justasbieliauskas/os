@@ -44,10 +44,10 @@ public class FlagAssignment implements Instruction
     ) {
         this.instruction = new RegisterAssignment(
             registerIndex,
-            new ModifiedWord(
+            new WordWithByte(
                 status,
                 byteIndex,
-                new ModifiedByte(new WordByte(status, byteIndex), flagIndex, to1)
+                new ByteWithFlag(new WordByte(status, byteIndex), flagIndex, to1)
             )
         );
     }
