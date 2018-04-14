@@ -1,7 +1,5 @@
 package com.github.justasbieliauskas.rmvm.refactor.data;
 
-import java.util.Arrays;
-
 /**
  * Index for status flag identified by symbol.
  * Symbol is one of 'Z' (zero), 'C' (carry), 'O' (overflow) or 'D' (direction).
@@ -10,17 +8,17 @@ import java.util.Arrays;
  */
 public class FlagIndex implements Index
 {
-    private final char id;
+    private final SymbolIndex index;
 
     /**
      * @param id index identifier as char
      */
     public FlagIndex(char id) {
-        this.id = id;
+        this.index = new SymbolIndex(id, 'Z', 'C', 'O', 'D');
     }
 
     @Override
     public int toInt() {
-        return Arrays.asList('Z', 'C', 'O', 'D').indexOf(this.id);
+        return this.index.toInt();
     }
 }
