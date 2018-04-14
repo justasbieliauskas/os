@@ -1,4 +1,6 @@
-package com.github.justasbieliauskas.rmvm.refactor.data;
+package com.github.justasbieliauskas.rmvm.refactor.data.fake;
+
+import com.github.justasbieliauskas.rmvm.refactor.data.Register;
 
 /**
  * Simple integer register.

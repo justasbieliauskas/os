@@ -1,8 +1,8 @@
 package com.github.justasbieliauskas.rmvm.refactor.data;
 
+import com.github.justasbieliauskas.rmvm.refactor.IndexEquality;
+import com.github.justasbieliauskas.rmvm.refactor.Tests;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link RegisterIndex}.
@@ -13,16 +13,18 @@ public class RegisterIndexTest
 {
     @Test
     public void convertsStringId() {
-        assertEquals(new RegisterIndex("A").toInt(), 0);
-        assertEquals(new RegisterIndex("B").toInt(), 1);
-        assertEquals(new RegisterIndex("C").toInt(), 2);
-        assertEquals(new RegisterIndex("D").toInt(), 3);
-        assertEquals(new RegisterIndex("ST").toInt(), 4);
-        assertEquals(new RegisterIndex("IC").toInt(), 5);
-        assertEquals(new RegisterIndex("PI").toInt(), 6);
-        assertEquals(new RegisterIndex("SI").toInt(), 7);
-        assertEquals(new RegisterIndex("TI").toInt(), 8);
-        assertEquals(new RegisterIndex("CS").toInt(), 9);
-        assertEquals(new RegisterIndex("PTR").toInt(), 10);
+        new Tests(
+            new IndexEquality(new RegisterIndex("A"), 0),
+            new IndexEquality(new RegisterIndex("B"), 1),
+            new IndexEquality(new RegisterIndex("C"), 2),
+            new IndexEquality(new RegisterIndex("D"), 3),
+            new IndexEquality(new RegisterIndex("ST"), 4),
+            new IndexEquality(new RegisterIndex("IC"), 5),
+            new IndexEquality(new RegisterIndex("PI"), 6),
+            new IndexEquality(new RegisterIndex("SI"), 7),
+            new IndexEquality(new RegisterIndex("TI"), 8),
+            new IndexEquality(new RegisterIndex("CS"), 9),
+            new IndexEquality(new RegisterIndex("PTR"), 10)
+        ).test();
     }
 }

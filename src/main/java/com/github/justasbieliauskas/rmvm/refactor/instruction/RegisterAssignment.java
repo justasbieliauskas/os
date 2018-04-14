@@ -14,6 +14,15 @@ public class RegisterAssignment implements Instruction
     private final Word word;
 
     /**
+     * Constructor used in testing where a single register is changed.
+     *
+     * @param word new value as integer
+     */
+    RegisterAssignment(int word) {
+        this(() -> 0, () -> word);
+    }
+
+    /**
      * Default constructor.
      *
      * @param index register index

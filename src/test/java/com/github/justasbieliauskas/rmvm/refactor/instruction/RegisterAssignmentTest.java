@@ -1,10 +1,9 @@
 package com.github.justasbieliauskas.rmvm.refactor.instruction;
 
-import com.github.justasbieliauskas.rmvm.refactor.data.DefaultRegister;
-import com.github.justasbieliauskas.rmvm.refactor.data.NoMemory;
+import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.DefaultRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.ChangedRegister;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link RegisterAssignment}.
@@ -15,8 +14,12 @@ public class RegisterAssignmentTest
 {
     @Test
     public void assignsToRegister() {
-        DefaultRegister[] processor = new DefaultRegister[] { new DefaultRegister(5) };
-        new RegisterAssignment(() -> 0, () -> 50).change(processor, new NoMemory());
-        assertEquals(processor[0].toInt(), 50);
+        new WordEquality(
+            new ChangedRegister(
+                new DefaultRegister(5),
+                new RegisterAssignment(50)
+            ),
+            50
+        ).test();
     }
 }

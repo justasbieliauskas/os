@@ -1,4 +1,6 @@
-package com.github.justasbieliauskas.rmvm.refactor.data;
+package com.github.justasbieliauskas.rmvm.refactor.data.fake;
+
+import com.github.justasbieliauskas.rmvm.refactor.data.Memory;
 
 /**
  * Fake memory with empty methods.
@@ -10,7 +12,6 @@ public class NoMemory implements Memory
 {
     @Override
     public void write(int index, byte value) {
-
     }
 
     @Override

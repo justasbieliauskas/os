@@ -24,15 +24,18 @@ public class FlagAssignment implements Instruction
     }
 
     /**
-     * Default constructor.
+     * Constructor used in testing.
      *
-     * @param status status register
-     * @param registerIndex register index
-     * @param byteIndex byte index
-     * @param flagIndex flag index
-     * @param to1 should flag be changed to 1 (true) or 0 (false)
+     * @param word word to change flag on as integer
+     * @param byteIndex byte index in word as integer
+     * @param flagIndex flag index in byte as integer
+     * @param to1 should flag be changed to 1 (true) or 0 (false) as boolean
      */
-    public FlagAssignment(
+    FlagAssignment(int word, int byteIndex, int flagIndex, boolean to1) {
+        this(() -> word, () -> 0, byteIndex, () -> flagIndex, () -> to1);
+    }
+
+    private FlagAssignment(
         Word status,
         Index registerIndex,
         int byteIndex,

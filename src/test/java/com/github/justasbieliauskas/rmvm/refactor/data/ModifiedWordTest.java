@@ -1,8 +1,7 @@
 package com.github.justasbieliauskas.rmvm.refactor.data;
 
+import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link ModifiedWord}.
@@ -13,9 +12,9 @@ public class ModifiedWordTest
 {
     @Test
     public void modifiesWord() {
-        assertEquals(
-            new ModifiedWord(() -> 728768571, 2, () -> (byte) 7).toInt(),
+        new WordEquality(
+            new ModifiedWord(() -> 728768571, 2, () -> (byte) 7),
             721887291
-        );
+        ).test();
     }
 }

@@ -1,8 +1,7 @@
 package com.github.justasbieliauskas.rmvm.refactor.data;
 
+import com.github.justasbieliauskas.rmvm.refactor.ByteEquality;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link WordByte}.
@@ -13,6 +12,9 @@ public class WordByteTest
 {
     @Test
     public void extractsByte() {
-        assertEquals(new WordByte(() -> 13824, 1).toByte(), (byte) 54);
+        new ByteEquality(
+            new WordByte(() -> 13824, 1),
+            (byte) 54
+        ).test();
     }
 }
