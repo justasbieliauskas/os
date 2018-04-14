@@ -9,7 +9,7 @@ import com.github.justasbieliauskas.rmvm.refactor.instruction.Instruction;
  *
  * @author Justas Bieliauskas
  */
-public class InstructionAsTest implements Test
+public class TestAsInstruction implements Test
 {
     private final Instruction instruction;
 
@@ -21,7 +21,7 @@ public class InstructionAsTest implements Test
      * @param instruction instruction
      * @param processor testing registers
      */
-    public InstructionAsTest(Instruction instruction, Register[] processor) {
+    public TestAsInstruction(Instruction instruction, Register[] processor) {
         this.instruction = instruction;
         this.processor = processor;
         this.memory = new NoMemory();
