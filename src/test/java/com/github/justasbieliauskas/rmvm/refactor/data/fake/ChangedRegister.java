@@ -29,7 +29,7 @@ public class ChangedRegister implements Word
     public ChangedRegister(Instruction instruction) {
         this.register = new FakeRegister();
         this.instruction = instruction;
-        this.wrapper = new Register[] { register };
+        this.wrapper = new Register[] { this.register };
         this.memory = new NoMemory();
     }
 

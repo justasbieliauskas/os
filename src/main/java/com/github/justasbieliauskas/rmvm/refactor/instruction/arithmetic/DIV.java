@@ -19,43 +19,25 @@ public class DIV implements Instruction
     private final ConditionalInstruction instruction;
 
     /**
-     * Constructor for pre-defined registers in processor.
-     *
-     * @param processor all registers
-     */
-    public DIV(Register[] processor) {
-        this(processor, new RegisterIndex("A"));
-    }
-
-    /**
      * Constructor for testing.
      *
      * @param resultIndex result register index as integer
-     * @param errorIndex error register index as integer
      * @param dividend dividend as integer
      * @param divisor divisor as integer
+     * @param errorIndex error register index as integer
      */
-    DIV(int resultIndex, int errorIndex, int dividend, int divisor) {
-        this(() -> resultIndex, () -> errorIndex, () -> dividend, () -> divisor);
+    DIV(int resultIndex, int dividend, int divisor, int errorIndex) {
+        this(() -> resultIndex, () -> dividend, () -> divisor, () -> errorIndex);
     }
 
-    private DIV(Register[] processor, RegisterIndex aIndex) {
-        this(
-            aIndex,
-            new RegisterIndex("PI"),
-            new ProcessorRegister(processor, aIndex),
-            new ProcessorRegister(processor, "B")
-        );
-    }
-
-    private DIV(Index resultIndex, Index errorIndex, Word dividend, Word divisor) {
+    private DIV(Index resultIndex, Word dividend, Word divisor, Index errorIndex) {
         this.instruction = new ConditionalInstruction(
+            new RegisterAssignment(errorIndex, 2),
             new RegisterAssignment(
                 resultIndex,
                 () -> dividend.toInt() / divisor.toInt()
             ),
-            new RegisterAssignment(errorIndex, 2),
-            () -> divisor.toInt() != 0
+            () -> divisor.toInt() == 0
         );
     }
 

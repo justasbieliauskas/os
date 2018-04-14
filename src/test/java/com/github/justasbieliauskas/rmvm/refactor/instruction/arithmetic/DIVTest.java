@@ -1,7 +1,9 @@
 package com.github.justasbieliauskas.rmvm.refactor.instruction.arithmetic;
 
 import com.github.justasbieliauskas.rmvm.refactor.InstructionAsTest;
+import com.github.justasbieliauskas.rmvm.refactor.data.Register;
 import com.github.justasbieliauskas.rmvm.refactor.data.fake.EqualityRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.UnchangeableRegister;
 import org.junit.Test;
 
 /**
@@ -14,10 +16,10 @@ public class DIVTest
     @Test
     public void dividesNumberByNumber() {
         new InstructionAsTest(
-            new DIV(0, 1, 5, 3),
-            new EqualityRegister[] {
+            new DIV(0, 5, 3, 1),
+            new Register[] {
                 new EqualityRegister(1),
-                new EqualityRegister(0)
+                new UnchangeableRegister()
             }
         ).test();
     }
@@ -25,9 +27,9 @@ public class DIVTest
     @Test
     public void dividesNumberBy0() {
         new InstructionAsTest(
-            new DIV(0, 1, 2, 0),
-            new EqualityRegister[] {
-                new EqualityRegister(0),
+            new DIV(0, 2, 0, 1),
+            new Register[] {
+                new UnchangeableRegister(),
                 new EqualityRegister(2)
             }
         ).test();

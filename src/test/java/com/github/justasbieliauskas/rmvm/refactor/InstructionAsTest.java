@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.refactor;
 
-import com.github.justasbieliauskas.rmvm.refactor.data.fake.EqualityRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.Register;
 import com.github.justasbieliauskas.rmvm.refactor.data.fake.NoMemory;
 import com.github.justasbieliauskas.rmvm.refactor.instruction.Instruction;
 
@@ -13,7 +13,7 @@ public class InstructionAsTest implements Test
 {
     private final Instruction instruction;
 
-    private final EqualityRegister[] processor;
+    private final Register[] processor;
 
     private final NoMemory memory;
 
@@ -21,7 +21,7 @@ public class InstructionAsTest implements Test
      * @param instruction instruction
      * @param processor testing registers
      */
-    public InstructionAsTest(Instruction instruction, EqualityRegister[] processor) {
+    public InstructionAsTest(Instruction instruction, Register[] processor) {
         this.instruction = instruction;
         this.processor = processor;
         this.memory = new NoMemory();
