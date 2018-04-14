@@ -15,10 +15,7 @@ public class NOTTest
     @Test
     public void negatesWord() {
         new WordEquality(
-            new ChangedRegister(
-                new FakeRegister(),
-                new NOT(0)
-            ),
+            new ChangedRegister(new NOT(0)),
             -1
         ).test();
     }

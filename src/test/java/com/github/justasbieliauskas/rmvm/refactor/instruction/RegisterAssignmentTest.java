@@ -15,10 +15,7 @@ public class RegisterAssignmentTest
     @Test
     public void assignsToRegister() {
         new WordEquality(
-            new ChangedRegister(
-                new FakeRegister(5),
-                new RegisterAssignment(50)
-            ),
+            new ChangedRegister(new RegisterAssignment(50)),
             50
         ).test();
     }

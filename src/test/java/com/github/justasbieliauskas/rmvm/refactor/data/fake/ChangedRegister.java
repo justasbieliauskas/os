@@ -1,6 +1,7 @@
 package com.github.justasbieliauskas.rmvm.refactor.data.fake;
 
 import com.github.justasbieliauskas.rmvm.refactor.data.Register;
+import com.github.justasbieliauskas.rmvm.refactor.data.Word;
 import com.github.justasbieliauskas.rmvm.refactor.instruction.Instruction;
 
 /**
@@ -12,7 +13,7 @@ import com.github.justasbieliauskas.rmvm.refactor.instruction.Instruction;
  *
  * @author Justas Bieliauskas
  */
-public class ChangedRegister implements Register
+public class ChangedRegister implements Word
 {
     private final Register register;
 
@@ -23,11 +24,10 @@ public class ChangedRegister implements Register
     private final NoMemory memory;
 
     /**
-     * @param register register to change
-     * @param instruction instruction that changes register
+     * @param instruction instruction
      */
-    public ChangedRegister(Register register, Instruction instruction) {
-        this.register = register;
+    public ChangedRegister(Instruction instruction) {
+        this.register = new FakeRegister();
         this.instruction = instruction;
         this.wrapper = new Register[] { register };
         this.memory = new NoMemory();
@@ -37,10 +37,5 @@ public class ChangedRegister implements Register
     public int toInt() {
         this.instruction.change(this.wrapper, this.memory);
         return this.register.toInt();
-    }
-
-    @Override
-    public void change(int value) {
-        this.register.change(value);
     }
 }

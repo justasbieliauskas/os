@@ -15,10 +15,7 @@ public class FlagAssignmentTest
     @Test
     public void changesFlagTo1() {
         new WordEquality(
-            new ChangedRegister(
-                new FakeRegister(),
-                new FlagAssignment(27241, 1, 2, true)
-            ),
+            new ChangedRegister(new FlagAssignment(27241, 1, 2, true)),
             28265
         ).test();
     }
