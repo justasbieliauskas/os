@@ -13,6 +13,18 @@ public class ProcessorRegister implements Word
     private final Index index;
 
     /**
+     * Constructor for indexing register with its identifier.
+     *
+     * @param processor all registers
+     * @param id register identifier
+     */
+    public ProcessorRegister(Register[] processor, String id) {
+        this(processor, new RegisterIndex(id));
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param processor all registers
      * @param index register index
      */
