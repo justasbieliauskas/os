@@ -1,14 +1,14 @@
 package com.github.justasbieliauskas.rmvm.refactor;
 
 /**
- * Unit test case.
+ * Unit test.
  *
  * @author Justas Bieliauskas
  */
 public interface Test
 {
     /**
-     * Make assertions.
+     * Makes assertion.
      */
     void test();
 }

@@ -9,10 +9,10 @@ package com.github.justasbieliauskas.rmvm.refactor;
 public interface CloneableTest extends Test
 {
     /**
-     * Creates a new test with new value.
+     * Clones itself with new value.
      *
      * @param value new value
-     * @return test case
+     * @return test
      */
     CloneableTest with(int value);
 }

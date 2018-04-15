@@ -1,8 +1,9 @@
 package com.github.justasbieliauskas.rmvm.refactor.instruction.arithmetic;
 
 import com.github.justasbieliauskas.rmvm.refactor.TestAsInstruction;
+import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
 import com.github.justasbieliauskas.rmvm.refactor.data.Register;
-import com.github.justasbieliauskas.rmvm.refactor.data.fake.EqualityRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.TestRegister;
 import com.github.justasbieliauskas.rmvm.refactor.data.fake.UnchangeableRegister;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class DIVTest
         new TestAsInstruction(
             new DIV(0, 5, 3, 1),
             new Register[] {
-                new EqualityRegister(1),
+                new TestRegister(new WordEquality(1)),
                 new UnchangeableRegister()
             }
         ).test();
@@ -30,7 +31,7 @@ public class DIVTest
             new DIV(0, 2, 0, 1),
             new Register[] {
                 new UnchangeableRegister(),
-                new EqualityRegister(2)
+                new TestRegister(new WordEquality(2))
             }
         ).test();
     }
