@@ -29,6 +29,7 @@ public class LogicInstruction implements Instruction
         int statusIndex,
         int first,
         int second,
+        int status,
         char[] name
     ) {
         this(
@@ -36,6 +37,7 @@ public class LogicInstruction implements Instruction
             () -> statusIndex,
             () -> first,
             () -> second,
+            () -> status,
             name
         );
     }
@@ -45,6 +47,7 @@ public class LogicInstruction implements Instruction
         Index statusIndex,
         Word first,
         Word second,
+        Word status,
         char[] name
     ) {
         this(
@@ -57,17 +60,27 @@ public class LogicInstruction implements Instruction
                     () -> first.toInt() ^ second.toInt()
                 },
                 new SymbolIndex(name[0], 'A', 'O', 'X')
-            )
+            ),
+            status
         );
     }
 
-    private LogicInstruction(Index resultIndex, Index statusIndex, Word result) {
+    private LogicInstruction(
+        Index resultIndex,
+        Index statusIndex,
+        Word result,
+        Word status
+    ) {
         this.instructions = new Instructions(
             new RegisterAssignment(resultIndex, result),
             new RegisterAssignment(
                 statusIndex,
                 new WordWithFlag(
-                    new WordWithFlag(new WordWithFlag(result), 'C', () -> false),
+                    new WordWithFlag(
+                        new WordWithFlag(status, result),
+                        'C',
+                        () -> false
+                    ),
                     'O',
                     () -> false
                 )

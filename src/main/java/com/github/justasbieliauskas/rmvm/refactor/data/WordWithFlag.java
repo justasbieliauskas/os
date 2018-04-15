@@ -13,9 +13,10 @@ public class WordWithFlag implements Word
      * Constructor for setting zero flag on status register.
      *
      * @param status status register
+     * @param word word to check for zero
      */
-    public WordWithFlag(Word status) {
-        this(status, 'Z', () -> status.toInt() == 0);
+    public WordWithFlag(Word status, Word word) {
+        this(status, 'Z', () -> word.toInt() == 0);
     }
 
     /**
