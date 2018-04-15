@@ -5,7 +5,7 @@ import com.github.justasbieliauskas.rmvm.refactor.FlagEquality;
 import com.github.justasbieliauskas.rmvm.refactor.TestAsInstruction;
 import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
 import com.github.justasbieliauskas.rmvm.refactor.data.Register;
-import com.github.justasbieliauskas.rmvm.refactor.data.fake.IgnoringRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.FakeRegister;
 import com.github.justasbieliauskas.rmvm.refactor.data.fake.TestRegister;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class LogicInstructionTest
         new TestAsInstruction(
             new LogicInstruction(0, 1, 0, 0, 6, new char[] { 'O', 'R' }),
             new Register[] {
-                new IgnoringRegister(),
+                new FakeRegister(),
                 new TestRegister(
                     new CloneableTests(
                         new FlagEquality('C', false),
