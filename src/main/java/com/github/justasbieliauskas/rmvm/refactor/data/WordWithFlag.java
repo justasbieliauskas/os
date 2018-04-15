@@ -3,6 +3,8 @@ package com.github.justasbieliauskas.rmvm.refactor.data;
 /**
  * Word with modified flag.
  *
+ * TODO: better documentation in constructors.
+ *
  * @author Justas Bieliauskas
  */
 public class WordWithFlag implements Word
@@ -17,6 +19,28 @@ public class WordWithFlag implements Word
      */
     public WordWithFlag(Word status, Word word) {
         this(status, 'Z', () -> word.toInt() == 0);
+    }
+
+    /**
+     * Constructor for hand-picking pre-defined flag values.
+     * In that case, the initial status register value is irrelevant.
+     *
+     * @param id flag identifier
+     * @param to1 should flag be changed to 1 (true) or 0 (false) as boolean
+     */
+    public WordWithFlag(char id, boolean to1) {
+        this(() -> 0, id, to1);
+    }
+
+    /**
+     * Constructor for chaining new flags.
+     *
+     * @param status status register
+     * @param id flag identifier
+     * @param to1 should flag be changed to 1 (true) or 0 (false) as boolean
+     */
+    public WordWithFlag(Word status, char id, boolean to1) {
+        this(status, id, () -> to1);
     }
 
     /**
