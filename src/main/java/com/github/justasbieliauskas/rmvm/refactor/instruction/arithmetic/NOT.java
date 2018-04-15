@@ -17,25 +17,12 @@ public class NOT implements Instruction
     private final RegisterAssignment assignment;
 
     /**
-     * Constructor for extracting A register.
-     *
-     * @param processor all registers
-     */
-    public NOT(Register[] processor) {
-        this(processor, new RegisterIndex("A"));
-    }
-
-    /**
      * Constructor for testing instruction.
      *
      * @param word word to negate as integer
      */
     NOT(int word) {
         this(() -> 0, () -> word);
-    }
-
-    private NOT(Register[] processor, RegisterIndex index) {
-        this(index, new ProcessorRegister(processor, index));
     }
 
     private NOT(Index index, Word word) {
