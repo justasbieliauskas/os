@@ -1,8 +1,8 @@
 package com.github.justasbieliauskas.rmvm.data;
 
+import com.github.justasbieliauskas.rmvm.IndexEquality;
+import com.github.justasbieliauskas.rmvm.Tests;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link FlagIndex}.
@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
 public class FlagIndexTest
 {
     @Test
-    public void convertsCharToIndex() {
-        assertEquals(new FlagIndex('Z').toInt(), 0);
-        assertEquals(new FlagIndex('C').toInt(), 1);
-        assertEquals(new FlagIndex('O').toInt(), 2);
-        assertEquals(new FlagIndex('D').toInt(), 3);
+    public void convertsFlagId() {
+        new Tests(
+            new IndexEquality(new FlagIndex('Z'), 0),
+            new IndexEquality(new FlagIndex('C'), 1),
+            new IndexEquality(new FlagIndex('O'), 2),
+            new IndexEquality(new FlagIndex('D'), 3)
+        ).test();
     }
 }

@@ -1,40 +1,29 @@
 package com.github.justasbieliauskas.rmvm.data;
 
-import java.nio.ByteBuffer;
+import java.lang.*;
 
 /**
- * Nth byte in a word.
- * Can be assigned a byte value and modify original word.
+ * Nth byte of word.
  *
  * @author Justas Bieliauskas
  */
-public class WordByte implements LByte
+public class WordByte implements Byte
 {
-    private final LWord word;
+    private final Word word;
 
-    private final int index;
+    private final Index index;
 
     /**
      * @param word word
-     * @param index nth byte inside word
+     * @param index index of byte
      */
-    public WordByte(LWord word, int index) {
+    public WordByte(Word word, int index) {
         this.word = word;
-        this.index = index;
+        this.index = () -> index;
     }
 
     @Override
     public byte toByte() {
-        return (byte) (this.word.toInt() >> (8 * this.index));
-    }
-
-    @Override
-    public void assign(byte value) {
-        byte[] bytes = ByteBuffer
-            .allocate(Integer.BYTES)
-            .putInt(this.word.toInt())
-            .array();
-        bytes[Integer.BYTES - this.index - 1] = value;
-        this.word.assign(ByteBuffer.wrap(bytes).getInt());
+        return (byte) (this.word.toInt() >> (8 * this.index.toInt()));
     }
 }

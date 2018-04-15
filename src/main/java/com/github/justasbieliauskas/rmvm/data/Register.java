@@ -5,7 +5,12 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public interface Register extends LWord
+public interface Register extends Word
 {
-
+    /**
+     * Mutate register value.
+     *
+     * @param value new value
+     */
+    void change(int value);
 }

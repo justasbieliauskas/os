@@ -4,17 +4,17 @@ import com.github.justasbieliauskas.rmvm.ByteEquality;
 import org.junit.Test;
 
 /**
- * Test for {@link WordByte}.
+ * Test for {@link ByteWithFlag}.
  *
  * @author Justas Bieliauskas
  */
-public class WordByteTest
+public class ByteWithFlagTest
 {
     @Test
-    public void extractsByte() {
+    public void modifiesByte() {
         new ByteEquality(
-            new WordByte(() -> 13824, 1),
-            (byte) 54
+            new ByteWithFlag(() -> (byte) 50, () -> 3, () -> true),
+            (byte) 58
         ).test();
     }
 }
