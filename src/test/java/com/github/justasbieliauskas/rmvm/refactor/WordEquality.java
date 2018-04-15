@@ -13,19 +13,31 @@ public class WordEquality implements Test
 {
     private final Word word;
 
-    private final int value;
+    private final Word value;
 
     /**
+     * Constructor with expected value as integer.
+     *
+     * @param word word subject
+     * @param value expected value as integer
+     */
+    public WordEquality(Word word, int value) {
+        this(word, () -> value);
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param word word subject
      * @param value expected value
      */
-    public WordEquality(Word word, int value) {
+    public WordEquality(Word word, Word value) {
         this.word = word;
         this.value = value;
     }
 
     @Override
     public void test() {
-        assertEquals(this.word.toInt(), this.value);
+        assertEquals(this.word.toInt(), this.value.toInt());
     }
 }
