@@ -1,11 +1,8 @@
 package com.github.justasbieliauskas.rmvm.refactor.instruction.arithmetic;
 
-import com.github.justasbieliauskas.rmvm.refactor.CloneableTests;
-import com.github.justasbieliauskas.rmvm.refactor.FlagEquality;
-import com.github.justasbieliauskas.rmvm.refactor.TestAsInstruction;
-import com.github.justasbieliauskas.rmvm.refactor.data.Register;
+import com.github.justasbieliauskas.rmvm.refactor.WordEquality;
 import com.github.justasbieliauskas.rmvm.refactor.data.WordWithFlag;
-import com.github.justasbieliauskas.rmvm.refactor.data.fake.TestRegister;
+import com.github.justasbieliauskas.rmvm.refactor.data.fake.ChangedRegister;
 import org.junit.Test;
 
 /**
@@ -17,61 +14,43 @@ public class COMPTest
 {
     @Test
     public void numbersAreEqual() {
-        new TestAsInstruction(
-            new COMP(
-                0,
-                new WordWithFlag(new WordWithFlag('C', true), 'Z', false),
-                5,
-                5
-            ),
-            new Register[] {
-                new TestRegister(
-                    new CloneableTests(
-                        new FlagEquality('Z', true),
-                        new FlagEquality('C', false)
-                    )
+        new WordEquality(
+            new ChangedRegister(
+                new COMP(
+                    new WordWithFlag(new WordWithFlag('Z', false), 'C', true),
+                    5,
+                    5
                 )
-            }
+            ),
+            new WordWithFlag(new WordWithFlag('Z', true), 'C', false)
         ).test();
     }
 
     @Test
     public void firstIsLessThanSecond() {
-        new TestAsInstruction(
-            new COMP(
-                0,
-                new WordWithFlag(new WordWithFlag('Z', true), 'C', false),
-                7,
-                15
-            ),
-            new Register[] {
-                new TestRegister(
-                    new CloneableTests(
-                        new FlagEquality('Z', false),
-                        new FlagEquality('C', true)
-                    )
+        new WordEquality(
+            new ChangedRegister(
+                new COMP(
+                    new WordWithFlag(new WordWithFlag('Z', true), 'C', false),
+                    7,
+                    15
                 )
-            }
+            ),
+            new WordWithFlag(new WordWithFlag('Z', false), 'C', true)
         ).test();
     }
 
     @Test
     public void firstIsGreaterThanSecond() {
-        new TestAsInstruction(
-            new COMP(
-                0,
-                new WordWithFlag(new WordWithFlag('Z', true), 'C', true),
-                21,
-                4
-            ),
-            new Register[] {
-                new TestRegister(
-                    new CloneableTests(
-                        new FlagEquality('Z', false),
-                        new FlagEquality('C', false)
-                    )
+        new WordEquality(
+            new ChangedRegister(
+                new COMP(
+                    new WordWithFlag(new WordWithFlag('Z', true), 'C', true),
+                    21,
+                    4
                 )
-            }
+            ),
+            new WordWithFlag(new WordWithFlag('Z', false), 'C', false)
         ).test();
     }
 }

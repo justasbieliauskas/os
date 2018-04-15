@@ -20,13 +20,12 @@ public class COMP implements Instruction
     /**
      * Constructor for testing.
      *
-     * @param statusIndex status register index as integer
-     * @param status status register
-     * @param first first register as integer
-     * @param second second register as integer
+     * @param status status register constructed hand-picking flag values
+     * @param first first operand as integer
+     * @param second second operand as integer
      */
-    COMP(int statusIndex, WordWithFlag status, int first, int second) {
-        this(() -> statusIndex, status, () -> first, () -> second);
+    COMP(WordWithFlag status, int first, int second) {
+        this(() -> 0, status, () -> first, () -> second);
     }
 
     private COMP(Index statusIndex, Word status, Word first, Word second) {

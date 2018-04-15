@@ -11,42 +11,48 @@ import static org.junit.Assert.assertEquals;
  */
 public class WordEquality implements CloneableTest
 {
-    private final Word word;
+    private final Word value;
 
-    private final int value;
+    private final Word expected;
 
     /**
      * Constructor for when test is only going to clone itself.
      * In that case, word value is irrelevant.
      *
-     * @param value expected value
+     * @param expected expected value as integer
      */
-    public WordEquality(int value) {
-        this(0, value);
+    public WordEquality(int expected) {
+        this(() -> 0, expected);
     }
 
-    private WordEquality(int word, int value) {
-        this(() -> word, value);
+    /**
+     * Constructor for expecting value as integer.
+     *
+     * @param value word subject
+     * @param expected expected value as integer
+     */
+    public WordEquality(Word value, int expected) {
+        this(value, () -> expected);
     }
 
     /**
      * Default constructor.
      *
-     * @param word word subject
-     * @param value expected value
+     * @param value word subject
+     * @param expected expected value
      */
-    public WordEquality(Word word, int value) {
-        this.word = word;
+    public WordEquality(Word value, Word expected) {
         this.value = value;
+        this.expected = expected;
     }
 
     @Override
     public void test() {
-        assertEquals(this.word.toInt(), this.value);
+        assertEquals(this.value.toInt(), this.expected.toInt());
     }
 
     @Override
     public CloneableTest with(int value) {
-        return new WordEquality(value, this.value);
+        return new WordEquality(() -> value, this.expected);
     }
 }
