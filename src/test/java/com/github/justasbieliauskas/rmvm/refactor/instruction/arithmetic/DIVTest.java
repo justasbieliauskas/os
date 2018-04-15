@@ -20,7 +20,7 @@ public class DIVTest
             new DIV(0, 5, 3, 1),
             new Register[] {
                 new TestRegister(new WordEquality(1)),
-                new UnchangeableRegister()
+                new UnchangeableRegister("status")
             }
         ).test();
     }
@@ -30,7 +30,7 @@ public class DIVTest
         new TestAsInstruction(
             new DIV(0, 2, 0, 1),
             new Register[] {
-                new UnchangeableRegister(),
+                new UnchangeableRegister("division result"),
                 new TestRegister(new WordEquality(2))
             }
         ).test();
