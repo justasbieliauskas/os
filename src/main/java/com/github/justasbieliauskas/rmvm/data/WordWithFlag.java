@@ -72,7 +72,7 @@ public class WordWithFlag implements Word
             word,
             byteIndex,
             flagIndex,
-            () -> (byte) (word.toInt() >> (8 * byteIndex)),
+            new WordByte(word, byteIndex),
             to1
         );
     }

@@ -23,7 +23,7 @@ public class WordFlag implements Condition
     }
 
     private WordFlag(Word word, int byteIndex, Index flagIndex) {
-        this.wordByte = () -> (byte) (word.toInt() >> (8 * byteIndex));
+        this.wordByte = new WordByte(word, byteIndex);
         this.flagIndex = flagIndex;
     }
 
