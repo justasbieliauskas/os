@@ -1,15 +1,15 @@
 package com.github.justasbieliauskas.rmvm.data;
 
+import java.nio.ByteBuffer;
+
 /**
  * Word with modified flag.
- *
- * TODO: better documentation in constructors.
  *
  * @author Justas Bieliauskas
  */
 public class WordWithFlag implements Word
 {
-    private final WordWithByte word;
+    private final Word word;
 
     /**
      * Constructor for setting zero flag on status register.
@@ -68,15 +68,44 @@ public class WordWithFlag implements Word
     }
 
     private WordWithFlag(Word word, int byteIndex, Index flagIndex, Condition to1) {
-        this.word = new WordWithByte(
+        this(
             word,
             byteIndex,
-            new ByteWithFlag(
-                new WordByte(word, byteIndex),
-                flagIndex,
-                to1
-            )
+            flagIndex,
+            () -> (byte) (word.toInt() >> (8 * byteIndex)),
+            to1
         );
+    }
+
+    private WordWithFlag(
+        Word word,
+        int byteIndex,
+        Index flagIndex,
+        Byte wordByte,
+        Condition to1
+    ) {
+        this(
+            word,
+            byteIndex,
+            () -> {
+                byte filter = (byte) (1 << flagIndex.toInt());
+                if(to1.isTrue()) {
+                    return (byte) (wordByte.toByte() | filter);
+                }
+                return (byte) (wordByte.toByte() & ~filter);
+            }
+        );
+    }
+
+    private WordWithFlag(Word word, int byteIndex, Byte byteWithFlag) {
+        this.word = () -> {
+            byte[] bytes = ByteBuffer
+                .allocate(Integer.BYTES)
+                .putInt(word.toInt())
+                .array();
+            bytes[Integer.BYTES - byteIndex - 1] = byteWithFlag.toByte();
+            return ByteBuffer.wrap(bytes).getInt();
+        };
     }
 
     @Override
