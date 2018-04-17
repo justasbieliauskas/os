@@ -12,6 +12,27 @@ public class WordFlag implements Condition
     private final Index flagIndex;
 
     /**
+     * Constructor for creating status flag by its identifier.
+     *
+     * @param status status register
+     * @param id flag identifier
+     */
+    public WordFlag(Word status, char id) {
+        this(status, 0, new FlagIndex(id));
+    }
+
+    /**
+     * Constructor for creating most/least significant bit.
+     *
+     * @param word word
+     * @param byteIndex byte index in word
+     * @param flagIndex flag index in byte as integer
+     */
+    public WordFlag(Word word, int byteIndex, int flagIndex) {
+        this(word, byteIndex, () -> flagIndex);
+    }
+
+    /**
      * Constructor for testing.
      *
      * @param word word as integer
