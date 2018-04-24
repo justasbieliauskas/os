@@ -15,7 +15,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class PostLogicCPU implements CPU
+public class CPUAfterLogic implements CPU
 {
     private final CPUWithRegister processor;
 
@@ -25,7 +25,7 @@ public class PostLogicCPU implements CPU
      * @param processor hand-made processor
      * @param result logic operation result as integer
      */
-    PostLogicCPU(CPUWithRegister processor, int result) {
+    CPUAfterLogic(CPUWithRegister processor, int result) {
         this(processor, () -> result);
     }
 
@@ -35,11 +35,11 @@ public class PostLogicCPU implements CPU
      * @param processor processor
      * @param name operation name - "AND", "OR" or "XOR"
      */
-    public PostLogicCPU(CPU processor, char[] name) {
+    public CPUAfterLogic(CPU processor, char[] name) {
         this(new CachedCPU(processor), name);
     }
 
-    private PostLogicCPU(CachedCPU processor, char[] name) {
+    private CPUAfterLogic(CachedCPU processor, char[] name) {
         this(
             processor,
             new SymbolIndex(name[0], 'A', 'O', 'X'),
@@ -48,7 +48,7 @@ public class PostLogicCPU implements CPU
         );
     }
 
-    private PostLogicCPU(
+    private CPUAfterLogic(
         CPU processor,
         SymbolIndex index,
         CPURegister first,
@@ -63,14 +63,14 @@ public class PostLogicCPU implements CPU
         );
     }
 
-    private PostLogicCPU(CPU processor, SymbolIndex index, Word... results) {
+    private CPUAfterLogic(CPU processor, SymbolIndex index, Word... results) {
         this(
             processor,
             () -> results[index.toInt()].toInt()
         );
     }
 
-    private PostLogicCPU(CPU processor, Word result) {
+    private CPUAfterLogic(CPU processor, Word result) {
         this.processor = new CPUWithRegister(
             new CPUWithRegister(processor, "A", result),
             new WordWithFlag(

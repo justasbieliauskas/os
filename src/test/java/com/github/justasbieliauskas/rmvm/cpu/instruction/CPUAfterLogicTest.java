@@ -7,17 +7,17 @@ import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
 import org.junit.Test;
 
 /**
- * Test for {@link PostLogicCPU}.
+ * Test for {@link CPUAfterLogic}.
  *
  * @author Justas Bieliauskas
  */
-public class PostLogicCPUTest
+public class CPUAfterLogicTest
 {
     @Test
     public void changesFlagsForNonZero() {
         new WordEquality(
             new CPURegister(
-                new PostLogicCPU(
+                new CPUAfterLogic(
                     new CPUWithRegister(
                         new WordWithFlag(
                             new WordWithFlag(
@@ -49,7 +49,7 @@ public class PostLogicCPUTest
     public void changesFlagsForZero() {
         new WordEquality(
             new CPURegister(
-                new PostLogicCPU(
+                new CPUAfterLogic(
                     new CPUWithRegister(
                         new WordWithFlag(
                             new WordWithFlag(
@@ -81,7 +81,7 @@ public class PostLogicCPUTest
     public void calculatesAND() {
         new WordEquality(
             new CPURegister(
-                new PostLogicCPU(
+                new CPUAfterLogic(
                     new CPUWithRegister(
                         new CPUWithRegister(
                             new CPUWithRegister("ST", 0),
@@ -103,7 +103,7 @@ public class PostLogicCPUTest
     public void calculatesOR() {
         new WordEquality(
             new CPURegister(
-                new PostLogicCPU(
+                new CPUAfterLogic(
                     new CPUWithRegister(
                         new CPUWithRegister(
                             new CPUWithRegister("ST", 0),
@@ -125,7 +125,7 @@ public class PostLogicCPUTest
     public void calculatesXOR() {
         new WordEquality(
             new CPURegister(
-                new PostLogicCPU(
+                new CPUAfterLogic(
                     new CPUWithRegister(
                         new CPUWithRegister(
                             new CPUWithRegister("ST", 0),

@@ -4,7 +4,6 @@ import com.github.justasbieliauskas.rmvm.cpu.CPU;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
 import com.github.justasbieliauskas.rmvm.cpu.CachedCPU;
 import com.github.justasbieliauskas.rmvm.data.CPURegister;
-
 import java.util.Map;
 
 /**
@@ -12,9 +11,9 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class PostDIVCPU implements CPU
+public class CPUAfterDIV implements CPU
 {
-    private final PostTernaryInstructionCPU processor;
+    private final CPUAfterTernary processor;
 
     /**
      * Constructor for testing.
@@ -24,7 +23,7 @@ public class PostDIVCPU implements CPU
      * @param divisor divisor as integer
      * @param error initial error as integer
      */
-    PostDIVCPU(int dividend, int divisor, int error) {
+    CPUAfterDIV(int dividend, int divisor, int error) {
         this(
             new CPUWithRegister(
                 new CPUWithRegister(
@@ -39,13 +38,15 @@ public class PostDIVCPU implements CPU
     }
 
     /**
+     * Default constructor.
+     *
      * @param processor processor
      */
-    public PostDIVCPU(CPU processor) {
+    public CPUAfterDIV(CPU processor) {
         this(new CachedCPU(processor));
     }
 
-    private PostDIVCPU(CachedCPU processor) {
+    private CPUAfterDIV(CachedCPU processor) {
         this(
             processor,
             new CPURegister(processor, "A"),
@@ -53,12 +54,12 @@ public class PostDIVCPU implements CPU
         );
     }
 
-    private PostDIVCPU(
+    private CPUAfterDIV(
         CachedCPU processor,
         CPURegister dividend,
         CPURegister divisor
     ) {
-        this.processor = new PostTernaryInstructionCPU(
+        this.processor = new CPUAfterTernary(
             () -> divisor.toInt() != 0,
             new CPUWithRegister(
                 processor,

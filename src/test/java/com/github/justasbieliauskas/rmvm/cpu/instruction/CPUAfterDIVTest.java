@@ -5,16 +5,16 @@ import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
 import org.junit.Test;
 
 /**
- * Test for {@link PostDIVCPU}.
+ * Test for {@link CPUAfterDIV}.
  *
  * @author Justas Bieliauskas
  */
-public class PostDIVCPUTest
+public class CPUAfterDIVTest
 {
     @Test
     public void divides2Numbers() {
         new ProcessorEquality(
-            new PostDIVCPU(11, 5, 0),
+            new CPUAfterDIV(11, 5, 0),
             new CPUWithRegister(
                 "A",
                 2

@@ -1,11 +1,11 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
 /**
- * Processor after instruction.
+ * Processor after super instruction.
  *
  * @author Justas Bieliauskas
  */
-public interface PostInstructionCPU
+public interface CPUAfterSupervisor
 {
     /**
      * Creates new processor.
@@ -13,5 +13,5 @@ public interface PostInstructionCPU
      * @param processor old processor
      * @return new processor
      */
-    CPU with(CPU processor);
+    UnsafeCPU with(CPU processor);
 }

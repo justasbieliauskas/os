@@ -9,11 +9,11 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class PostProgramCPU implements UnsafeCPU
+public class CPUAfterProgram implements UnsafeCPU
 {
     private final MutableCPU processor;
 
-    private final PostSupervisorCPU newProcessor;
+    private final CPUAfterSupervisor newProcessor;
 
     private final Iterable<Boolean> next;
 
@@ -22,9 +22,9 @@ public class PostProgramCPU implements UnsafeCPU
      * @param newProcessor new processor
      * @param next next
      */
-    public PostProgramCPU(
+    public CPUAfterProgram(
         MutableCPU processor,
-        PostSupervisorCPU newProcessor,
+        CPUAfterSupervisor newProcessor,
         Iterable<Boolean> next
     ) {
         this.processor = processor;

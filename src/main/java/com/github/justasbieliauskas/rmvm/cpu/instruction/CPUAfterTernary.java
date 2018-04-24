@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class PostTernaryInstructionCPU implements CPU
+public class CPUAfterTernary implements CPU
 {
     private final Condition condition;
 
@@ -28,7 +28,7 @@ public class PostTernaryInstructionCPU implements CPU
      * @param first value on true
      * @param second value on false
      */
-    PostTernaryInstructionCPU(boolean condition, String id, int first, int second) {
+    CPUAfterTernary(boolean condition, String id, int first, int second) {
         this(
             () -> condition,
             new CPUWithRegister(id, first),
@@ -43,7 +43,7 @@ public class PostTernaryInstructionCPU implements CPU
      * @param first processor on true
      * @param second processor on false
      */
-    public PostTernaryInstructionCPU(Condition condition, CPU first, CPU second) {
+    public CPUAfterTernary(Condition condition, CPU first, CPU second) {
         this.condition = condition;
         this.first = first;
         this.second = second;

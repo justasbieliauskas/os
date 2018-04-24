@@ -5,7 +5,7 @@ package com.github.justasbieliauskas.rmvm.cpu;
  *
  * @author Justas Bieliauskas
  */
-public interface PostCommandCPU extends PostSupervisorCPU
+public interface CPUAfterCommand extends CPUAfterSupervisor
 {
 
 }
