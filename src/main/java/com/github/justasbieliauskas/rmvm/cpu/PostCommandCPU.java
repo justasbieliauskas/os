@@ -1,20 +1,11 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
-import java.util.Map;
-
 /**
- * Processor after command.
+ * Processor after executing an os command.
  *
  * @author Justas Bieliauskas
  */
-public interface PostCommandCPU
+public interface PostCommandCPU extends PostSupervisorCPU
 {
-    /**
-     * Creates new processor.
-     *
-     * @param registers old registers
-     * @param command command name
-     * @return checked processor
-     */
-    UnsafeCPU with(Map<String, Integer> registers, String command);
+
 }

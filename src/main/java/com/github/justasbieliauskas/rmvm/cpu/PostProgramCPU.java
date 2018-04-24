@@ -9,7 +9,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class ProgramCPU implements UnsafeCPU
+public class PostProgramCPU implements UnsafeCPU
 {
     private final MutableCPU processor;
 
@@ -22,7 +22,7 @@ public class ProgramCPU implements UnsafeCPU
      * @param newProcessor new processor
      * @param next next
      */
-    public ProgramCPU(
+    public PostProgramCPU(
         MutableCPU processor,
         PostSupervisorCPU newProcessor,
         Iterable<Boolean> next
@@ -40,7 +40,7 @@ public class ProgramCPU implements UnsafeCPU
             }
             try {
                 this.processor.update(
-                    this.newProcessor.with(this.processor.toMap()).toMap()
+                    this.newProcessor.with(this.processor).toMap()
                 );
             } catch (Exception e) {
                 throw new Exception("Failed to run next instruction!", e);

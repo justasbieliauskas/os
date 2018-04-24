@@ -1,7 +1,5 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
-import java.util.Map;
-
 /**
  * Processor after instruction.
  *
@@ -12,8 +10,8 @@ public interface PostInstructionCPU
     /**
      * Creates new processor.
      *
-     * @param registers old registers
-     * @return processor
+     * @param processor old processor
+     * @return new processor
      */
-    CPU with(Map<String, Integer> registers);
+    CPU with(CPU processor);
 }
