@@ -3,6 +3,10 @@ package com.github.justasbieliauskas.rmvm.fresh;
 /**
  * Shell to communicate with os.
  * Main class in application.
+ *
+ * TODO: test
+ *
+ * @author Justas Bieliauskas
  */
 public class Shell
 {

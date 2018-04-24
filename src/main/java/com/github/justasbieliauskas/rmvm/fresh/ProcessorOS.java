@@ -3,6 +3,8 @@ package com.github.justasbieliauskas.rmvm.fresh;
 /**
  * Operating system with processors.
  *
+ * TODO: test
+ *
  * @author Justas Bieliauskas
  */
 public class ProcessorOS implements OS
@@ -31,7 +33,7 @@ public class ProcessorOS implements OS
             );
         } catch (Exception e) {
             throw new Exception(
-                String.format("Failed to execute command \"%s\"", command),
+                "Failed to execute command \"" + command + "\".",
                 e
             );
         }
