@@ -1,5 +1,6 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
+import com.github.justasbieliauskas.rmvm.ProcessorEquality;
 import org.junit.Test;
 
 import java.util.Map;
@@ -14,25 +15,18 @@ import static org.junit.Assert.*;
 public class CPUWithRegisterTest
 {
     @Test
-    public void constructsTwoRegisters() {
-        CPUWithRegister processor = new CPUWithRegister(
-            new CPUWithRegister("A", () -> 1),
-            "B",
-            () -> 2
-        );
-        Map<String, Integer> registers = processor.toMap();
-        assertEquals(registers.get("A"), new Integer(1));
-        assertEquals(registers.get("B"), new Integer(2));
-    }
-
-    @Test
-    public void setsSameRegister() {
-        CPUWithRegister processor = new CPUWithRegister(
-            new CPUWithRegister("A", () -> 1),
-            "A",
-            () -> 2
-        );
-        Map<String, Integer> registers = processor.toMap();
-        assertEquals(registers.get("A"), new Integer(2));
+    public void twoRegisterCPUsAreEqual() {
+        new ProcessorEquality(
+            new CPUWithRegister(
+                new CPUWithRegister("A", () -> 1),
+                "B",
+                () -> 2
+            ),
+            new CPUWithRegister(
+                new CPUWithRegister("A", () -> 1),
+                "B",
+                () -> 2
+            )
+        ).test();
     }
 }
