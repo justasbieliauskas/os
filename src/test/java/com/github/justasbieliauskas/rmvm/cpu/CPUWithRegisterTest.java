@@ -1,6 +1,7 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
 import com.github.justasbieliauskas.rmvm.ProcessorEquality;
+import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import org.junit.Test;
 
 import java.util.Map;
