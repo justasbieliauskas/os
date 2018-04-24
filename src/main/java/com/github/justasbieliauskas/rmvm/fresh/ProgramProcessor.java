@@ -3,13 +3,13 @@ package com.github.justasbieliauskas.rmvm.fresh;
 import java.util.Map;
 
 /**
- * Processor after "debug" command.
+ * Processor after program run.
  *
  * TODO: better doc, tests.
  *
  * @author Justas Bieliauskas
  */
-public class DebugProcessor implements UnsafeProcessor, CommandProcessor
+public class ProgramProcessor implements UnsafeProcessor
 {
     private final MutableProcessor processor;
 
@@ -22,7 +22,7 @@ public class DebugProcessor implements UnsafeProcessor, CommandProcessor
      * @param newProcessor new processor
      * @param next next
      */
-    public DebugProcessor(
+    public ProgramProcessor(
         MutableProcessor processor,
         SuperInstructionProcessor newProcessor,
         Iterable<Boolean> next
@@ -47,11 +47,5 @@ public class DebugProcessor implements UnsafeProcessor, CommandProcessor
             }
         }
         return this.processor.toMap();
-    }
-
-    @Override
-    public UnsafeProcessor with(Map<String, Integer> registers, String command) {
-        // TODO: construct mutable processor from given registers
-        return null;
     }
 }
