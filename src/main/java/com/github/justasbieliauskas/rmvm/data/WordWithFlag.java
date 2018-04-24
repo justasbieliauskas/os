@@ -35,6 +35,18 @@ public class WordWithFlag implements Word
     }
 
     /**
+     * Constructor for creating initial status register with one flag set
+     * in which case the rest of status register is irrelevant.
+     * Used in testing.
+     *
+     * @param id flag identifier
+     * @param to1 should flag be changed to 1 (true) or 0 (false) as boolean
+     */
+    public WordWithFlag(char id, boolean to1) {
+        this(() -> 0, id, to1);
+    }
+
+    /**
      * Constructor for chaining new flags.
      *
      * @param status status register

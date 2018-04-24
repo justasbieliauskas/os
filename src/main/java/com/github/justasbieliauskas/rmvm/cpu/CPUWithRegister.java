@@ -20,6 +20,16 @@ public class CPUWithRegister implements CPU
     private final Word word;
 
     /**
+     * Constructor for creating initial processor with status register.
+     * Used in testing.
+     *
+     * @param status status register value
+     */
+    public CPUWithRegister(WordWithFlag status) {
+        this("ST", status);
+    }
+
+    /**
      * Constructor for creating initial processor with new value as integer.
      *
      * @param id register identifier

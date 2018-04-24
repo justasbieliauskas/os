@@ -16,6 +16,22 @@ public class PostLogicCPU implements CPU
 {
     private final CPUWithRegister processor;
 
+    /**
+     * Constructor for testing.
+     *
+     * @param processor hand-made processor
+     * @param result logic operation result as integer
+     */
+    PostLogicCPU(CPUWithRegister processor, int result) {
+        this(processor, () -> result);
+    }
+
+    /**
+     * Default constructor.
+     *
+     * @param processor processor
+     * @param result logic operation result
+     */
     public PostLogicCPU(CPU processor, Word result) {
         this.processor = new CPUWithRegister(
             new CPUWithRegister(processor, "A", result),
