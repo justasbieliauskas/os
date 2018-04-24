@@ -2,6 +2,9 @@ package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
+import com.github.justasbieliauskas.rmvm.cpu.CachedCPU;
+import com.github.justasbieliauskas.rmvm.data.CPURegister;
+import com.github.justasbieliauskas.rmvm.data.SymbolIndex;
 import com.github.justasbieliauskas.rmvm.data.Word;
 import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
 
@@ -30,9 +33,44 @@ public class PostLogicCPU implements CPU
      * Default constructor.
      *
      * @param processor processor
-     * @param result logic operation result
+     * @param name operation name - "AND", "OR" or "XOR"
      */
-    public PostLogicCPU(CPU processor, Word result) {
+    public PostLogicCPU(CPU processor, char[] name) {
+        this(new CachedCPU(processor), name);
+    }
+
+    private PostLogicCPU(CachedCPU processor, char[] name) {
+        this(
+            processor,
+            new SymbolIndex(name[0], 'A', 'O', 'X'),
+            new CPURegister(processor, "A"),
+            new CPURegister(processor, "B")
+        );
+    }
+
+    private PostLogicCPU(
+        CPU processor,
+        SymbolIndex index,
+        CPURegister first,
+        CPURegister second
+    ) {
+        this(
+            processor,
+            index,
+            () -> first.toInt() & second.toInt(),
+            () -> first.toInt() | second.toInt(),
+            () -> first.toInt() ^ second.toInt()
+        );
+    }
+
+    private PostLogicCPU(CPU processor, SymbolIndex index, Word... results) {
+        this(
+            processor,
+            () -> results[index.toInt()].toInt()
+        );
+    }
+
+    private PostLogicCPU(CPU processor, Word result) {
         this.processor = new CPUWithRegister(
             new CPUWithRegister(processor, "A", result),
             new WordWithFlag(
