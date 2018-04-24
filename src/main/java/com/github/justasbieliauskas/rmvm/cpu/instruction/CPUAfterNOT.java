@@ -10,18 +10,18 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class PostNOTCPU implements CPU
+public class CPUAfterNOT implements CPU
 {
     private final CPUWithRegister processor;
 
     /**
      * @param processor processor
      */
-    public PostNOTCPU(CPU processor) {
+    public CPUAfterNOT(CPU processor) {
         this(new CachedCPU(processor));
     }
 
-    private PostNOTCPU(CachedCPU processor) {
+    private CPUAfterNOT(CachedCPU processor) {
         this.processor = new CPUWithRegister(
             processor,
             "A",

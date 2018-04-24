@@ -6,17 +6,17 @@ import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import org.junit.Test;
 
 /**
- * Test for {@link PostNOTCPU}.
+ * Test for {@link CPUAfterNOT}.
  *
  * @author Justas Bieliauskas
  */
-public class PostNOTCPUTest
+public class CPUAfterNOTTest
 {
     @Test
     public void invertsNumber() {
         new WordEquality(
             new CPURegister(
-                new PostNOTCPU(new CPUWithRegister("A", 0)),
+                new CPUAfterNOT(new CPUWithRegister("A", 0)),
                 "A"
             ),
             -1
