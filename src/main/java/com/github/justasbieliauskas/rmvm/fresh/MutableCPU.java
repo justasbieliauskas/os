@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public interface MutableProcessor extends Processor
+public interface MutableCPU extends CPU
 {
     /**
      * Updates its registers to match given registers.

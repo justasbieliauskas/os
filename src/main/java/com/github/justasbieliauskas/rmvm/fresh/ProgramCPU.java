@@ -9,11 +9,11 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class ProgramProcessor implements UnsafeProcessor
+public class ProgramCPU implements UnsafeCPU
 {
-    private final MutableProcessor processor;
+    private final MutableCPU processor;
 
-    private final ProcessorAfterSuperInstruction newProcessor;
+    private final PostSupervisorCPU newProcessor;
 
     private final Iterable<Boolean> next;
 
@@ -22,9 +22,9 @@ public class ProgramProcessor implements UnsafeProcessor
      * @param newProcessor new processor
      * @param next next
      */
-    public ProgramProcessor(
-        MutableProcessor processor,
-        ProcessorAfterSuperInstruction newProcessor,
+    public ProgramCPU(
+        MutableCPU processor,
+        PostSupervisorCPU newProcessor,
         Iterable<Boolean> next
     ) {
         this.processor = processor;

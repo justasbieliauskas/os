@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public interface ProcessorAfterSuperInstruction
+public interface PostSupervisorCPU
 {
     /**
      * Creates new processor.
@@ -15,5 +15,5 @@ public interface ProcessorAfterSuperInstruction
      * @param registers old registers
      * @return checked processor
      */
-    UnsafeProcessor with(Map<String, Integer> registers);
+    UnsafeCPU with(Map<String, Integer> registers);
 }

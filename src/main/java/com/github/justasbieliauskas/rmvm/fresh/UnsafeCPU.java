@@ -7,11 +7,11 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public interface UnsafeProcessor
+public interface UnsafeCPU
 {
     /**
      * Converts itself to map.
-     * @see Processor
+     * @see CPU
      *
      * @return map representation
      * @throws Exception if converting to map fails

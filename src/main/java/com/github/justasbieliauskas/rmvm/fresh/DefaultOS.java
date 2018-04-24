@@ -9,24 +9,24 @@ package com.github.justasbieliauskas.rmvm.fresh;
  */
 public class DefaultOS implements OS
 {
-    private final MutableProcessor processor;
+    private final MutableCPU processor;
 
-    private final CommandProcessor commandProcessor;
+    private final PostCommandCPU newProcessor;
 
     /**
      * @param processor processor
-     * @param commandProcessor processor for commands
+     * @param newProcessor processor for commands
      */
-    public DefaultOS(MutableProcessor processor, CommandProcessor commandProcessor) {
+    public DefaultOS(MutableCPU processor, PostCommandCPU newProcessor) {
         this.processor = processor;
-        this.commandProcessor = commandProcessor;
+        this.newProcessor = newProcessor;
     }
 
     @Override
     public void execute(String command) throws Exception {
         try {
             this.processor.update(
-                this.commandProcessor.with(
+                this.newProcessor.with(
                     this.processor.toMap(),
                     command
                 ).toMap()

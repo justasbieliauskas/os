@@ -7,7 +7,7 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public interface Processor
+public interface CPU
 {
     /**
      * Converts itself to map.
