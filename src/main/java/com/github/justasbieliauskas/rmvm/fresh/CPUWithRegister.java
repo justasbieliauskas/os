@@ -21,10 +21,6 @@ public class CPUWithRegister implements CPU
 
     private final Word word;
 
-    public CPUWithRegister(Map<String, Integer> registers, String name, Word word) {
-        this(() -> registers, name, word);
-    }
-
     public CPUWithRegister(String name, Word word) {
         this(() -> new HashMap<>(), name, word);
     }
