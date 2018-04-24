@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.data;
 
-import com.github.justasbieliauskas.rmvm.fresh.CPU;
+import com.github.justasbieliauskas.rmvm.cpu.CPU;
 
 import java.nio.ByteBuffer;
 
@@ -32,27 +32,6 @@ public class WordWithFlag implements Word
      */
     public WordWithFlag(CPU processor, char id, Condition to1) {
         this(() -> processor.toMap().get("ST"), id, to1);
-    }
-
-    /**
-     * Constructor for setting zero flag on status register.
-     *
-     * @param status status register
-     * @param word word to check for zero
-     */
-    public WordWithFlag(Word status, Word word) {
-        this(status, 'Z', () -> word.toInt() == 0);
-    }
-
-    /**
-     * Constructor for hand-picking pre-defined flag values.
-     * In that case, the initial status register value is irrelevant.
-     *
-     * @param id flag identifier
-     * @param to1 should flag be changed to 1 (true) or 0 (false) as boolean
-     */
-    public WordWithFlag(char id, boolean to1) {
-        this(() -> 0, id, to1);
     }
 
     /**

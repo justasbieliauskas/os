@@ -9,21 +9,11 @@ import static org.junit.Assert.assertEquals;
  *
  * @author Justas Bieliauskas
  */
-public class WordEquality implements CloneableTest
+public class WordEquality implements Test
 {
     private final Word value;
 
     private final Word expected;
-
-    /**
-     * Constructor for when test is only going to clone itself.
-     * In that case, word value is irrelevant.
-     *
-     * @param expected expected value as integer
-     */
-    public WordEquality(int expected) {
-        this(() -> 0, expected);
-    }
 
     /**
      * Constructor for expecting value as integer.
@@ -49,10 +39,5 @@ public class WordEquality implements CloneableTest
     @Override
     public void test() {
         assertEquals(this.value.toInt(), this.expected.toInt());
-    }
-
-    @Override
-    public CloneableTest with(int value) {
-        return new WordEquality(() -> value, this.expected);
     }
 }

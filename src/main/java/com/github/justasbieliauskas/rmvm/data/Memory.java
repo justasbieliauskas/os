@@ -1,25 +1,25 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 /**
- * Memory.
+ * User memory.
  *
  * @author Justas Bieliauskas
  */
 public interface Memory
 {
     /**
-     * Modify byte in memory.
+     * Fetches a byte at given index.
      *
-     * @param index offset into memory
-     * @param value new byte value
-     */
-    void write(int index, byte value);
-
-    /**
-     * Byte value at specific index.
-     *
-     * @param index offset into memory
+     * @param index byte index
      * @return byte value
      */
     byte byteAt(int index);
+
+    /**
+     * Write byte to memory at given index.
+     *
+     * @param value byte value
+     * @param index index to write to
+     */
+    void write(byte value, int index);
 }
