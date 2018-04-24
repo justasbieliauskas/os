@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * Processor with new register value.
+ * Chaining object to create/update cpu registers.
  *
  * TODO: document constructors.
  *
