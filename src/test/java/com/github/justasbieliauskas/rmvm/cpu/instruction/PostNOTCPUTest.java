@@ -1,9 +1,9 @@
 package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
+import com.github.justasbieliauskas.rmvm.WordEquality;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
-import com.github.justasbieliauskas.rmvm.cpu.instruction.PostNOTCPU;
+import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * Test for {@link PostNOTCPU}.
@@ -14,9 +14,12 @@ public class PostNOTCPUTest
 {
     @Test
     public void invertsNumber() {
-        assertEquals(
-            new PostNOTCPU(new CPUWithRegister("A", () -> 0)).toMap().get("A"),
-            new Integer(-1)
-        );
+        new WordEquality(
+            new CPURegister(
+                new PostNOTCPU(new CPUWithRegister("A", 0)),
+                "A"
+            ),
+            -1
+        ).test();
     }
 }
