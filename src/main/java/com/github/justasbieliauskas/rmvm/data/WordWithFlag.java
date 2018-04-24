@@ -1,5 +1,7 @@
 package com.github.justasbieliauskas.rmvm.data;
 
+import com.github.justasbieliauskas.rmvm.fresh.CPU;
+
 import java.nio.ByteBuffer;
 
 /**
@@ -10,6 +12,27 @@ import java.nio.ByteBuffer;
 public class WordWithFlag implements Word
 {
     private final Word word;
+
+    /**
+     * Constructor for changing zero flag of status register in processor.
+     *
+     * @param processor processor
+     * @param word computation result
+     */
+    public WordWithFlag(CPU processor, Word word) {
+        this(processor, 'Z', () -> word.toInt() == 0);
+    }
+
+    /**
+     * Constructor for changing a flag of status register in processor.
+     *
+     * @param processor processor
+     * @param id flag identifier
+     * @param to1 should flag be changed to 1 (true) or 0 (false)
+     */
+    public WordWithFlag(CPU processor, char id, Condition to1) {
+        this(() -> processor.toMap().get("ST"), id, to1);
+    }
 
     /**
      * Constructor for setting zero flag on status register.

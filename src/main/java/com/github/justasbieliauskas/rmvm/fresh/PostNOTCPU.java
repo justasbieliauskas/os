@@ -5,6 +5,8 @@ import java.util.Map;
 /**
  * Processor after NOT instruction.
  *
+ * TODO: document
+ *
  * @author Justas Bieliauskas
  */
 public class PostNOTCPU implements CPU

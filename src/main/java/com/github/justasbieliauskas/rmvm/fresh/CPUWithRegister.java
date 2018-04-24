@@ -1,6 +1,7 @@
 package com.github.justasbieliauskas.rmvm.fresh;
 
 import com.github.justasbieliauskas.rmvm.data.Word;
+import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,10 @@ public class CPUWithRegister implements CPU
 
     public CPUWithRegister(String name, Word word) {
         this(() -> new HashMap<>(), name, word);
+    }
+
+    public CPUWithRegister(CPU processor, WordWithFlag word) {
+        this(processor, "ST", word);
     }
 
     public CPUWithRegister(CPU processor, String name, Word word) {
