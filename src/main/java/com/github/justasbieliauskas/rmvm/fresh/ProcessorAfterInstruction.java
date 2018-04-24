@@ -3,17 +3,17 @@ package com.github.justasbieliauskas.rmvm.fresh;
 import java.util.Map;
 
 /**
- * Processor after super instruction.
+ * Processor after instruction.
  *
  * @author Justas Bieliauskas
  */
-public interface SuperInstructionProcessor
+public interface ProcessorAfterInstruction
 {
     /**
      * Creates new processor.
      *
      * @param registers old registers
-     * @return checked processor
+     * @return processor
      */
-    UnsafeProcessor with(Map<String, Integer> registers);
+    Processor with(Map<String, Integer> registers);
 }

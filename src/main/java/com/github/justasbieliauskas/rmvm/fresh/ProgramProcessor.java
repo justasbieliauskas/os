@@ -13,7 +13,7 @@ public class ProgramProcessor implements UnsafeProcessor
 {
     private final MutableProcessor processor;
 
-    private final SuperInstructionProcessor newProcessor;
+    private final ProcessorAfterSuperInstruction newProcessor;
 
     private final Iterable<Boolean> next;
 
@@ -24,7 +24,7 @@ public class ProgramProcessor implements UnsafeProcessor
      */
     public ProgramProcessor(
         MutableProcessor processor,
-        SuperInstructionProcessor newProcessor,
+        ProcessorAfterSuperInstruction newProcessor,
         Iterable<Boolean> next
     ) {
         this.processor = processor;

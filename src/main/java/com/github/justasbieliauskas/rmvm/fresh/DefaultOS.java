@@ -7,7 +7,7 @@ package com.github.justasbieliauskas.rmvm.fresh;
  *
  * @author Justas Bieliauskas
  */
-public class ProcessorOS implements OS
+public class DefaultOS implements OS
 {
     private final MutableProcessor processor;
 
@@ -17,7 +17,7 @@ public class ProcessorOS implements OS
      * @param processor processor
      * @param commandProcessor processor for commands
      */
-    public ProcessorOS(MutableProcessor processor, CommandProcessor commandProcessor) {
+    public DefaultOS(MutableProcessor processor, CommandProcessor commandProcessor) {
         this.processor = processor;
         this.commandProcessor = commandProcessor;
     }
