@@ -23,9 +23,12 @@ public class CPUAfterCOMP implements CPU
         this(
             processor,
             new CPURegister(processor, "A"),
-            new CPURegister(processor, "B"),
-            new CPURegister(processor, "ST")
+            new CPURegister(processor, "B")
         );
+    }
+
+    CPUAfterCOMP(CPU processor, CPURegister a, CPURegister b) {
+        this(processor, a, b, new CPURegister(processor, "ST"));
     }
 
     private CPUAfterCOMP(
