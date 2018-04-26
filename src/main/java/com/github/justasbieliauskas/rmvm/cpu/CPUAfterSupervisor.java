@@ -1,11 +1,13 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
+import java.util.Map;
+
 /**
  * Processor after super instruction.
  *
  * @author Justas Bieliauskas
  */
-public interface CPUAfterSupervisor
+public interface CPUAfterSupervisor extends UnsafeCPU
 {
     /**
      * Creates new processor.
@@ -13,5 +15,5 @@ public interface CPUAfterSupervisor
      * @param processor old processor
      * @return new processor
      */
-    UnsafeCPU with(CPU processor);
+    CPUAfterSupervisor with(CPU processor);
 }

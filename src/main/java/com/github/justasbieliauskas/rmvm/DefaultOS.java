@@ -1,7 +1,7 @@
 package com.github.justasbieliauskas.rmvm;
 
+import com.github.justasbieliauskas.rmvm.cpu.CPUAfterCommand;
 import com.github.justasbieliauskas.rmvm.cpu.MutableCPU;
-import com.github.justasbieliauskas.rmvm.cpu.CPUAfterMasterCommand;
 
 /**
  * Operating system with processors.
@@ -14,13 +14,13 @@ public class DefaultOS implements OS
 {
     private final MutableCPU processor;
 
-    private final CPUAfterMasterCommand newProcessor;
+    private final CPUAfterCommand newProcessor;
 
     /**
      * @param processor processor
      * @param newProcessor processor for commands
      */
-    public DefaultOS(MutableCPU processor, CPUAfterMasterCommand newProcessor) {
+    public DefaultOS(MutableCPU processor, CPUAfterCommand newProcessor) {
         this.processor = processor;
         this.newProcessor = newProcessor;
     }

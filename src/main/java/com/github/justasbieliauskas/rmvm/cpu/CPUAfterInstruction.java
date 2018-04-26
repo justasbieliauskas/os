@@ -5,7 +5,7 @@ package com.github.justasbieliauskas.rmvm.cpu;
  *
  * @author Justas Bieliauskas
  */
-public interface CPUAfterInstruction
+public interface CPUAfterInstruction extends CPU
 {
     /**
      * Creates new processor.
@@ -13,5 +13,5 @@ public interface CPUAfterInstruction
      * @param processor old processor
      * @return new processor
      */
-    CPU with(CPU processor);
+    CPUAfterInstruction with(CPU processor);
 }
