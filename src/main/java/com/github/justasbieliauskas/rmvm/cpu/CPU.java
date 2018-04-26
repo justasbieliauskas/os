@@ -15,5 +15,5 @@ public interface CPU
      *
      * @return map representation
      */
-    Map<String, Integer> toMap();
+    Map<String, Long> toMap();
 }

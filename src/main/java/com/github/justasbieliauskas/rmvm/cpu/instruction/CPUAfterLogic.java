@@ -57,16 +57,16 @@ public class CPUAfterLogic implements CPU
         this(
             processor,
             index,
-            () -> first.toInt() & second.toInt(),
-            () -> first.toInt() | second.toInt(),
-            () -> first.toInt() ^ second.toInt()
+            () -> first.toLong() & second.toLong(),
+            () -> first.toLong() | second.toLong(),
+            () -> first.toLong() ^ second.toLong()
         );
     }
 
     private CPUAfterLogic(CPU processor, SymbolIndex index, Word... results) {
         this(
             processor,
-            () -> results[index.toInt()].toInt()
+            () -> results[index.toInt()].toLong()
         );
     }
 
@@ -86,7 +86,7 @@ public class CPUAfterLogic implements CPU
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         return this.processor.toMap();
     }
 }

@@ -50,7 +50,7 @@ public class CPUAfterTernary implements CPU
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         if(this.condition.isTrue()) {
             return this.first.toMap();
         }

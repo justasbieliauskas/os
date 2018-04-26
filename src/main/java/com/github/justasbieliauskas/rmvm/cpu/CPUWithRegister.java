@@ -86,9 +86,9 @@ public class CPUWithRegister implements CPU
     }
 
     @Override
-    public Map<String, Integer> toMap() {
-        Map<String, Integer> registers = this.processor.toMap();
-        registers.put(this.id, this.word.toInt());
+    public Map<String, Long> toMap() {
+        Map<String, Long> registers = this.processor.toMap();
+        registers.put(this.id, this.word.toLong());
         return registers;
     }
 }

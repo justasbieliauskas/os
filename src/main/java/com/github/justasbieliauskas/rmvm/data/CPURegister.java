@@ -24,7 +24,7 @@ public class CPURegister implements Word
     }
 
     @Override
-    public int toInt() {
+    public long toLong() {
         return this.processor.toMap().get(this.id);
     }
 }

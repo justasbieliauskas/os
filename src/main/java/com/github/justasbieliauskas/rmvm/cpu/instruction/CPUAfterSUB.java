@@ -30,12 +30,12 @@ public class CPUAfterSUB implements CPU
         this.processor = new CPUWithRegister(
             new CPUAfterCOMP(processor, a, b),
             "A",
-            () -> a.toInt() - b.toInt()
+            () -> a.toLong() - b.toLong()
         );
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         return this.processor.toMap();
     }
 }

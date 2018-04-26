@@ -60,18 +60,18 @@ public class CPUAfterDIV implements CPU
         CPURegister divisor
     ) {
         this.processor = new CPUAfterTernary(
-            () -> divisor.toInt() != 0,
+            () -> divisor.toLong() != 0,
             new CPUWithRegister(
                 processor,
                 "A",
-                () -> dividend.toInt() / divisor.toInt()
+                () -> dividend.toLong() / divisor.toLong()
             ),
             new CPUWithRegister(processor, "PI", 2)
         );
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         return this.processor.toMap();
     }
 }

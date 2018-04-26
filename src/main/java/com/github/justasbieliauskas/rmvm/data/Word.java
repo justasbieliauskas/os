@@ -8,9 +8,9 @@ package com.github.justasbieliauskas.rmvm.data;
 public interface Word
 {
     /**
-     * Convert to integer.
+     * Convert to long integer.
      *
-     * @return integer representation
+     * @return long representation
      */
-    int toInt();
+    long toLong();
 }

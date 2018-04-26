@@ -34,6 +34,6 @@ public class WordByte implements Byte
 
     @Override
     public byte toByte() {
-        return (byte) (this.word.toInt() >> (8 * this.index));
+        return (byte) (this.word.toLong() >> (8 * this.index));
     }
 }

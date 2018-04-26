@@ -14,5 +14,5 @@ public interface MutableCPU extends CPU
      *
      * @param registers new registers
      */
-    void update(Map<String, Integer> registers);
+    void update(Map<String, Long> registers);
 }

@@ -30,7 +30,7 @@ public class CPUAfterNOT implements CPU
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         return this.processor.toMap();
     }
 }

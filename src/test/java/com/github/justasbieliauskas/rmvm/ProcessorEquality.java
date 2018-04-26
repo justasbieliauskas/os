@@ -28,8 +28,8 @@ public class ProcessorEquality implements Test
 
     @Override
     public void test() {
-        Map<String, Integer> registers = this.subject.toMap();
-        for(Map.Entry<String, Integer> pair : this.expected.toMap().entrySet()) {
+        Map<String, Long> registers = this.subject.toMap();
+        for(Map.Entry<String, Long> pair : this.expected.toMap().entrySet()) {
             if(!registers.containsKey(pair.getKey())) {
                 fail(pair.getKey() + " not in subject processor.");
             }

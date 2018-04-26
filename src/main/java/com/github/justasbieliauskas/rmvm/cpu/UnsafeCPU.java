@@ -16,5 +16,5 @@ public interface UnsafeCPU
      * @return map representation
      * @throws Exception if converting to map fails
      */
-    Map<String, Integer> toMap() throws Exception;
+    Map<String, Long> toMap() throws Exception;
 }

@@ -20,7 +20,7 @@ public class WordWithFlag implements Word
      * @param word computation result
      */
     public WordWithFlag(CPU processor, Word word) {
-        this(processor, 'Z', () -> word.toInt() == 0);
+        this(processor, 'Z', () -> word.toLong() == 0);
     }
 
     /**
@@ -114,16 +114,16 @@ public class WordWithFlag implements Word
     private WordWithFlag(Word word, int byteIndex, Byte byteWithFlag) {
         this.word = () -> {
             byte[] bytes = ByteBuffer
-                .allocate(Integer.BYTES)
-                .putInt(word.toInt())
+                .allocate(Long.BYTES)
+                .putLong(word.toLong())
                 .array();
-            bytes[Integer.BYTES - byteIndex - 1] = byteWithFlag.toByte();
-            return ByteBuffer.wrap(bytes).getInt();
+            bytes[Long.BYTES - byteIndex - 1] = byteWithFlag.toByte();
+            return ByteBuffer.wrap(bytes).getLong();
         };
     }
 
     @Override
-    public int toInt() {
-        return this.word.toInt();
+    public long toLong() {
+        return this.word.toLong();
     }
 }

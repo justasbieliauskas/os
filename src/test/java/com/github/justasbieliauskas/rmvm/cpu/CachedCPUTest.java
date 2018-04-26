@@ -1,7 +1,5 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
-import com.github.justasbieliauskas.rmvm.cpu.CPU;
-import com.github.justasbieliauskas.rmvm.cpu.CachedCPU;
 import org.junit.Test;
 
 import java.util.Map;
@@ -21,7 +19,7 @@ public class CachedCPUTest
             new CPU() {
                 private int count = 1;
                 @Override
-                public Map<String, Integer> toMap() {
+                public Map<String, Long> toMap() {
                     if(this.count == 2) {
                         fail("toMap() called twice.");
                     }

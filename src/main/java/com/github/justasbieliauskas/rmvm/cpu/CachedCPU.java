@@ -14,7 +14,7 @@ public class CachedCPU implements CPU
 {
     private final CPU processor;
 
-    private final ArrayList<Map<String, Integer>> storage;
+    private final ArrayList<Map<String, Long>> storage;
 
     public CachedCPU(CPU processor) {
         this.processor = processor;
@@ -22,7 +22,7 @@ public class CachedCPU implements CPU
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         if(this.storage.isEmpty()) {
             this.storage.add(this.processor.toMap());
         }

@@ -43,16 +43,16 @@ public class CPUAfterCOMP implements CPU
                 new WordWithFlag(
                     status,
                     'Z',
-                    () -> a.toInt() == b.toInt()
+                    () -> a.toLong() == b.toLong()
                 ),
                 'C',
-                () -> a.toInt() < b.toInt()
+                () -> a.toLong() < b.toLong()
             )
         );
     }
 
     @Override
-    public Map<String, Integer> toMap() {
+    public Map<String, Long> toMap() {
         return this.processor.toMap();
     }
 }

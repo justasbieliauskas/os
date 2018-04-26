@@ -19,9 +19,9 @@ public class WordEquality implements Test
      * Constructor for expecting value as integer.
      *
      * @param value word subject
-     * @param expected expected value as integer
+     * @param expected expected value as long
      */
-    public WordEquality(Word value, int expected) {
+    public WordEquality(Word value, long expected) {
         this(value, () -> expected);
     }
 
@@ -38,6 +38,6 @@ public class WordEquality implements Test
 
     @Override
     public void test() {
-        assertEquals(this.value.toInt(), this.expected.toInt());
+        assertEquals(this.value.toLong(), this.expected.toLong());
     }
 }

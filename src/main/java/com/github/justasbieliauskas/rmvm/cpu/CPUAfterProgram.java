@@ -33,7 +33,7 @@ public class CPUAfterProgram implements UnsafeCPU
     }
 
     @Override
-    public Map<String, Integer> toMap() throws Exception {
+    public Map<String, Long> toMap() throws Exception {
         for(boolean next : this.next) {
             if(!next) {
                 break;
