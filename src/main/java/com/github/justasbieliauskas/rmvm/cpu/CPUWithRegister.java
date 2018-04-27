@@ -33,9 +33,9 @@ public class CPUWithRegister implements CPU
      * Constructor for creating initial processor with new value as integer.
      *
      * @param id register identifier
-     * @param word register value as integer
+     * @param word register value as long
      */
-    public CPUWithRegister(String id, int word) {
+    public CPUWithRegister(String id, long word) {
         this(id, () -> word);
     }
 
@@ -55,9 +55,9 @@ public class CPUWithRegister implements CPU
      *
      * @param processor processor
      * @param id register identifier
-     * @param word new register value as integer
+     * @param word new register value as long
      */
-    public CPUWithRegister(CPU processor, String id, int word) {
+    public CPUWithRegister(CPU processor, String id, long word) {
         this(processor, id, () -> word);
     }
 

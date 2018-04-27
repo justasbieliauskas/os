@@ -14,7 +14,7 @@ public class WordWithFlagTest
     public void changesSeveralFlags() {
         new WordEquality(
             new WordWithFlag(
-                new WordWithFlag(() -> 690699360, 0, 3, true),
+                new WordWithFlag(690699360, 0, 3, true),
                 3,
                 5,
                 false

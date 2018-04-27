@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
-import com.github.justasbieliauskas.rmvm.ProcessorEquality;
+import com.github.justasbieliauskas.rmvm.CPUEquality;
 import org.junit.Test;
 
 /**
@@ -12,7 +12,7 @@ public class CPUWithRegisterTest
 {
     @Test
     public void twoRegisterCPUsAreEqual() {
-        new ProcessorEquality(
+        new CPUEquality(
             new CPUWithRegister(
                 new CPUWithRegister("A", () -> 1),
                 "B",

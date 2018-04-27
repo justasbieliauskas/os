@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
-import com.github.justasbieliauskas.rmvm.ProcessorEquality;
+import com.github.justasbieliauskas.rmvm.CPUEquality;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class CPUAfterDIVTest
 {
     @Test
     public void divides2Numbers() {
-        new ProcessorEquality(
+        new CPUEquality(
             new CPUAfterDIV(11, 5, 0),
             new CPUWithRegister(
                 "A",

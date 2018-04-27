@@ -11,7 +11,7 @@ import static org.junit.Assert.fail;
  *
  * @author Justas Bieliauskas
  */
-public class ProcessorEquality implements Test
+public class CPUEquality implements Test
 {
     private final CPU subject;
 
@@ -21,7 +21,7 @@ public class ProcessorEquality implements Test
      * @param subject subject processor
      * @param expected expected processor
      */
-    public ProcessorEquality(CPU subject, CPU expected) {
+    public CPUEquality(CPU subject, CPU expected) {
         this.subject = subject;
         this.expected = expected;
     }
@@ -34,9 +34,9 @@ public class ProcessorEquality implements Test
                 fail(pair.getKey() + " not in subject processor.");
             }
             assertEquals(
-                pair.getKey() + " registers not equal.",
-                registers.get(pair.getKey()),
-                pair.getValue()
+                pair.getKey() + " registers are not equal.",
+                pair.getValue(),
+                registers.get(pair.getKey())
             );
         }
     }
