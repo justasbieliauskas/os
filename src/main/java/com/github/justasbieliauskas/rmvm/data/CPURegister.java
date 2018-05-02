@@ -1,6 +1,8 @@
 package com.github.justasbieliauskas.rmvm.data;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
+import com.github.justasbieliauskas.rmvm.cpu.CPUAsSafe;
+import com.github.justasbieliauskas.rmvm.cpu.UnsafeCPU;
 
 /**
  * Register in processor.
@@ -15,6 +17,18 @@ public class CPURegister implements Word
     private final String id;
 
     /**
+     * Constructor for initializing with unsafe processor.
+     *
+     * @param processor unsafe processor
+     * @param id register identifier
+     */
+    public CPURegister(UnsafeCPU processor, String id) {
+        this(new CPUAsSafe(processor), id);
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param processor processor
      * @param id register identifier
      */

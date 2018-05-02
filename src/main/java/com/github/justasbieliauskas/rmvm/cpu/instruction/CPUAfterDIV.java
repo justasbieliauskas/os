@@ -1,8 +1,6 @@
 package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
-import com.github.justasbieliauskas.rmvm.cpu.CPU;
-import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
-import com.github.justasbieliauskas.rmvm.cpu.CachedCPU;
+import com.github.justasbieliauskas.rmvm.cpu.*;
 import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import java.util.Map;
 
@@ -13,7 +11,7 @@ import java.util.Map;
  */
 public class CPUAfterDIV implements CPU
 {
-    private final CPUAfterTernary processor;
+    private final CPUAsSafe processor;
 
     /**
      * Constructor for testing.
@@ -59,14 +57,16 @@ public class CPUAfterDIV implements CPU
         CPURegister dividend,
         CPURegister divisor
     ) {
-        this.processor = new CPUAfterTernary(
-            () -> divisor.toLong() != 0,
-            new CPUWithRegister(
-                processor,
-                "A",
-                () -> dividend.toLong() / divisor.toLong()
-            ),
-            new CPUWithRegister(processor, "PI", 2)
+        this.processor = new CPUAsSafe(
+            new TernaryCPU(
+                () -> divisor.toLong() != 0,
+                new CPUWithRegister(
+                    processor,
+                    "A",
+                    () -> dividend.toLong() / divisor.toLong()
+                ),
+                new CPUWithRegister(processor, "PI", 2)
+            )
         );
     }
 

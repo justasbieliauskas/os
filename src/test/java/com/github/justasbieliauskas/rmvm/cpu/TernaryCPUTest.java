@@ -1,21 +1,22 @@
-package com.github.justasbieliauskas.rmvm.cpu.instruction;
+package com.github.justasbieliauskas.rmvm.cpu;
 
 import com.github.justasbieliauskas.rmvm.WordEquality;
+import com.github.justasbieliauskas.rmvm.cpu.TernaryCPU;
 import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import org.junit.Test;
 
 /**
- * Test for {@link CPUAfterTernary}.
+ * Test for {@link TernaryCPU}.
  *
  * @author Justas Bieliauskas
  */
-public class CPUAfterTernaryTest
+public class TernaryCPUTest
 {
     @Test
     public void onTrue() {
         new WordEquality(
             new CPURegister(
-                new CPUAfterTernary(true, "A", 5, 14),
+                new TernaryCPU(true, "A", 5, 14),
                 "A"
             ),
             5
@@ -26,7 +27,7 @@ public class CPUAfterTernaryTest
     public void onFalse() {
         new WordEquality(
             new CPURegister(
-                new CPUAfterTernary(false, "A", 66, 28),
+                new TernaryCPU(false, "A", 66, 28),
                 "A"
             ),
             28
