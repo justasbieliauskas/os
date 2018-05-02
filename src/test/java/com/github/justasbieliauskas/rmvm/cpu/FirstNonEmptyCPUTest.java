@@ -30,6 +30,7 @@ public class FirstNonEmptyCPUTest
 
     @Test
     public void empty() {
+        // TODO: oop test
         assertTrue(
             new CPUAsSafe(
                 new FirstNonEmptyCPU(

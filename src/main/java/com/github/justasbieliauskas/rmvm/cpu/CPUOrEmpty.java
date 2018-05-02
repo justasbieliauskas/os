@@ -23,7 +23,7 @@ public class CPUOrEmpty implements UnsafeCPU
      * @param id register identifier of processor on true
      * @param word register value of processor on true
      */
-    public CPUOrEmpty(boolean condition, String id, long word) {
+    CPUOrEmpty(boolean condition, String id, long word) {
         this(
             () -> condition,
             new CPUAsUnsafe(new CPUWithRegister(id, word))
