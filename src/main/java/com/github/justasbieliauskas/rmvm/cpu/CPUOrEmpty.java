@@ -15,6 +15,24 @@ public class CPUOrEmpty implements UnsafeCPU
     private final TernaryCPU processor;
 
     /**
+     * Constructor for switching between empty processor
+     * or processor with given word as A register.
+     * Used in tests.
+     *
+     * @param condition condition as boolean
+     * @param id register identifier of processor on true
+     * @param word register value of processor on true
+     */
+    public CPUOrEmpty(boolean condition, String id, long word) {
+        this(
+            () -> condition,
+            new CPUAsUnsafe(new CPUWithRegister(id, word))
+        );
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param condition whether to act as given processor or empty one
      * @param processor processor if condition is true
      */
