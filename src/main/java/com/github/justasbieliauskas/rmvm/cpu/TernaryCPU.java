@@ -61,14 +61,24 @@ public class TernaryCPU implements UnsafeCPU
     @Override
     public Map<String, Long> toMap() throws Exception {
         Map<String, Long> registers;
-        try {
-            if(this.condition.isTrue()) {
+        if(this.condition.isTrue()) {
+            try {
                 registers = this.processor.toMap();
-            } else {
-                registers = this.alternative.toMap();
+            } catch (Exception e) {
+                throw new Exception(
+                    "Failed to convert processor to map on true in TernaryCPU.",
+                    e
+                );
             }
-        } catch (Exception e) {
-            throw new Exception("Failed to convert TernaryCPU to map.", e);
+        } else {
+            try {
+                registers = this.alternative.toMap();
+            } catch (Exception e) {
+                throw new Exception(
+                    "Failed to convert alternative to map on false in TernaryCPU.",
+                    e
+                );
+            }
         }
         return registers;
     }
