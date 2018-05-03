@@ -10,12 +10,12 @@ import java.util.Map;
  */
 public class FirstNonEmptyCPU implements UnsafeCPU
 {
-    private final CPUOrEmpty[] processors;
+    private final UnsafeCPU[] processors;
 
     /**
      * @param processors conditional processors
      */
-    public FirstNonEmptyCPU(CPUOrEmpty... processors) {
+    public FirstNonEmptyCPU(UnsafeCPU... processors) {
         this.processors = processors;
     }
 

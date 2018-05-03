@@ -1,5 +1,8 @@
 package com.github.justasbieliauskas.rmvm;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 /**
  * Shell to communicate with os.
  * Main class in application.
@@ -15,6 +18,21 @@ public class Shell
     private final Iterable<String> commands;
 
     /**
+     * Constructor for initializing with pre-defined command sequence.
+     *
+     * @param os os
+     * @param commands commands to run as array
+     */
+    public Shell(OS os, String... commands) {
+        this(
+            os,
+            () -> Arrays.asList(commands).iterator()
+        );
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param os os
      * @param commands commands to run
      */

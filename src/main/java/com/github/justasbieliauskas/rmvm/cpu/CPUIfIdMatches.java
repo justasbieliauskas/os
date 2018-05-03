@@ -31,6 +31,19 @@ public class CPUIfIdMatches implements UnsafeCPU
     }
 
     /**
+     * Constructor for initializing with string identifier and safe processor.
+     *
+     * @param id compared identifier as string
+     * @param expected expected identifier
+     * @param processor processor on match as safe
+     */
+    public CPUIfIdMatches(String id, String expected, CPU processor) {
+        this(() -> id, expected, new CPUAsUnsafe(processor));
+    }
+
+    /**
+     * Default constructor.
+     *
      * @param id compared identifier
      * @param expected expected identifier
      * @param processor processor on match

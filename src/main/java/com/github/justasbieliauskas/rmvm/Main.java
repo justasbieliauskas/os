@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm;
 
-import com.github.justasbieliauskas.rmvm.fake.Commands;
+import com.github.justasbieliauskas.rmvm.cpu.CPUOfRegisters;
 
 /**
  * Demo.
@@ -11,8 +11,8 @@ public class Main
 {
     public static void main(String[] args) {
         Shell shell = new Shell(
-            System.out::println,
-            new Commands("load first", "show memory", "run")
+            new OSWithCPU(new CPUOfRegisters()),
+            "registers"
         );
         try {
             shell.run();
