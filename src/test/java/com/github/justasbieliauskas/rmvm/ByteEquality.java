@@ -13,19 +13,19 @@ public class ByteEquality implements Test
 {
     private final Byte subject;
 
-    private final int value;
+    private final int expected;
 
     /**
      * @param subject byte subject
-     * @param value expected value
+     * @param expected expected value
      */
-    public ByteEquality(Byte subject, int value) {
+    public ByteEquality(Byte subject, int expected) {
         this.subject = subject;
-        this.value = value;
+        this.expected = expected;
     }
 
     @Override
     public void test() {
-        assertEquals(this.subject.toByte(), this.value);
+        assertEquals(this.expected, this.subject.toByte());
     }
 }

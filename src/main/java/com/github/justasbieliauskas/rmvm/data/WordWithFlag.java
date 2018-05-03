@@ -108,45 +108,12 @@ public class WordWithFlag implements Word
         this(status, 0, new FlagIndex(id), to1);
     }
 
-    private WordWithFlag(Word word, int byteIndex, Index flagIndex, Condition to1) {
-        this(
-            word,
+    private WordWithFlag(Word status, int byteIndex, Index flagIndex, Condition to1) {
+        this.word = new WordWithByte(
+            status,
             byteIndex,
-            flagIndex,
-            new WordByte(word, byteIndex),
-            to1
+            new ByteWithFlag(new WordByte(status, byteIndex), flagIndex, to1)
         );
-    }
-
-    private WordWithFlag(
-        Word word,
-        int byteIndex,
-        Index flagIndex,
-        Byte wordByte,
-        Condition to1
-    ) {
-        this(
-            word,
-            byteIndex,
-            () -> {
-                byte filter = (byte) (1 << flagIndex.toInt());
-                if(to1.isTrue()) {
-                    return (byte) (wordByte.toByte() | filter);
-                }
-                return (byte) (wordByte.toByte() & ~filter);
-            }
-        );
-    }
-
-    private WordWithFlag(Word word, int byteIndex, Byte byteWithFlag) {
-        this.word = () -> {
-            byte[] bytes = ByteBuffer
-                .allocate(Long.BYTES)
-                .putLong(word.toLong())
-                .array();
-            bytes[Long.BYTES - byteIndex - 1] = byteWithFlag.toByte();
-            return ByteBuffer.wrap(bytes).getLong();
-        };
     }
 
     @Override
