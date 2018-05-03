@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 /**
  * Test for {@link MemoryOfWords}.
  *
+ * TODO: oop tests
+ *
  * @author Justas Bieliauskas
  */
 public class MemoryOfWordsTest
