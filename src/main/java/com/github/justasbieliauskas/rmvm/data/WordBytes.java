@@ -1,6 +1,6 @@
 package com.github.justasbieliauskas.rmvm.data;
 
-import java.lang.*;
+import java.lang.Byte;
 import java.util.Iterator;
 
 /**
@@ -8,7 +8,7 @@ import java.util.Iterator;
  *
  * @author Justas Bieliauskas
  */
-public class WordBytes implements Iterable<java.lang.Byte>
+public class WordBytes implements Iterable<Byte>
 {
     private final Word word;
 
@@ -24,9 +24,9 @@ public class WordBytes implements Iterable<java.lang.Byte>
     }
 
     @Override
-    public Iterator<java.lang.Byte> iterator() {
+    public Iterator<Byte> iterator() {
         int size = this.size.toInt();
-        return new Iterator<java.lang.Byte>() {
+        return new Iterator<Byte>() {
             private int index = 0;
 
             @Override
@@ -35,7 +35,7 @@ public class WordBytes implements Iterable<java.lang.Byte>
             }
 
             @Override
-            public java.lang.Byte next() {
+            public Byte next() {
                 return new WordByte(
                     WordBytes.this.word,
                     this.index++

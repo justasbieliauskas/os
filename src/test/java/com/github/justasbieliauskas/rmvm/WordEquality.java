@@ -38,6 +38,6 @@ public class WordEquality implements Test
 
     @Override
     public void test() {
-        assertEquals(this.value.toLong(), this.expected.toLong());
+        assertEquals(this.expected.toLong(), this.value.toLong());
     }
 }
