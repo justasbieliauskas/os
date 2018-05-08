@@ -5,7 +5,7 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public class SymbolIndex implements Index
+public class SymbolIndex implements Scalar
 {
     private final char symbol;
 

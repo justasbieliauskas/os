@@ -5,7 +5,7 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public interface Index
+public interface Scalar
 {
     /**
      * Convert to integer.

@@ -9,7 +9,7 @@ public class WordFlag implements Condition
 {
     private final Byte wordByte;
 
-    private final Index flagIndex;
+    private final Scalar flagIndex;
 
     /**
      * Constructor for testing.
@@ -22,7 +22,7 @@ public class WordFlag implements Condition
         this(() -> word, byteIndex, () -> flagIndex);
     }
 
-    private WordFlag(Word word, int byteIndex, Index flagIndex) {
+    private WordFlag(Word word, int byteIndex, Scalar flagIndex) {
         this.wordByte = new WordByte(word, byteIndex);
         this.flagIndex = flagIndex;
     }

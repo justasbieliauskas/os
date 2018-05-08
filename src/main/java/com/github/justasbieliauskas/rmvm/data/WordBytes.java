@@ -12,13 +12,13 @@ public class WordBytes implements Iterable<java.lang.Byte>
 {
     private final Word word;
 
-    private final Index size;
+    private final Scalar size;
 
     /**
      * @param word word to extract bytes from
      * @param size number of bytes per word
      */
-    public WordBytes(Word word, Index size) {
+    public WordBytes(Word word, Scalar size) {
         this.word = word;
         this.size = size;
     }

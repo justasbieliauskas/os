@@ -9,7 +9,7 @@ public class ByteWithFlag implements Byte
 {
     private final Byte original;
 
-    private final Index index;
+    private final Scalar index;
 
     private final Condition to1;
 
@@ -31,7 +31,7 @@ public class ByteWithFlag implements Byte
      * @param index byte index in original word
      * @param to1 should flag be changed to 1 (true) or 0 (false)
      */
-    public ByteWithFlag(Byte original, Index index, Condition to1) {
+    public ByteWithFlag(Byte original, Scalar index, Condition to1) {
         this.original = original;
         this.index = index;
         this.to1 = to1;

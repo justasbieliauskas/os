@@ -2,8 +2,6 @@ package com.github.justasbieliauskas.rmvm.data;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
 
-import java.nio.ByteBuffer;
-
 /**
  * Word with modified flag.
  *
@@ -108,7 +106,7 @@ public class WordWithFlag implements Word
         this(status, 0, new FlagIndex(id), to1);
     }
 
-    private WordWithFlag(Word status, int byteIndex, Index flagIndex, Condition to1) {
+    private WordWithFlag(Word status, int byteIndex, Scalar flagIndex, Condition to1) {
         this.word = new WordWithByte(
             status,
             byteIndex,

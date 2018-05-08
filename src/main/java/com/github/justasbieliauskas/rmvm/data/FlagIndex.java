@@ -6,7 +6,7 @@ package com.github.justasbieliauskas.rmvm.data;
  *
  * @author Justas Bieliauskas
  */
-public class FlagIndex implements Index
+public class FlagIndex implements Scalar
 {
     private final SymbolIndex index;
 
