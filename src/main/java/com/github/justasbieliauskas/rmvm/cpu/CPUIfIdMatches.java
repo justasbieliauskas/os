@@ -1,7 +1,10 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
 import com.github.justasbieliauskas.rmvm.data.Id;
+import com.github.justasbieliauskas.rmvm.data.IdEquality;
+import com.github.justasbieliauskas.rmvm.data.IdMatch;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,53 +13,38 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class CPUIfIdMatches implements UnsafeCPU
+public class CPUIfIdMatches implements UnsafeNewCPUWithId
 {
-    private final CPUOrEmpty processor;
+    private final TernaryCPU processor;
 
-    /**
-     * Constructor for testing.
-     *
-     * @param id compared identifier as string
-     * @param expected expected identifier
-     * @param registerId register identifier in processor on match
-     * @param word register value in processor on match
-     */
-    CPUIfIdMatches(String id, String expected, String registerId, long word) {
-        this(
-            () -> id,
-            expected,
-            new CPUAsUnsafe(new CPUWithRegister(registerId, word))
-        );
+    private final IdMatch match;
+
+    private final UnsafeNewCPUWithId origin;
+
+    public CPUIfIdMatches(String expected, UnsafeNewCPUWithId processor) {
+        this(new IdEquality(expected), processor);
     }
 
     /**
-     * Constructor for initializing with string identifier and safe processor.
-     *
-     * @param id compared identifier as string
-     * @param expected expected identifier
-     * @param processor processor on match as safe
+     * @param match whether id matches
+     * @param processor processor to act as if that id matches
      */
-    public CPUIfIdMatches(String id, String expected, CPU processor) {
-        this(() -> id, expected, new CPUAsUnsafe(processor));
-    }
-
-    /**
-     * Default constructor.
-     *
-     * @param id compared identifier
-     * @param expected expected identifier
-     * @param processor processor on match
-     */
-    public CPUIfIdMatches(Id id, String expected, UnsafeCPU processor) {
-        this.processor = new CPUOrEmpty(
-            () -> expected.equals(id.asString()),
-            processor
-        );
+    public CPUIfIdMatches(IdMatch match, UnsafeNewCPUWithId processor) {
+        this.processor = new TernaryCPU(match, processor, () -> new HashMap<>());
+        this.match = match;
+        this.origin = processor;
     }
 
     @Override
     public Map<String, Long> toMap() throws Exception {
         return this.processor.toMap();
+    }
+
+    @Override
+    public UnsafeNewCPUWithId with(CPU processor, Id id) {
+        return new CPUIfIdMatches(
+            this.match.with(id),
+            this.origin.with(processor, id)
+        );
     }
 }
