@@ -1,5 +1,7 @@
 package com.github.justasbieliauskas.rmvm;
 
+import com.github.justasbieliauskas.rmvm.data.Id;
+
 /**
  * Operating system.
  *
@@ -13,5 +15,5 @@ public interface OS
      * @param command command name
      * @throws Exception if executing a command fails
      */
-    void execute(String command) throws Exception;
+    void execute(Id command) throws Exception;
 }

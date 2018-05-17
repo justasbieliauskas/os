@@ -1,5 +1,7 @@
 package com.github.justasbieliauskas.rmvm;
 
+import com.github.justasbieliauskas.rmvm.data.Id;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -15,20 +17,7 @@ public class Shell
 {
     private final OS os;
 
-    private final Iterable<String> commands;
-
-    /**
-     * Constructor for initializing with pre-defined command sequence.
-     *
-     * @param os os
-     * @param commands commands to run as array
-     */
-    public Shell(OS os, String... commands) {
-        this(
-            os,
-            () -> Arrays.asList(commands).iterator()
-        );
-    }
+    private final Iterable<Id> commands;
 
     /**
      * Default constructor.
@@ -36,7 +25,7 @@ public class Shell
      * @param os os
      * @param commands commands to run
      */
-    public Shell(OS os, Iterable<String> commands) {
+    public Shell(OS os, Iterable<Id> commands) {
         this.os = os;
         this.commands = commands;
     }
@@ -47,7 +36,7 @@ public class Shell
      * @throws Exception if one of commands fails
      */
     public void run() throws Exception {
-        for(String command : this.commands) {
+        for(Id command : this.commands) {
             try {
                 this.os.execute(command);
             } catch (Exception e) {

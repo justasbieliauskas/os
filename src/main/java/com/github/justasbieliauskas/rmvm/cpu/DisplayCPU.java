@@ -1,30 +1,26 @@
-package com.github.justasbieliauskas.rmvm.cpu.command;
-
-import com.github.justasbieliauskas.rmvm.cpu.CPU;
+package com.github.justasbieliauskas.rmvm.cpu;
 
 import java.util.Map;
 
 /**
- * Processor after "register" command.
- * Displays current register values.
+ * Decorator processor outputs registers to stdout on update.
  *
  * @author Justas Bieliauskas
  */
-public class CPUAfterRegistersDisplay implements CPU
+public class DisplayCPU implements MutableCPU
 {
-    private final CPU processor;
+    private final MutableCPU processor;
 
     /**
      * @param processor processor
      */
-    public CPUAfterRegistersDisplay(CPU processor) {
+    public DisplayCPU(MutableCPU processor) {
         this.processor = processor;
     }
 
     @Override
-    public Map<String, Long> toMap() {
-        // TODO: use abstractions
-        Map<String, Long> registers = this.processor.toMap();
+    public void update(Map<String, Long> registers) {
+        this.processor.update(registers);
         StringBuilder representation = new StringBuilder();
         for(Map.Entry<String, Long> register : registers.entrySet()) {
             representation.append(
@@ -32,6 +28,10 @@ public class CPUAfterRegistersDisplay implements CPU
             );
         }
         System.out.println(representation.toString());
-        return registers;
+    }
+
+    @Override
+    public Map<String, Long> toMap() {
+        return this.processor.toMap();
     }
 }

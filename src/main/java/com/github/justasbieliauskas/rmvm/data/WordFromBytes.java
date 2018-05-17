@@ -6,7 +6,8 @@ import java.util.Arrays;
 
 /**
  * Word from sequence of bytes.
- * Given byte sequence must have a length of {@code Long.BYTES}.
+ * Given byte sequence must have a length of {@code Long.BYTES}
+ * and be big-endian, meaning, lsb should come last.
  *
  * @author Justas Bieliauskas
  */
