@@ -18,7 +18,7 @@ public class Main
                 new DisplayCPU(new CPUOfRegisters()),
                 new SafeNewCPUIgnoringId(new CPUAfterHALT())
             ),
-            new IdsAsStrings("")
+            new SequenceAsArray<>(() -> "")
         );
         try {
             shell.run();
