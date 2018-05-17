@@ -1,5 +1,7 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
+import com.github.justasbieliauskas.rmvm.data.Id;
+
 import java.util.Map;
 
 /**
@@ -8,14 +10,14 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class FirstNonEmptyCPU implements UnsafeCPU
+public class FirstNonEmptyCPU implements UnsafeNewCPUWithId
 {
-    private final UnsafeCPU[] processors;
+    private final UnsafeNewCPUWithId[] processors;
 
     /**
      * @param processors conditional processors
      */
-    public FirstNonEmptyCPU(UnsafeCPU... processors) {
+    public FirstNonEmptyCPU(UnsafeNewCPUWithId... processors) {
         this.processors = processors;
     }
 
@@ -39,5 +41,14 @@ public class FirstNonEmptyCPU implements UnsafeCPU
             }
         }
         return registers;
+    }
+
+    @Override
+    public UnsafeNewCPUWithId with(CPU processor, Id id) {
+        UnsafeNewCPUWithId[] processors = new UnsafeNewCPUWithId[this.processors.length];
+        for(int i = 0; i != processors.length; i++) {
+            processors[i] = this.processors[i].with(processor, id);
+        }
+        return new FirstNonEmptyCPU(processors);
     }
 }

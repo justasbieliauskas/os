@@ -2,9 +2,11 @@ package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
+import com.github.justasbieliauskas.rmvm.cpu.NewCPU;
 import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,14 +14,15 @@ import java.util.Map;
  *
  * @author Justas Bieliauskas
  */
-public class CPUAfterCOMP implements CPU
+public class CPUAfterCOMP implements NewCPU
 {
     private final CPUWithRegister processor;
 
-    /**
-     * @param processor processor
-     */
-    public CPUAfterCOMP(CPU processor) {
+    public CPUAfterCOMP() {
+        this(() -> new HashMap<>());
+    }
+
+    private CPUAfterCOMP(CPU processor) {
         this(
             processor,
             new CPURegister(processor, "A"),
@@ -54,5 +57,10 @@ public class CPUAfterCOMP implements CPU
     @Override
     public Map<String, Long> toMap() {
         return this.processor.toMap();
+    }
+
+    @Override
+    public NewCPU with(CPU processor) {
+        return new CPUAfterCOMP(processor);
     }
 }

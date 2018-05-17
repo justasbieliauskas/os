@@ -1,9 +1,7 @@
 package com.github.justasbieliauskas.rmvm;
 
-import com.github.justasbieliauskas.rmvm.cpu.CPUIfIdMatches;
-import com.github.justasbieliauskas.rmvm.cpu.CPUOfRegisters;
-import com.github.justasbieliauskas.rmvm.cpu.DisplayCPU;
-import com.github.justasbieliauskas.rmvm.cpu.SafeNewCPUIgnoringId;
+import com.github.justasbieliauskas.rmvm.cpu.*;
+import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterCOMP;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterHALT;
 import com.github.justasbieliauskas.rmvm.data.IdEquality;
 
@@ -18,12 +16,18 @@ public class Main
         Shell shell = new Shell(
             new OSWithCPU(
                 new DisplayCPU(new CPUOfRegisters()),
-                new CPUIfIdMatches(
-                    "HALT",
-                    new SafeNewCPUIgnoringId(new CPUAfterHALT())
+                new FirstNonEmptyCPU(
+                    new CPUIfIdMatches(
+                        "HALT",
+                        new SafeNewCPUIgnoringId(new CPUAfterHALT())
+                    ),
+                    new CPUIfIdMatches(
+                        "COMP",
+                        new SafeNewCPUIgnoringId(new CPUAfterCOMP())
+                    )
                 )
             ),
-            new SequenceAsArray<>(() -> "HALT")
+            new SequenceAsArray<>(() -> "COMP")
         );
         try {
             shell.run();
