@@ -14,7 +14,15 @@ public class CPURegister implements Word
 {
     private final CPU processor;
 
-    private final String id;
+    private final Id id;
+
+    public CPURegister(UnsafeCPU processor, String id) {
+        this(new CPUAsSafe(processor), id);
+    }
+
+    public CPURegister(CPU processor, String id) {
+        this(processor, () -> id);
+    }
 
     /**
      * Constructor for initializing with unsafe processor.
@@ -22,7 +30,7 @@ public class CPURegister implements Word
      * @param processor unsafe processor
      * @param id register identifier
      */
-    public CPURegister(UnsafeCPU processor, String id) {
+    public CPURegister(UnsafeCPU processor, Id id) {
         this(new CPUAsSafe(processor), id);
     }
 
@@ -32,13 +40,13 @@ public class CPURegister implements Word
      * @param processor processor
      * @param id register identifier
      */
-    public CPURegister(CPU processor, String id) {
+    public CPURegister(CPU processor, Id id) {
         this.processor = processor;
         this.id = id;
     }
 
     @Override
     public long toLong() {
-        return this.processor.toMap().get(this.id);
+        return this.processor.toMap().get(this.id.asString());
     }
 }

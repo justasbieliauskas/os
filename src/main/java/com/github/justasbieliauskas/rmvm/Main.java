@@ -3,7 +3,9 @@ package com.github.justasbieliauskas.rmvm;
 import com.github.justasbieliauskas.rmvm.cpu.*;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterCOMP;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterHALT;
+import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterPTOR;
 import com.github.justasbieliauskas.rmvm.data.IdEquality;
+import com.github.justasbieliauskas.rmvm.data.IdMatchesRegex;
 
 /**
  * Demo.
@@ -15,11 +17,17 @@ public class Main
     public static void main(String[] args) {
         Shell shell = new Shell(
             new OSWithCPU(
-                new DisplayCPU(new CPUOfRegisters()),
+                new DisplayCPU(
+                    new CPUOfRegisters(44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                ),
                 new FirstNonEmptyCPU(
                     new CPUIfIdMatches(
                         "HALT",
                         new SafeNewCPUIgnoringId(new CPUAfterHALT())
+                    ),
+                    new CPUIfIdMatches(
+                        new IdMatchesRegex("^(A|B|C|D)TO(A|B|C|D)$"),
+                        new SafeNewCPUWithId(new CPUAfterPTOR())
                     ),
                     new CPUIfIdMatches(
                         "COMP",
@@ -27,7 +35,7 @@ public class Main
                     )
                 )
             ),
-            new SequenceAsArray<>(() -> "COMP")
+            new SequenceAsArray<>(() -> "ATOB")
         );
         try {
             shell.run();

@@ -35,6 +35,49 @@ public class CPUOfRegisters implements MutableCPU
     }
 
     /**
+     * Constructor for initializing registers as {@link LongRegister}.
+     *
+     * @param a general purpose (A) register
+     * @param b general purpose (B) register
+     * @param c general purpose (C) register
+     * @param d general purpose (D) register
+     * @param status status (ST) register
+     * @param counter instruction counter (IC) register
+     * @param supervisor register for supervisor interrupts (SI)
+     * @param error register for programming error interrupts (PI)
+     * @param timer register for timer interrupts (TI)
+     * @param code code segment (CS) register
+     * @param page register for virtual memory page address (PTR)
+     */
+    public CPUOfRegisters(
+        long a,
+        long b,
+        long c,
+        long d,
+        long status,
+        long counter,
+        long supervisor,
+        long error,
+        long timer,
+        long code,
+        long page
+    ) {
+        this(
+            new LongRegister(a),
+            new LongRegister(b),
+            new LongRegister(c),
+            new LongRegister(d),
+            new LongRegister(status),
+            new LongRegister(counter),
+            new LongRegister(supervisor),
+            new LongRegister(error),
+            new LongRegister(timer),
+            new LongRegister(code),
+            new LongRegister(page)
+        );
+    }
+
+    /**
      * Default constructor.
      *
      * @param a general purpose (A) register

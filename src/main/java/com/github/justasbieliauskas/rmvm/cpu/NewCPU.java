@@ -3,6 +3,8 @@ package com.github.justasbieliauskas.rmvm.cpu;
 /**
  * Processor with ability to create new processor from an old one.
  * The new processor doesn't throw exceptions.
+ *
+ * @author Justas Bieliauskas
  */
 public interface NewCPU extends CPU
 {

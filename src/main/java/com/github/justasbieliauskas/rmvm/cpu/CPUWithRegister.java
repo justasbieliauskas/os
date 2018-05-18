@@ -1,5 +1,6 @@
 package com.github.justasbieliauskas.rmvm.cpu;
 
+import com.github.justasbieliauskas.rmvm.data.Id;
 import com.github.justasbieliauskas.rmvm.data.Word;
 import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
 
@@ -15,7 +16,7 @@ public class CPUWithRegister implements CPU
 {
     private final CPU processor;
 
-    private final String id;
+    private final Id id;
 
     private final Word word;
 
@@ -71,6 +72,10 @@ public class CPUWithRegister implements CPU
         this(processor, "ST", word);
     }
 
+    public CPUWithRegister(CPU processor, String id, Word word) {
+        this(processor, () -> id, word);
+    }
+
     /**
      * Default constructor.
      * Chains previous processor with new id + value.
@@ -79,7 +84,7 @@ public class CPUWithRegister implements CPU
      * @param id register identifier
      * @param word new register value
      */
-    public CPUWithRegister(CPU processor, String id, Word word) {
+    public CPUWithRegister(CPU processor, Id id, Word word) {
         this.processor = processor;
         this.id = id;
         this.word = word;
@@ -88,7 +93,7 @@ public class CPUWithRegister implements CPU
     @Override
     public Map<String, Long> toMap() {
         Map<String, Long> registers = this.processor.toMap();
-        registers.put(this.id, this.word.toLong());
+        registers.put(this.id.asString(), this.word.toLong());
         return registers;
     }
 }

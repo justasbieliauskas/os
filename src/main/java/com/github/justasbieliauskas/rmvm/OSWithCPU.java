@@ -32,7 +32,7 @@ public class OSWithCPU implements OS
             );
         } catch (Exception e) {
             throw new Exception(
-                "Failed to execute command \"" + command + "\".",
+                "Failed to execute command \"" + command.asString() + "\".",
                 e
             );
         }
