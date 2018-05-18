@@ -16,13 +16,13 @@ import java.util.Map;
  */
 public class CPUAfterCOMP implements NewCPU
 {
-    private final CPUWithRegister processor;
+    private final CPUAfterArithmetic processor;
 
     public CPUAfterCOMP() {
         this(() -> new HashMap<>());
     }
 
-    private CPUAfterCOMP(CPU processor) {
+    CPUAfterCOMP(CPU processor) {
         this(
             processor,
             new CPURegister(processor, "A"),
@@ -31,26 +31,11 @@ public class CPUAfterCOMP implements NewCPU
     }
 
     CPUAfterCOMP(CPU processor, CPURegister a, CPURegister b) {
-        this(processor, a, b, new CPURegister(processor, "ST"));
-    }
-
-    private CPUAfterCOMP(
-        CPU processor,
-        CPURegister a,
-        CPURegister b,
-        CPURegister status
-    ) {
-        this.processor = new CPUWithRegister(
+        this.processor = new CPUAfterArithmetic(
             processor,
-            new WordWithFlag(
-                new WordWithFlag(
-                    status,
-                    'Z',
-                    () -> a.toLong() == b.toLong()
-                ),
-                'C',
-                () -> a.toLong() < b.toLong()
-            )
+            a,
+            () -> a.toLong() == b.toLong(),
+            () -> a.toLong() < b.toLong()
         );
     }
 

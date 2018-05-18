@@ -16,36 +16,6 @@ public class CPUAfterADD implements CPU
     private final CPUWithRegister processor;
 
     /**
-     * Constructor for testing.
-     *
-     * @param a A register value
-     * @param b B register value
-     * @param zero zero flag as boolean
-     * @param carry carry flag as boolean
-     * @param overflow overflow flag as boolean
-     */
-    CPUAfterADD(long a, long b, boolean zero, boolean carry, boolean overflow) {
-        this(
-            new CPUWithRegister(
-                new CPUWithRegister(
-                    new CPUWithRegister("A", a),
-                    "B",
-                    b
-                ),
-                new WordWithFlag(
-                    new WordWithFlag(
-                        new WordWithFlag('Z', zero),
-                        'C',
-                        carry
-                    ),
-                    'O',
-                    overflow
-                )
-            )
-        );
-    }
-
-    /**
      * Default constructor.
      *
      * @param processor processor

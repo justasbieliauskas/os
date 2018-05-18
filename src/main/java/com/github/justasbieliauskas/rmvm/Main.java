@@ -18,7 +18,7 @@ public class Main
         Shell shell = new Shell(
             new OSWithCPU(
                 new DisplayCPU(
-                    new CPUOfRegisters(44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    new CPUOfRegisters(271863, 555, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 ),
                 new FirstNonEmptyCPU(
                     new CPUIfIdMatches(
@@ -35,7 +35,7 @@ public class Main
                     )
                 )
             ),
-            new SequenceAsArray<>(() -> "ATOB")
+            new SequenceAsArray<>(() -> "COMP")
         );
         try {
             shell.run();

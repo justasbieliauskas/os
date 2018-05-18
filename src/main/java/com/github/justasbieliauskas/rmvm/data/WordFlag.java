@@ -1,5 +1,7 @@
 package com.github.justasbieliauskas.rmvm.data;
 
+import com.github.justasbieliauskas.rmvm.cpu.CPU;
+
 /**
  * Bit (flag) of word.
  *
@@ -10,6 +12,10 @@ public class WordFlag implements Condition
     private final Byte wordByte;
 
     private final Scalar flagIndex;
+
+    public WordFlag(CPU processor, char id) {
+        this(new CPURegister(processor, "ST"), 0, new FlagIndex(id));
+    }
 
     /**
      * Constructor for testing.
