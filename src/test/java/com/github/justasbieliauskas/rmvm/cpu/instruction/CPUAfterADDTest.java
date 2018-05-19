@@ -14,60 +14,60 @@ import org.junit.Test;
  */
 public class CPUAfterADDTest
 {
-    @Test
-    public void addsNormalNumbers() {
-        new CPUEquality(
-            new CPUAfterADD(88, 127, true, true, true),
-            new CPUWithRegister(
-                new CPUWithRegister("A", 215),
-                new WordWithFlag(
-                    new WordWithFlag(
-                        new WordWithFlag('Z', false),
-                        'C',
-                        false
-                    ),
-                    'O',
-                    false
-                )
-            )
-        ).test();
-    }
-
-    @Test
-    public void resultOutOfRange() {
-        new CPUEquality(
-            new CPUAfterADD(4294967295L, 3, true, false, true),
-            new CPUWithRegister(
-                new CPUWithRegister("A", 2),
-                new WordWithFlag(
-                    new WordWithFlag(
-                        new WordWithFlag('Z', false),
-                        'C',
-                        true
-                    ),
-                    'O',
-                    false
-                )
-            )
-        ).test();
-    }
-
-    @Test
-    public void addsZeros() {
-        new CPUEquality(
-            new CPUAfterADD(0, 0, false, true, false),
-            new CPUWithRegister(
-                new CPUWithRegister("A", 0),
-                new WordWithFlag(
-                    new WordWithFlag(
-                        new WordWithFlag('Z', true),
-                        'C',
-                        false
-                    ),
-                    'O',
-                    false
-                )
-            )
-        ).test();
-    }
+//    @Test
+//    public void addsNormalNumbers() {
+//        new CPUEquality(
+//            new CPUAfterADD(88, 127, true, true, true),
+//            new CPUWithRegister(
+//                new CPUWithRegister("A", 215),
+//                new WordWithFlag(
+//                    new WordWithFlag(
+//                        new WordWithFlag('Z', false),
+//                        'C',
+//                        false
+//                    ),
+//                    'O',
+//                    false
+//                )
+//            )
+//        ).test();
+//    }
+//
+//    @Test
+//    public void resultOutOfRange() {
+//        new CPUEquality(
+//            new CPUAfterADD(4294967295L, 3, true, false, true),
+//            new CPUWithRegister(
+//                new CPUWithRegister("A", 2),
+//                new WordWithFlag(
+//                    new WordWithFlag(
+//                        new WordWithFlag('Z', false),
+//                        'C',
+//                        true
+//                    ),
+//                    'O',
+//                    false
+//                )
+//            )
+//        ).test();
+//    }
+//
+//    @Test
+//    public void addsZeros() {
+//        new CPUEquality(
+//            new CPUAfterADD(0, 0, false, true, false),
+//            new CPUWithRegister(
+//                new CPUWithRegister("A", 0),
+//                new WordWithFlag(
+//                    new WordWithFlag(
+//                        new WordWithFlag('Z', true),
+//                        'C',
+//                        false
+//                    ),
+//                    'O',
+//                    false
+//                )
+//            )
+//        ).test();
+//    }
 }

@@ -9,7 +9,7 @@ public class WordByte implements Byte
 {
     private final Word word;
 
-    private final int index;
+    private final Scalar index;
 
     /**
      * Constructor for testing.
@@ -21,19 +21,17 @@ public class WordByte implements Byte
         this(() -> word, index);
     }
 
-    /**
-     * Default constructor.
-     *
-     * @param word word
-     * @param index byte index
-     */
-    public WordByte(Word word, int index) {
+    WordByte(Word word, int index) {
+        this(word, () -> index);
+    }
+
+    public WordByte(Word word, Scalar index) {
         this.word = word;
         this.index = index;
     }
 
     @Override
     public byte toByte() {
-        return (byte) (this.word.toLong() >> (8 * this.index));
+        return (byte) (this.word.toLong() >> (8 * this.index.toInt()));
     }
 }

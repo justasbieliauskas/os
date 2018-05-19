@@ -2,6 +2,7 @@ package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
 import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
+import com.github.justasbieliauskas.rmvm.cpu.EmptyCPU;
 import com.github.justasbieliauskas.rmvm.cpu.NewCPU;
 import com.github.justasbieliauskas.rmvm.data.CPURegister;
 import com.github.justasbieliauskas.rmvm.data.WordWithFlag;
@@ -16,13 +17,13 @@ import java.util.Map;
  */
 public class CPUAfterCOMP implements NewCPU
 {
-    private final CPUAfterArithmetic processor;
+    private final CPUWithRegister processor;
 
     public CPUAfterCOMP() {
-        this(() -> new HashMap<>());
+        this(new EmptyCPU());
     }
 
-    CPUAfterCOMP(CPU processor) {
+    private CPUAfterCOMP(CPU processor) {
         this(
             processor,
             new CPURegister(processor, "A"),
@@ -31,11 +32,13 @@ public class CPUAfterCOMP implements NewCPU
     }
 
     CPUAfterCOMP(CPU processor, CPURegister a, CPURegister b) {
-        this.processor = new CPUAfterArithmetic(
+        this.processor = new CPUWithRegister(
             processor,
-            a,
-            () -> a.toLong() == b.toLong(),
-            () -> a.toLong() < b.toLong()
+            new WordWithFlag(
+                new WordWithFlag(processor, 'Z', () -> a.toLong() == b.toLong()),
+                'C',
+                () -> a.toLong() < b.toLong()
+            )
         );
     }
 

@@ -13,6 +13,10 @@ public class WordFlag implements Condition
 
     private final Scalar flagIndex;
 
+    public WordFlag(Word word, Scalar bytes) {
+        this(word, () -> bytes.toInt() - 1, () -> 7);
+    }
+
     public WordFlag(CPU processor, char id) {
         this(new CPURegister(processor, "ST"), 0, new FlagIndex(id));
     }
@@ -29,6 +33,10 @@ public class WordFlag implements Condition
     }
 
     private WordFlag(Word word, int byteIndex, Scalar flagIndex) {
+        this(word, () -> byteIndex, flagIndex);
+    }
+
+    private WordFlag(Word word, Scalar byteIndex, Scalar flagIndex) {
         this.wordByte = new WordByte(word, byteIndex);
         this.flagIndex = flagIndex;
     }

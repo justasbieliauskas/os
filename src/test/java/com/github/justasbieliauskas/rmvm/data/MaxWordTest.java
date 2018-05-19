@@ -13,8 +13,8 @@ public class MaxWordTest
     @Test
     public void decrementsMax() {
         new WordEquality(
-            new MaxWord(-5),
-            4294967290L
+            new MaxWord(() -> 4),
+            4294967295L
         ).test();
     }
 }

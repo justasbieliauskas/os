@@ -16,46 +16,14 @@ public class CPUAfterArithmetic implements CPU
 {
     private final CPUWithRegister processor;
 
-    public CPUAfterArithmetic(CPU processor, Word result) {
-        this(
-            processor,
-            result,
-            () -> result.toLong() == 0,
-            new WordFlag(processor, 'C')
-        );
-    }
-
-    public CPUAfterArithmetic(
-        CPU processor,
-        Word result,
-        Condition zero,
-        Condition carry
-    ) {
-        this(processor, result, zero, carry, new WordFlag(processor, 'O'));
-    }
-
-    public CPUAfterArithmetic(
-        CPU processor,
-        Word result,
-        Condition zero,
-        Condition carry,
-        Condition overflow
-    ) {
+    public CPUAfterArithmetic(CPU processor, Word result, WordWithFlag status) {
         this.processor = new CPUWithRegister(
             new CPUWithRegister(
                 new CPUAfterICAdvance(processor),
                 "A",
                 result
             ),
-            new WordWithFlag(
-                new WordWithFlag(
-                    new WordWithFlag(processor, 'Z', zero),
-                    'C',
-                    carry
-                ),
-                'O',
-                overflow
-            )
+            status
         );
     }
 

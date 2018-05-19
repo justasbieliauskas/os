@@ -21,13 +21,8 @@ public class WordInRange implements Word
         this(() -> word, () -> max);
     }
 
-    /**
-     * Constructor for checking a word against default max.
-     *
-     * @param word checked word
-     */
-    public WordInRange(Word word) {
-        this(word, new MaxWord());
+    public WordInRange(Word word, Scalar bytes) {
+        this(word, new MaxWord(bytes));
     }
 
     /**

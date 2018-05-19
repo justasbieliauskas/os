@@ -1,6 +1,7 @@
 package com.github.justasbieliauskas.rmvm;
 
 import com.github.justasbieliauskas.rmvm.cpu.*;
+import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterADD;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterCOMP;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterHALT;
 import com.github.justasbieliauskas.rmvm.cpu.instruction.CPUAfterPTOR;
@@ -18,7 +19,7 @@ public class Main
         Shell shell = new Shell(
             new OSWithCPU(
                 new DisplayCPU(
-                    new CPUOfRegisters(271863, 555, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    new CPUOfRegisters(1, 4294967295L, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                 ),
                 new FirstNonEmptyCPU(
                     new CPUIfIdMatches(
@@ -32,10 +33,14 @@ public class Main
                     new CPUIfIdMatches(
                         "COMP",
                         new SafeNewCPUIgnoringId(new CPUAfterCOMP())
+                    ),
+                    new CPUIfIdMatches(
+                        "ADD",
+                        new SafeNewCPUIgnoringId(new CPUAfterADD(() -> 4))
                     )
                 )
             ),
-            new SequenceAsArray<>(() -> "COMP")
+            new SequenceAsArray<>(() -> "ADD")
         );
         try {
             shell.run();

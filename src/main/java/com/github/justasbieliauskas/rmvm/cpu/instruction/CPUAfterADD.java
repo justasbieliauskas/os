@@ -1,7 +1,8 @@
 package com.github.justasbieliauskas.rmvm.cpu.instruction;
 
 import com.github.justasbieliauskas.rmvm.cpu.CPU;
-import com.github.justasbieliauskas.rmvm.cpu.CPUWithRegister;
+import com.github.justasbieliauskas.rmvm.cpu.EmptyCPU;
+import com.github.justasbieliauskas.rmvm.cpu.NewCPU;
 import com.github.justasbieliauskas.rmvm.data.*;
 
 import java.util.Map;
@@ -11,46 +12,83 @@ import java.util.Map;
  *
  * @author Paulius Aleksiūnas
  */
-public class CPUAfterADD implements CPU
+public class CPUAfterADD implements NewCPU
 {
-    private final CPUWithRegister processor;
+    private final CPUAfterArithmetic processor;
 
-    /**
-     * Default constructor.
-     *
-     * @param processor processor
-     */
-    public CPUAfterADD(CPU processor) {
+    private final Scalar bytes;
+
+    public CPUAfterADD(Scalar bytes) {
+        this(new EmptyCPU(), bytes);
+    }
+
+    private CPUAfterADD(CPU processor, Scalar bytes) {
         this(
             processor,
             new CPURegister(processor, "A"),
-            new CPURegister(processor, "B")
+            new CPURegister(processor, "B"),
+            bytes
         );
     }
 
-    private CPUAfterADD(CPU processor, CPURegister a, CPURegister b) {
+    private CPUAfterADD(CPU processor, CPURegister a, CPURegister b, Scalar bytes) {
         this(
             processor,
             () -> a.toLong() + b.toLong(),
-            // FIXME: shouldn't be aware of word limit
-            () -> a.toLong() > 268435455,
-            () -> b.toLong() > 268435455
+            new WordFlag(a, bytes),
+            new WordFlag(b, bytes),
+            bytes
         );
     }
 
-    private CPUAfterADD(CPU processor, Word result, Condition aFlag, Condition bFlag) {
-        this(processor, result, new WordInRange(result), aFlag, bFlag);
+    private CPUAfterADD(
+        CPU processor,
+        Word result,
+        WordFlag aFlag,
+        WordFlag bFlag,
+        Scalar bytes
+    ) {
+        this(
+            processor,
+            result,
+            new WordInRange(result, bytes),
+            aFlag,
+            bFlag,
+            bytes
+        );
     }
 
     private CPUAfterADD(
         CPU processor,
         Word result,
         WordInRange resultInRange,
-        Condition aFlag,
-        Condition bFlag
+        WordFlag aFlag,
+        WordFlag bFlag,
+        Scalar bytes
     ) {
-        this.processor = new CPUWithRegister(
-            new CPUWithRegister(processor, "A", resultInRange),
+        this(
+            processor,
+            result,
+            resultInRange,
+            aFlag,
+            bFlag,
+            new WordFlag(resultInRange, bytes),
+            bytes
+        );
+    }
+
+    private CPUAfterADD(
+        CPU processor,
+        Word result,
+        WordInRange resultInRange,
+        WordFlag aFlag,
+        WordFlag bFlag,
+        WordFlag resultInRangeFlag,
+        Scalar bytes
+    ) {
+        this.processor = new CPUAfterArithmetic(
+            processor,
+            resultInRange,
             new WordWithFlag(
                 new WordWithFlag(
                     new WordWithFlag(processor, resultInRange),
@@ -58,19 +96,21 @@ public class CPUAfterADD implements CPU
                     resultInRange
                 ),
                 'O',
-                () -> {
-                    if(aFlag.isTrue() != bFlag.isTrue()) {
-                        return false;
-                    }
-                    boolean resultFlag = resultInRange.toLong() > 268435455;
-                    return bFlag.isTrue() != resultFlag;
-                }
+                () -> (aFlag.isTrue() == bFlag.isTrue()) &&
+                      (bFlag.isTrue() != resultInRangeFlag.isTrue())
             )
         );
+        this.bytes = bytes;
     }
+
 
     @Override
     public Map<String, Long> toMap() {
         return this.processor.toMap();
+    }
+
+    @Override
+    public NewCPU with(CPU processor) {
+        return new CPUAfterADD(processor, this.bytes);
     }
 }
