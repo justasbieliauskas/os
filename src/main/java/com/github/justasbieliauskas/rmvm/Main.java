@@ -40,7 +40,7 @@ public class Main
                     )
                 )
             ),
-            new SequenceAsArray<>(() -> "ADD")
+            new ConsoleCommands("Enter: ")
         );
         try {
             shell.run();
