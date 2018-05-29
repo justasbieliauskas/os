@@ -17,18 +17,9 @@ public class WordFromBytesTest
     public void convertsToWord() {
         new WordEquality(
             new WordFromBytes(
-                new Byte[] {
-                    (byte) 0,
-                    (byte) 0,
-                    (byte) 0,
-                    (byte) 0,
-                    (byte) 0,
-                    (byte) 11,
-                    (byte) 88,
-                    (byte) 234
-                }
+                new WordBytes(() -> 45, () -> 4)
             ),
-            743658
+            45
         ).test();
     }
 }

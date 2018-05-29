@@ -1,13 +1,14 @@
 package com.github.justasbieliauskas.rmvm.data;
 
-import java.lang.Byte;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
+import java.nio.ByteOrder;
+import java.util.Iterator;
 
 /**
  * Word from sequence of bytes.
- * Given byte sequence must have a length of {@code Long.BYTES}
- * and be big-endian, meaning, lsb should come last.
+ * Given sequence must be little-endian.
+ * It is then converted to big-endian and padded with zeroes, so that
+ * the total number of bytes before conversion is equal to {@code Long.BYTES}.
  *
  * @author Justas Bieliauskas
  */
@@ -16,29 +17,21 @@ public class WordFromBytes implements Word
     private final Iterable<java.lang.Byte> bytes;
 
     /**
-     * Constructor for initializing with byte array and default size of 4.
-     * Used in testing.
-     *
-     * @param bytes bytes
-     */
-    WordFromBytes(Byte[] bytes) {
-        this(() -> Arrays.asList(bytes).iterator());
-    }
-
-    /**
-     * Default constructor.
-     *
      * @param bytes sequence of bytes
      */
-    public WordFromBytes(Iterable<Byte> bytes) {
+    public WordFromBytes(Iterable<java.lang.Byte> bytes) {
         this.bytes = bytes;
     }
 
     @Override
     public long toLong() {
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
-        for(byte b : this.bytes) {
-            buffer.put(b);
+        buffer.order(ByteOrder.LITTLE_ENDIAN);
+        Iterator<java.lang.Byte> iterator = this.bytes.iterator();
+        java.lang.Byte put;
+        for(int i = 0; i != Long.BYTES; i++) {
+            put = iterator.hasNext() ? iterator.next() : 0;
+            buffer.put(put);
         }
         buffer.flip();
         return buffer.getLong();
